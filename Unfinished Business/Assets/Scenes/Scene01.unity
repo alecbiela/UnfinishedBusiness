@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964127, b: 0.57481724, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -91,22 +91,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &165781781 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 100006, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 2}
-  m_PrefabInternal: {fileID: 1564781557}
---- !u!114 &165781785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 165781781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5cb88da6d7826742be06a7d1717c862, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObjInteractDist: 5
 --- !u!1001 &300389718
 Prefab:
   m_ObjectHideFlags: 0
@@ -164,7 +148,7 @@ GameObject:
   - component: {fileID: 524179584}
   - component: {fileID: 524179583}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Crosshair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -267,8 +251,6 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2fd35339fc144ad44bea1fdfc724990c, type: 2}
-  - {fileID: 2100000, guid: 2fd35339fc144ad44bea1fdfc724990c, type: 2}
   - {fileID: 2100000, guid: 2fd35339fc144ad44bea1fdfc724990c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

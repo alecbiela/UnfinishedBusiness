@@ -6,6 +6,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (Rigidbody))]
     [RequireComponent(typeof (CapsuleCollider))]
+
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
         [Serializable]
@@ -88,6 +89,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_YRotation;
         private Vector3 m_GroundContactNormal;
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
+        private bool viewingObj;
 
 
         public Vector3 Velocity
@@ -105,6 +107,12 @@ namespace UnityStandardAssets.Characters.FirstPerson
             get { return m_Jumping; }
         }
 
+        public bool ViewingObj
+        {
+            get { return viewingObj; }
+            set { viewingObj = value; }
+        }
+
         public bool Running
         {
             get
@@ -120,7 +128,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void Start()
         {
-            m_RigidBody = GetComponent<Rigidbody>();
+            m_RigidBody = this.GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
         }
@@ -139,6 +147,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            //don't move if we're viewing an object
+            if (viewingObj) return;
+
             GroundCheck();
             Vector2 input = GetInput();
 
@@ -227,6 +238,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 
+            //don't move if we're looking at an object
+            if (viewingObj) return;
+            
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
