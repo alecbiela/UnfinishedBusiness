@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     public float ObjInteractDist;
     public float MOUSE_SENSITIVITY;
+    public float SCALE_SENSITIVITY;
 
     [SerializeField]
     private GameObject selectedObj = null;
@@ -17,7 +19,9 @@ public class Player : MonoBehaviour {
     private GameObject crosshair;
     private Vector3 mouseDelta = Vector3.zero;
     private Vector3 lastMouse = Vector3.zero;
-    private Ray meToSelected;
+    private float distance = 3.0f;
+    private float maxDistance;
+    private float minDistance;
 
     // Use this for initialization
     void Start ()
@@ -40,13 +44,9 @@ public class Player : MonoBehaviour {
             if (!viewingObject) StartViewing();
         }
 
-        if (Input.GetMouseButton(0) && viewingObject && mouseDelta != Vector3.zero) RotateViewed();
+        if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
         if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
-
-        //update mouse delta
-        mouseDelta = Input.mousePosition - lastMouse;
-        lastMouse = Input.mousePosition;
     }
 
 
@@ -59,17 +59,39 @@ public class Player : MonoBehaviour {
     //dragging to rotate the object around if we're looking at it
     void RotateViewed()
     {
+        //update mouse delta (in world space)
+        Vector3 objOnScreen = Camera.main.WorldToScreenPoint(selectedObj.transform.position);
+        mouseDelta = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, objOnScreen.z)) - lastMouse;
+        lastMouse = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, objOnScreen.z));
+
+        //get out early if we can
+        if (mouseDelta == Vector3.zero) return;
+
+        //normalize delta vector and vector between us and the object
         Vector3 nMouseDelta = mouseDelta.normalized;
-        Vector3 moveAxis = Vector3.Cross(nMouseDelta, Camera.main.transform.forward);
-        Debug.Log(moveAxis);
+        Vector3 between = (selectedObj.transform.position - this.transform.position).normalized;
+
+        //cross above vectors to get axis of rotation, then rotate
+        Vector3 moveAxis = Vector3.Cross(nMouseDelta, between).normalized;
         selectedObj.transform.Rotate(moveAxis, MOUSE_SENSITIVITY * Time.deltaTime, Space.World);
     }
 
     //zooms in and out
     void ScrollViewed()
     {
-        float zoomDelta = Input.mouseScrollDelta.y * 3.0f;
-        selectedObj.transform.position += Camera.main.transform.forward * zoomDelta * Time.deltaTime;
+        if (Input.mouseScrollDelta.y < 0) selectedObj.transform.localScale *= 1 + SCALE_SENSITIVITY;
+        else selectedObj.transform.localScale *= 1 - SCALE_SENSITIVITY;
+
+        //check bounds
+        if(selectedObj.transform.localScale.x <= 0.01f)
+        {
+            selectedObj.transform.localScale = Vector3.one;
+            selectedObj.transform.localScale *= 0.01f;
+        }
+        /*distance += Input.mouseScrollDelta.y * Time.deltaTime;
+        if (distance > maxDistance) distance = maxDistance;
+        else if (distance < minDistance) distance = minDistance;
+        selectedObj.transform.position += Camera.main.transform.forward * distance;*/
     }
 
     //raycasts forward and checks if we should highlight an object
@@ -89,16 +111,18 @@ public class Player : MonoBehaviour {
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
-                meToSelected = ray;
+                string examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
+                GameObject.Find("ExamineText").GetComponent<Text>().text = examine;
             }
         }
         else
         {
-            //if we're leaving collision, reset color
+            //if we're leaving collision, reset color and text
             if (selectedObj != null)
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 selectedObj = null;
+                GameObject.Find("ExamineText").GetComponent<Text>().text = " ";
             }
         }
     }
@@ -143,7 +167,8 @@ public class Player : MonoBehaviour {
         //move the viewed object to our viewport
         //Posted by user "Julien-Lynge" on the Unity Forums
         //http://answers.unity3d.com/questions/466665/placing-a-gameobject-in-the-exact-center-of-the-ca.html
-        selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 3.0f));
+        selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.WorldToScreenPoint(selectedObj.transform.position).z));
+
 
         //free the cursor
         Cursor.lockState = CursorLockMode.None;
