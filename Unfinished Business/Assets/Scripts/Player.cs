@@ -17,16 +17,23 @@ public class Player : MonoBehaviour {
     private bool viewingObject = false;
     private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
     private GameObject crosshair;
+    private GameObject examineText;
     private Vector3 mouseDelta = Vector3.zero;
     private Vector3 lastMouse = Vector3.zero;
     private float distance = 3.0f;
     private float maxDistance;
     private float minDistance;
 
+    //inventory 
+    private Dictionary<string, GameObject> inventory;
+
     // Use this for initialization
     void Start ()
     {
         crosshair = GameObject.Find("Crosshair");
+        examineText = GameObject.Find("ExamineText");
+        //empty dictionary for inventory
+        inventory = new Dictionary<string, GameObject>();
 	}
 	
     // Update is called once per frame
@@ -39,7 +46,7 @@ public class Player : MonoBehaviour {
         }
 
         //if we click on a selected object, start viewing it
-        if(Input.GetMouseButtonDown(0) && selectedObj != null)
+        if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled)
         {
             if (!viewingObject) StartViewing();
         }
@@ -103,8 +110,8 @@ public class Player : MonoBehaviour {
         //if we are in range of interacting with something
         if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hit, ObjInteractDist))
         {
-            //only select if we're hitting something NEW
-            if (selectedObj == null)
+            //only select if we're hitting something NEW and visible
+            if (selectedObj == null && hit.collider.gameObject.GetComponent<Renderer>().enabled)
             {
                 //set color and store a reference to the object
                 selectedObj = hit.collider.gameObject;
@@ -112,7 +119,7 @@ public class Player : MonoBehaviour {
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
                 string examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
-                GameObject.Find("ExamineText").GetComponent<Text>().text = examine;
+                examineText.GetComponent<Text>().text = examine;
             }
         }
         else
@@ -122,7 +129,7 @@ public class Player : MonoBehaviour {
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 selectedObj = null;
-                GameObject.Find("ExamineText").GetComponent<Text>().text = " ";
+                examineText.GetComponent<Text>().text = " ";
             }
         }
     }
@@ -138,9 +145,27 @@ public class Player : MonoBehaviour {
         selectedObj.GetComponent<Rigidbody>().isKinematic = false;
 
         //put that thing back where it came from or so help me
-        selectedObj.transform.position = selectedPos;
-        selectedObj.transform.eulerAngles = selectedRot;
-        selectedObj.transform.localScale = new Vector3(selectedScale.x, selectedScale.y, selectedScale.z);
+        //but only if it's not obtainable
+        if (!selectedObj.GetComponent<Item>().obtainable)
+        {
+            selectedObj.transform.position = selectedPos;
+            selectedObj.transform.eulerAngles = selectedRot;
+            selectedObj.transform.localScale = new Vector3(selectedScale.x, selectedScale.y, selectedScale.z);
+        }
+        //otherwise add to the inventory
+        else
+        {
+            //hide the object
+            selectedObj.GetComponent<Renderer>().enabled = false;
+
+            //add reference to it in inventory
+            inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
+
+            //until the player moves again it still displays the text to view the object that's been picked up
+            //to get around this i'm just going to change it here to say "x added to inventory"
+            string added = selectedObj.GetComponent<Item>().itemName + "\nadded to inventory.";
+            examineText.GetComponent<Text>().text = added;
+        }
         
 
         //lock the cursor
