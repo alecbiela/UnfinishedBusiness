@@ -5,7 +5,6 @@ using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
-
     public float ObjInteractDist;
     public float MOUSE_SENSITIVITY;
     public float SCALE_SENSITIVITY;
@@ -22,11 +21,18 @@ public class Player : MonoBehaviour {
     private float distance = 3.0f;
     private float maxDistance;
     private float minDistance;
+    private GameManager gm;
+
+    internal class Inventory
+    {
+        private Dictionary<string, Image> items;
+    };
 
     // Use this for initialization
     void Start ()
     {
         crosshair = GameObject.Find("Crosshair");
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 	}
 	
     // Update is called once per frame
@@ -47,6 +53,8 @@ public class Player : MonoBehaviour {
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
         if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
+
+        if (Input.GetKeyDown(KeyCode.P)) gm.ToggleGamePaused();
     }
 
 
@@ -178,5 +186,4 @@ public class Player : MonoBehaviour {
         //stop highlighting
         selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
     }
-
 }

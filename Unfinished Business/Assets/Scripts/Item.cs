@@ -7,5 +7,5 @@ public class Item : MonoBehaviour {
     public int itemID;
     public string itemName;
     public bool obtainable;
-
+    public Sprite uiImage;
 }
