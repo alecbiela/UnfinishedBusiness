@@ -52,10 +52,15 @@ public class Player : MonoBehaviour {
         }
 
         //if we click on a selected object, start viewing it
-        if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled)
+		if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
         {
             if (!viewingObject) StartViewing();
         }
+
+		//if we click on a door, open int
+		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door> () != null) {
+			ActivateDoor ();
+		}
 
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
@@ -126,7 +131,17 @@ public class Player : MonoBehaviour {
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
-                string examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
+				string examine = "";
+				if (selectedObj.GetComponent<Item> () != null) {
+					 examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item> ().itemName;
+				}
+				if (selectedObj.GetComponent<Door> () != null) {
+					if (!selectedObj.GetComponent<Door> ().open) {
+						examine = "Left Click to Open Door";
+					} else {
+						examine = "Left Click to Close Door";
+					}
+				}
                 examineText.GetComponent<Text>().text = examine;
             }
         }
@@ -211,4 +226,9 @@ public class Player : MonoBehaviour {
         //stop highlighting
         selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
     }
+
+	void ActivateDoor(){
+		//in retrospect this probably didn't need to be its own method
+		selectedObj.GetComponent<Door>().open = !selectedObj.GetComponent<Door>().open;
+	}
 }
