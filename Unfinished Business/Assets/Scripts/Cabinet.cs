@@ -7,18 +7,28 @@ public class Cabinet : MonoBehaviour {
 	public bool open = false;
 
 
-	public float speed = 2.0f;
+	public float speed = 1.5f;
 
 	//moves in the z direction of the object
-	public float distance = 1.0f;
+	public float distance = .2f;
 	private Vector3 closePos;
 	private Vector3 openPos;
 
 	// Use this for initialization
 	void Start () {
-		closePos = this.gameObject.transform.position;
-		openPos = closePos;
-		openPos.z += distance;
+        //set initial positions depending if drawer starts as closed or open
+        if (!open)
+        {
+            closePos = this.gameObject.transform.position;
+            openPos = closePos;
+            openPos += this.gameObject.transform.forward * distance;
+        }
+        else
+        {
+            openPos = this.gameObject.transform.position;
+            closePos = openPos;
+            closePos -= this.gameObject.transform.forward * distance;
+        }
 	}
 	
 	// Update is called once per frame

@@ -58,9 +58,16 @@ public class Player : MonoBehaviour {
         }
 
 		//if we click on a door, open int
-		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door> () != null) {
+		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
 			ActivateDoor ();
 		}
+
+        //if we click a cabinet/drawer, open/close it
+        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Cabinet>() != null)
+        {
+            //switch its state
+            selectedObj.GetComponent<Cabinet>().open = !selectedObj.GetComponent<Cabinet>().open;
+        }
 
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
@@ -124,24 +131,45 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hit, ObjInteractDist))
         {
             //only select if we're hitting something NEW and visible
-            if (selectedObj == null && hit.collider.gameObject.GetComponent<Renderer>().enabled)
+            //edited: only selecting if selectedObj == null created issues with objects that are very close together + updating text
+            if (hit.collider.gameObject.GetComponent<Renderer>().enabled)
             {
+                //restore the color of the previous selected object before highlighting the new one
+                if (selectedObj != null)
+                {
+                    MeshRenderer prev = selectedObj.GetComponent<MeshRenderer>();
+                    prev.material.color = selectedColor;
+                }
+
                 //set color and store a reference to the object
                 selectedObj = hit.collider.gameObject;
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
+
+               //adjust examining text depending on type of object being highlighted
 				string examine = "";
 				if (selectedObj.GetComponent<Item> () != null) {
 					 examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item> ().itemName;
 				}
-				if (selectedObj.GetComponent<Door> () != null) {
+				else if (selectedObj.GetComponent<Door> () != null) {
 					if (!selectedObj.GetComponent<Door> ().open) {
 						examine = "Left Click to Open Door";
 					} else {
 						examine = "Left Click to Close Door";
 					}
 				}
+                else if (selectedObj.GetComponent<Cabinet>()!= null)
+                {
+                    if (!selectedObj.GetComponent<Cabinet>().open)
+                    {
+                        examine = "Left Click to Open Cabinet";
+                    }
+                    else
+                    {
+                        examine = "Left Click to Close Cabinet";
+                    }
+                }
                 examineText.GetComponent<Text>().text = examine;
             }
         }
