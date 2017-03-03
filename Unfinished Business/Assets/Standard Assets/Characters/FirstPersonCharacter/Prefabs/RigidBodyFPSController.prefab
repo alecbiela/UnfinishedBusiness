@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 13600000}
   - component: {fileID: 114743203288685038}
   - component: {fileID: 114208871637783798}
+  - component: {fileID: 114456775881441886}
   m_Layer: 0
   m_Name: RigidBodyFPSController
   m_TagString: Untagged
@@ -221,9 +222,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5cb88da6d7826742be06a7d1717c862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjInteractDist: 5
+  ObjInteractDist: 2
   MOUSE_SENSITIVITY: 170
+  SCALE_SENSITIVITY: 0.15
   selectedObj: {fileID: 0}
+--- !u!114 &114456775881441886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c046b55a25cf5438acc4e7891755f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114743203288685038
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,22 +24,19 @@ public class Player : MonoBehaviour {
     private float minDistance;
     private GameManager gm;
 
-    internal class Inventory
-    {
-        private Dictionary<string, Image> items;
-    };
-
     //inventory 
-    private Dictionary<string, GameObject> inventory;
+    //private Dictionary<string, GameObject> inventory;
+    private Inventory inventory;
 
     // Use this for initialization
     void Start ()
     {
         crosshair = GameObject.Find("Crosshair");
+        inventory = this.gameObject.GetComponent<Inventory>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
         //empty dictionary for inventory
-        inventory = new Dictionary<string, GameObject>();
+
 	}
 	
     // Update is called once per frame
@@ -210,7 +207,8 @@ public class Player : MonoBehaviour {
             selectedObj.GetComponent<Renderer>().enabled = false;
 
             //add reference to it in inventory
-            inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
+            //inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
+            inventory.AddItem(selectedObj.GetComponent<Item>());
 
             //until the player moves again it still displays the text to view the object that's been picked up
             //to get around this i'm just going to change it here to say "x added to inventory"
