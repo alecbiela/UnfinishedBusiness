@@ -11,14 +11,28 @@ public class Door : MonoBehaviour {
 
 
 	public float speed = 2.0f;
-	private float closedAngle = 0;
-	private float openAngle = -90.0f;
+    public float changeAngle = 90; //will usually be either 90 or -90
+    private float closedAngle;
+    private float openAngle;
 	private GameObject rotater;
 
 
 	// Use this for initialization
 	void Start () {
+        //find rotation point
 		rotater = this.gameObject.transform.parent.gameObject;
+
+        //find initial position
+        if (open)
+        {
+            openAngle = 0;
+            closedAngle = openAngle + changeAngle;
+        }
+        else
+        {
+            closedAngle = 0;
+            openAngle = closedAngle + changeAngle;
+        }
 	}
 	
 	// Update is called once per frame

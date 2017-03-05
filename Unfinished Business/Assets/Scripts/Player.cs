@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
             if (!viewingObject) StartViewing();
         }
 
-		//if we click on a door, open int
+		//if we click on a door, open it
 		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
 			ActivateDoor ();
 		}
@@ -138,14 +138,12 @@ public class Player : MonoBehaviour {
                     prev.material.color = selectedColor;
                 }
 
-                //set color and store a reference to the object
+                //store new selected object
                 selectedObj = hit.collider.gameObject;
-                MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
-                selectedColor = mr.material.color;
-                mr.material.color = Color.yellow;
 
-               //adjust examining text depending on type of object being highlighted
-				string examine = "";
+
+                //adjust examining text depending on type of object being highlighted
+                string examine = "";
 				if (selectedObj.GetComponent<Item> () != null) {
 					 examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item> ().itemName;
 				}
@@ -167,7 +165,24 @@ public class Player : MonoBehaviour {
                         examine = "Left Click to Close Cabinet";
                     }
                 }
+
+                //if object is not something interactable, don't highlight
+                else
+                {
+                    examineText.GetComponent<Text>().text = examine;
+                    selectedColor = selectedObj.GetComponent<MeshRenderer>().material.color;
+                    return;
+                }
+
+
                 examineText.GetComponent<Text>().text = examine;
+
+
+
+                //set color and store a reference to the object               
+                MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
+                selectedColor = mr.material.color;
+                mr.material.color = Color.yellow;
             }
         }
         else
