@@ -6,17 +6,17 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 
-    private List<Item> items;
+    private List<GameObject> items;
     private GameObject[] slots;
     private Color OCCUPIED_COLOR = new Color(255, 255, 255, 255);
     private Color VACANT_COLOR = new Color(255, 255, 255, 0);
-
-    //private GameManager gm;
+    private GameManager gm;
 
 	// Use this for initialization
 	void Start () {
-        items = new List<Item>();
+        items = new List<GameObject>();
         slots = GameObject.FindGameObjectsWithTag("InventorySlot");
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         GameObject[] slotsTmp = new GameObject[slots.Length];
 
@@ -31,9 +31,16 @@ public class Inventory : MonoBehaviour {
         slots = slotsTmp;
 	}
 
+    public void View(int slotNum)
+    {
+        if ((slotNum > items.Count)) return;
+        gm.StartViewingObject(items[slotNum - 1], true);
+    }
+
+
     //adds an item to the inventory
     //takes an arg for the item script
-    public void AddItem(Item i)
+    public void AddItem(GameObject i)
     {
         items.Add(i);
         ReSortItems();
@@ -46,7 +53,7 @@ public class Inventory : MonoBehaviour {
         for(int i=0; i < items.Count; i++)
         {
             //if this one isn't what we're looking for, skip to next
-            if (items[i].itemName != name) continue;
+            if (items[i].GetComponent<Item>().itemName != name) continue;
 
             //once we've found it, remove it and get out of the loop
             items.RemoveAt(i);
@@ -65,7 +72,7 @@ public class Inventory : MonoBehaviour {
         for(int i=0; i < items.Count; i++)
         {
             currentImage = slots[i].GetComponent<Image>();
-            currentImage.sprite = items[i].uiImage;
+            currentImage.sprite = items[i].GetComponent<Item>().uiImage;
             currentImage.color = OCCUPIED_COLOR;
         }
     }

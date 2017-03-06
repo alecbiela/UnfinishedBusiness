@@ -11,17 +11,17 @@ public class Player : MonoBehaviour {
 
     [SerializeField]
     private GameObject selectedObj = null;
-    private Transform viewedObj = null;
+    //private Transform viewedObj = null;
     private Color selectedColor;
-    private bool viewingObject = false;
-    private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
-    private GameObject crosshair;
+    //private bool viewingObject = false;
+    //private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
+    //private GameObject crosshair;
     private GameObject examineText;
-    private Vector3 mouseDelta = Vector3.zero;
-    private Vector3 lastMouse = Vector3.zero;
-    private float distance = 3.0f;
-    private float maxDistance;
-    private float minDistance;
+    //private Vector3 mouseDelta = Vector3.zero;
+    //private Vector3 lastMouse = Vector3.zero;
+    //private float distance = 3.0f;
+    //private float maxDistance;
+    //private float minDistance = 1.2f;
     private GameManager gm;
 
     //inventory 
@@ -31,7 +31,7 @@ public class Player : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        crosshair = GameObject.Find("Crosshair");
+        //crosshair = GameObject.Find("Crosshair");
         inventory = this.gameObject.GetComponent<Inventory>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
@@ -43,15 +43,19 @@ public class Player : MonoBehaviour {
     void Update()
     {
         //if we right-click while viewing, stop viewing
-        if(Input.GetMouseButtonDown(1) && viewingObject)
+        /*if(Input.GetMouseButtonDown(1) && viewingObject)
         {
             StopViewing();
-        }
+        }*/
 
         //if we click on a selected object, start viewing it
 		if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
         {
-            if (!viewingObject) StartViewing();
+            if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT))
+            {
+                selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
+                gm.StartViewingObject(selectedObj, false);
+            }
         }
 
 		//if we click on a door, open it
@@ -66,9 +70,9 @@ public class Player : MonoBehaviour {
             selectedObj.GetComponent<Cabinet>().open = !selectedObj.GetComponent<Cabinet>().open;
         }
 
-        if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
+        //if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
-        if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
+        //if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
 
         if (Input.GetKeyDown(KeyCode.P)) gm.ToggleGamePaused();
     }
@@ -77,11 +81,11 @@ public class Player : MonoBehaviour {
 	// FixedUpdate for Physics
 	void FixedUpdate ()
     {
-        if (!viewingObject) CheckHighlight();
+        if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT)) CheckHighlight();
 	}
 
     //dragging to rotate the object around if we're looking at it
-    void RotateViewed()
+    /*void RotateViewed()
     {
         //update mouse delta (in world space)
         Vector3 objOnScreen = Camera.main.WorldToScreenPoint(selectedObj.transform.position);
@@ -103,20 +107,23 @@ public class Player : MonoBehaviour {
     //zooms in and out
     void ScrollViewed()
     {
-        if (Input.mouseScrollDelta.y < 0) selectedObj.transform.localScale *= 1 + SCALE_SENSITIVITY;
-        else selectedObj.transform.localScale *= 1 - SCALE_SENSITIVITY;
+        //if (Input.mouseScrollDelta.y < 0) selectedObj.transform.localScale *= 1 + SCALE_SENSITIVITY;
+        //else selectedObj.transform.localScale *= 1 - SCALE_SENSITIVITY;
 
         //check bounds
-        if(selectedObj.transform.localScale.x <= 0.01f)
-        {
-            selectedObj.transform.localScale = Vector3.one;
-            selectedObj.transform.localScale *= 0.01f;
-        }
-        /*distance += Input.mouseScrollDelta.y * Time.deltaTime;
-        if (distance > maxDistance) distance = maxDistance;
-        else if (distance < minDistance) distance = minDistance;
-        selectedObj.transform.position += Camera.main.transform.forward * distance;*/
-    }
+        //if(selectedObj.transform.localScale.x <= 0.01f)
+        //{
+        //    selectedObj.transform.localScale = Vector3.one;
+        //    selectedObj.transform.localScale *= 0.01f;
+        //}
+        distance = Input.mouseScrollDelta.y * Time.deltaTime * 6f;
+        //Vector3 closest = selectedObj.GetComponent<Collider>().bounds.ClosestPoint(this.transform.position);
+
+        //if (distance > maxDistance) distance = maxDistance;
+        //else if (distance < minDistance) distance = minDistance;
+        selectedObj.transform.position += Camera.main.transform.forward * distance;
+        
+    }*/
 
     //raycasts forward and checks if we should highlight an object
     private void CheckHighlight()
@@ -199,7 +206,7 @@ public class Player : MonoBehaviour {
 
 
     //gets us out of viewing an object
-    private void StopViewing()
+    /*private void StopViewing()
     {
         viewingObject = false;
         this.GetComponent<RigidbodyFirstPersonController>().ViewingObj = false;
@@ -236,10 +243,15 @@ public class Player : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         crosshair.SetActive(true);
-    }
+
+        //enable collider
+        selectedObj.GetComponent<Collider>().enabled = true;
+
+        selectedObj.layer = 0;
+    }*/
 
     //starts viewing the selected GameObject
-    private void StartViewing()
+    /*private void StartViewing()
     {
         viewingObject = true;
         this.GetComponent<RigidbodyFirstPersonController>().ViewingObj = true;
@@ -266,7 +278,11 @@ public class Player : MonoBehaviour {
 
         //stop highlighting
         selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
-    }
+
+        //turn off collider?
+        selectedObj.GetComponent<Collider>().enabled = false;
+        selectedObj.layer = 8;  //set to "always-on-top" layer
+    }*/
 
 	void ActivateDoor(){
 		//in retrospect this probably didn't need to be its own method
