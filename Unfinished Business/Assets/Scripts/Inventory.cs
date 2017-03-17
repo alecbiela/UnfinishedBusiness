@@ -37,6 +37,12 @@ public class Inventory : MonoBehaviour {
         gm.StartViewingObject(items[slotNum - 1], true);
     }
 
+    public void Select(int slotNum)
+    {
+        if ((slotNum > items.Count)) return;
+        gm.SelectObject(items[slotNum - 1]);
+    }
+
 
     //adds an item to the inventory
     //takes an arg for the item script

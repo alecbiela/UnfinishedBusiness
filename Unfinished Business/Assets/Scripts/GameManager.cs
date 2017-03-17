@@ -5,7 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour {
     
-    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, STOPPED};
+    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED};
     private GameStates currentState, previousState;
 
     private GameObject runningUI, pausedUI;
@@ -57,6 +57,14 @@ public class GameManager : MonoBehaviour {
         objViewer.StartViewing(obj, isTemp);
     }
 
+    //brings an object "outside" the inventory for use in the world
+    public void SelectObject(GameObject obj)
+    {
+        //change state
+        currentState = GameStates.RUNNING;
+        objViewer.StartSelecting(obj);
+    }
+
     //statechange
     private void StateChange()
     {
@@ -86,6 +94,14 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
                 pausedUI.SetActive(false);
                 runningUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                player.ViewingObj = true;
+                break;
+            case GameStates.PLACING_OBJECT:
+                Time.timeScale = 1;
+                pausedUI.SetActive(false);
+                runningUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = true;

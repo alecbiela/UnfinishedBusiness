@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45035017, g: 0.50037116, b: 0.57528096, a: 1}
+  m_IndirectSpecularColor: {r: 0.45034963, g: 0.5003709, b: 0.5752804, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 22783678}
   - component: {fileID: 22783680}
   - component: {fileID: 22783679}
-  - component: {fileID: 22783682}
+  - component: {fileID: 22783681}
   m_Layer: 5
   m_Name: Slot 1
   m_TagString: InventorySlot
@@ -160,7 +160,7 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22783677}
---- !u!114 &22783682
+--- !u!114 &22783681
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -168,28 +168,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 22783677}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b1c7c7821660cf41beca09e9bc953ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 154933590}
-          m_MethodName: View
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
-        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  delegates: []
+  slot: 1
 --- !u!114 &154933590 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114339561929136428, guid: 157a643b62b5f3a4caa73b5f40d128da,
