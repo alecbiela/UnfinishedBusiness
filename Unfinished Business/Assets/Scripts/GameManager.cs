@@ -12,27 +12,35 @@ public class GameManager : MonoBehaviour {
     private GameObject[] invSlots;
     private ObjectViewer objViewer;
     private RigidbodyFirstPersonController player;
+    private GameObject heldObject;
+    private bool stateChanged;
+
+    public Item HeldItem { get { return heldObject.GetComponent<Item>(); } }
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
         currentState = GameStates.RUNNING;
-        previousState = GameStates.STOPPED;
+        previousState = GameStates.RUNNING;
         runningUI = GameObject.Find("RunningUI");
         pausedUI = GameObject.Find("PausedUI");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
         invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
+
+        //call statechange once to initialize state
+        stateChanged = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (currentState != previousState) StateChange();
+        if (stateChanged) StateChange();
 	}
 
     //sets the current game state
     public void SetState(GameStates state)
     {
         currentState = state;
+        stateChanged = true;
     }
 
     //gets the current game state
@@ -44,16 +52,24 @@ public class GameManager : MonoBehaviour {
     //toggles the game paused state
     public void ToggleGamePaused()
     {
-        if (currentState == GameStates.PAUSED) currentState = GameStates.RUNNING;
-        else currentState = GameStates.PAUSED;
+        //if paused, unpause to current state, else save current state for later and pause
+        if (currentState == GameStates.PAUSED) SetState(previousState);
+        else
+        {
+            previousState = currentState;
+            SetState(GameStates.PAUSED);
+        }
     }
 
     //start viewing an object
     //takes: the object to view
     public void StartViewingObject(GameObject obj, bool isTemp)
     {
+        //stop the player from moving
+        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+
         //change state
-        currentState = GameStates.VIEWING_OBJECT;
+        SetState(GameStates.VIEWING_OBJECT);
         objViewer.StartViewing(obj, isTemp);
     }
 
@@ -61,14 +77,15 @@ public class GameManager : MonoBehaviour {
     public void SelectObject(GameObject obj)
     {
         //change state
-        currentState = GameStates.RUNNING;
+        SetState((obj == null) ? GameStates.RUNNING : GameStates.PLACING_OBJECT);
+        heldObject = obj;
         objViewer.StartSelecting(obj);
     }
 
     //statechange
     private void StateChange()
     {
-        previousState = currentState;
+        stateChanged = false;
 
         switch (currentState)
         {
@@ -102,9 +119,9 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
                 pausedUI.SetActive(false);
                 runningUI.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                player.ViewingObj = true;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                player.ViewingObj = false;
                 break;
         }
     }

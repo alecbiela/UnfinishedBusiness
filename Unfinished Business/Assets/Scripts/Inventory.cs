@@ -67,7 +67,7 @@ public class Inventory : MonoBehaviour {
         }
 
         //re-sort to account for vacant space
-        slots[items.Count - 1].GetComponent<Image>().color = VACANT_COLOR;
+        slots[items.Count].GetComponent<Image>().color = VACANT_COLOR;
         ReSortItems();
     }
 

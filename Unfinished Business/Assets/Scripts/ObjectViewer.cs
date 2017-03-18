@@ -11,7 +11,7 @@ public class ObjectViewer : MonoBehaviour {
     private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
     private GameObject examineText;
     private GameObject crosshair;
-    private Image selectedImg;
+    private Sprite defaultCrosshair;
     private bool viewingObject = false;
     private Vector3 mouseDelta = Vector3.zero;
     private Vector3 lastMouse = Vector3.zero;
@@ -26,6 +26,7 @@ public class ObjectViewer : MonoBehaviour {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
         crosshair = GameObject.Find("Crosshair");
+        defaultCrosshair = crosshair.GetComponent<Image>().sprite;
 	}
 	
 	// Update is called once per frame
@@ -43,8 +44,8 @@ public class ObjectViewer : MonoBehaviour {
     //starts selecting an object
     public void StartSelecting(GameObject obj)
     {
-        //FIX THIS0
-        crosshair.GetComponent<Image>().sprite = obj.GetComponent<Image>().sprite;
+        //FIX THIS
+        crosshair.GetComponent<Image>().sprite = (obj==null) ? defaultCrosshair : obj.GetComponent<Item>().uiImage;
     }
 
     //starts viewing an object

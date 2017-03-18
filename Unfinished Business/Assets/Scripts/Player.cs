@@ -11,21 +11,12 @@ public class Player : MonoBehaviour {
 
     [SerializeField]
     private GameObject selectedObj = null;
-    //private Transform viewedObj = null;
     private Color selectedColor;
-    //private bool viewingObject = false;
-    //private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
-    //private GameObject crosshair;
     private GameObject examineText;
-    //private Vector3 mouseDelta = Vector3.zero;
-    //private Vector3 lastMouse = Vector3.zero;
-    //private float distance = 3.0f;
-    //private float maxDistance;
-    //private float minDistance = 1.2f;
     private GameManager gm;
+    private string onScreenText;
 
-    //inventory 
-    //private Dictionary<string, GameObject> inventory;
+    //inventory
     private Inventory inventory;
 
     // Use this for initialization
@@ -35,23 +26,34 @@ public class Player : MonoBehaviour {
         inventory = this.gameObject.GetComponent<Inventory>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
-        //empty dictionary for inventory
-
 	}
 	
     // Update is called once per frame
     void Update()
     {
-        //if we right-click while viewing, stop viewing
-        /*if(Input.GetMouseButtonDown(1) && viewingObject)
-        {
-            StopViewing();
-        }*/
 
         //if we click on a selected object, start viewing it
 		if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
         {
-            if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT))
+            if (gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
+            {
+                //if the used item matches the necessary reagent item
+                if(selectedObj.GetComponent<Item>().UseOnMe(gm.HeldItem.itemID))
+                {
+                    Debug.Log("The item reacts!");
+                    onScreenText = gm.HeldItem.itemName + " used on " + selectedObj.GetComponent<Item>().itemName;
+
+                    //remove object from inventory and stop selecting it
+                    inventory.RemoveItem(gm.HeldItem.itemName);
+                    gm.SelectObject(null);
+                }
+                else
+                {
+                    Debug.Log("Item doesn't work on that");
+                    onScreenText = "Nothing happens.";
+                }
+            }
+            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT))
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 gm.StartViewingObject(selectedObj, false);
@@ -70,9 +72,14 @@ public class Player : MonoBehaviour {
             selectedObj.GetComponent<Cabinet>().open = !selectedObj.GetComponent<Cabinet>().open;
         }
 
-        //if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
+        //update on screen text
+        UpdateOnScreenText();
 
-        //if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
+        //stop selecting object if we right click (and don't click on anything else)
+        if(Input.GetMouseButtonDown(1) && gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
+        {
+            gm.SelectObject(null);
+        }
 
         if (Input.GetKeyDown(KeyCode.P)) gm.ToggleGamePaused();
     }
@@ -84,46 +91,11 @@ public class Player : MonoBehaviour {
         if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT)) CheckHighlight();
 	}
 
-    //dragging to rotate the object around if we're looking at it
-    /*void RotateViewed()
+    //pushes whatever is in the onScreenText variable onto the screen
+    private void UpdateOnScreenText()
     {
-        //update mouse delta (in world space)
-        Vector3 objOnScreen = Camera.main.WorldToScreenPoint(selectedObj.transform.position);
-        mouseDelta = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, objOnScreen.z)) - lastMouse;
-        lastMouse = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, objOnScreen.z));
-
-        //get out early if we can
-        if (mouseDelta == Vector3.zero) return;
-
-        //normalize delta vector and vector between us and the object
-        Vector3 nMouseDelta = mouseDelta.normalized;
-        Vector3 between = (selectedObj.transform.position - this.transform.position).normalized;
-
-        //cross above vectors to get axis of rotation, then rotate
-        Vector3 moveAxis = Vector3.Cross(nMouseDelta, between).normalized;
-        selectedObj.transform.Rotate(moveAxis, MOUSE_SENSITIVITY * Time.deltaTime, Space.World);
+        examineText.GetComponent<Text>().text = onScreenText;
     }
-
-    //zooms in and out
-    void ScrollViewed()
-    {
-        //if (Input.mouseScrollDelta.y < 0) selectedObj.transform.localScale *= 1 + SCALE_SENSITIVITY;
-        //else selectedObj.transform.localScale *= 1 - SCALE_SENSITIVITY;
-
-        //check bounds
-        //if(selectedObj.transform.localScale.x <= 0.01f)
-        //{
-        //    selectedObj.transform.localScale = Vector3.one;
-        //    selectedObj.transform.localScale *= 0.01f;
-        //}
-        distance = Input.mouseScrollDelta.y * Time.deltaTime * 6f;
-        //Vector3 closest = selectedObj.GetComponent<Collider>().bounds.ClosestPoint(this.transform.position);
-
-        //if (distance > maxDistance) distance = maxDistance;
-        //else if (distance < minDistance) distance = minDistance;
-        selectedObj.transform.position += Camera.main.transform.forward * distance;
-        
-    }*/
 
     //raycasts forward and checks if we should highlight an object
     private void CheckHighlight()
@@ -138,6 +110,13 @@ public class Player : MonoBehaviour {
             //edited: only selecting if selectedObj == null created issues with objects that are very close together + updating text
             if (hit.collider.gameObject.GetComponent<Renderer>().enabled)
             {
+                //get the gamestate
+                GameManager.GameStates currentState = gm.GetState();
+                string examine = "";
+
+                //decide how to handle the object based on the current state
+
+
                 //restore the color of the previous selected object before highlighting the new one
                 if (selectedObj != null)
                 {
@@ -149,19 +128,18 @@ public class Player : MonoBehaviour {
                 selectedObj = hit.collider.gameObject;
 
 
-                //adjust examining text depending on type of object being highlighted
-                string examine = "";
-				if (selectedObj.GetComponent<Item> () != null) {
-					 examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item> ().itemName;
-				}
-				else if (selectedObj.GetComponent<Door> () != null) {
-					if (!selectedObj.GetComponent<Door> ().open) {
-						examine = "Left Click to Open Door";
-					} else {
-						examine = "Left Click to Close Door";
-					}
-				}
-                else if (selectedObj.GetComponent<Cabinet>()!= null)
+                //adjust examining text depending on state of game
+                if (selectedObj.GetComponent<Item>() != null) {
+                    examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
+                }
+                else if (selectedObj.GetComponent<Door>() != null) {
+                    if (!selectedObj.GetComponent<Door>().open) {
+                        examine = "Left Click to Open Door";
+                    } else {
+                        examine = "Left Click to Close Door";
+                    }
+                }
+                else if (selectedObj.GetComponent<Cabinet>() != null)
                 {
                     if (!selectedObj.GetComponent<Cabinet>().open)
                     {
@@ -172,25 +150,21 @@ public class Player : MonoBehaviour {
                         examine = "Left Click to Close Cabinet";
                     }
                 }
-
                 //if object is not something interactable, don't highlight
                 else
                 {
-                    examineText.GetComponent<Text>().text = examine;
                     selectedColor = selectedObj.GetComponent<MeshRenderer>().material.color;
                     return;
                 }
-
-
-                examineText.GetComponent<Text>().text = examine;
-
-
 
                 //set color and store a reference to the object               
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
+
+                onScreenText = examine;
             }
+
         }
         else
         {
@@ -199,90 +173,10 @@ public class Player : MonoBehaviour {
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 selectedObj = null;
-                examineText.GetComponent<Text>().text = " ";
+                onScreenText = " ";
             }
         }
     }
-
-
-    //gets us out of viewing an object
-    /*private void StopViewing()
-    {
-        viewingObject = false;
-        this.GetComponent<RigidbodyFirstPersonController>().ViewingObj = false;
-
-        //free to move again
-        selectedObj.GetComponent<Rigidbody>().isKinematic = false;
-
-        //put that thing back where it came from or so help me
-        //but only if it's not obtainable
-        if (!selectedObj.GetComponent<Item>().obtainable)
-        {
-            selectedObj.transform.position = selectedPos;
-            selectedObj.transform.eulerAngles = selectedRot;
-            selectedObj.transform.localScale = new Vector3(selectedScale.x, selectedScale.y, selectedScale.z);
-        }
-        //otherwise add to the inventory
-        else
-        {
-            //hide the object
-            selectedObj.GetComponent<Renderer>().enabled = false;
-
-            //add reference to it in inventory
-            //inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
-            inventory.AddItem(selectedObj.GetComponent<Item>());
-
-            //until the player moves again it still displays the text to view the object that's been picked up
-            //to get around this i'm just going to change it here to say "x added to inventory"
-            string added = selectedObj.GetComponent<Item>().itemName + "\nadded to inventory.";
-            examineText.GetComponent<Text>().text = added;
-        }
-        
-
-        //lock the cursor
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        crosshair.SetActive(true);
-
-        //enable collider
-        selectedObj.GetComponent<Collider>().enabled = true;
-
-        selectedObj.layer = 0;
-    }*/
-
-    //starts viewing the selected GameObject
-    /*private void StartViewing()
-    {
-        viewingObject = true;
-        this.GetComponent<RigidbodyFirstPersonController>().ViewingObj = true;
-
-
-        //store a copy of the transform before modifying it
-        selectedPos = selectedObj.transform.position;
-        selectedRot = selectedObj.transform.rotation.eulerAngles;
-        selectedScale = selectedObj.transform.localScale;
-
-        //disable rigidbody so object doesn't just fall out of view
-        selectedObj.GetComponent<Rigidbody>().isKinematic = true;
-
-        //move the viewed object to our viewport
-        //Posted by user "Julien-Lynge" on the Unity Forums
-        //http://answers.unity3d.com/questions/466665/placing-a-gameobject-in-the-exact-center-of-the-ca.html
-        selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, Camera.main.WorldToScreenPoint(selectedObj.transform.position).z));
-
-
-        //free the cursor
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        crosshair.SetActive(false);
-
-        //stop highlighting
-        selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
-
-        //turn off collider?
-        selectedObj.GetComponent<Collider>().enabled = false;
-        selectedObj.layer = 8;  //set to "always-on-top" layer
-    }*/
 
 	void ActivateDoor(){
 		//in retrospect this probably didn't need to be its own method
