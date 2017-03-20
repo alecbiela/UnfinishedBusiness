@@ -31,4 +31,10 @@ public class MainMenu : MonoBehaviour {
         //hide/show the main screen
         mainScreen.SetActive(!mainScreen.activeInHierarchy);
     }
+
+    //quits the game (doesn't work in editor, only in built version of game)
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

@@ -82,6 +82,12 @@ public class Player : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.P)) gm.ToggleGamePaused();
+
+        //opens pause menu
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gm.TogglePauseMenu();
+        }
     }
 
 
@@ -182,4 +188,9 @@ public class Player : MonoBehaviour {
 		//in retrospect this probably didn't need to be its own method
 		selectedObj.GetComponent<Door>().open = !selectedObj.GetComponent<Door>().open;
 	}
+
+    public void GoToMainMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single);
+    }
 }
