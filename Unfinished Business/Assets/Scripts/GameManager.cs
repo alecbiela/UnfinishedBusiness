@@ -34,6 +34,11 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            TextHandler.handler.DisplayText("Yo Everyone", 2000, 0, 0);
+            TextHandler.handler.DisplayText("It's Me", 1500, 0, 0);
+        }
         if (stateChanged) StateChange();
 	}
 
