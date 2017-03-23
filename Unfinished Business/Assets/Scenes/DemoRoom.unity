@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 420
-  itemName: Casette Tape
+  itemName: 436173657474652054617065
   obtainable: 1
   uiImage: {fileID: 0}
   reagentID: 0
@@ -345,7 +345,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4953754861765360, guid: 157a643b62b5f3a4caa73b5f40d128da, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.68
+      value: 1.81
       objectReference: {fileID: 0}
     - target: {fileID: 4953754861765360, guid: 157a643b62b5f3a4caa73b5f40d128da, type: 2}
       propertyPath: m_LocalPosition.z
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 76
-  itemName: Crowbar
+  itemName: 43726f77626172
   obtainable: 1
   uiImage: {fileID: 0}
   reagentID: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 3
-  itemName: Vase
+  itemName: 56617365
   obtainable: 0
   uiImage: {fileID: 0}
   reagentID: 0
@@ -1287,7 +1287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 77
-  itemName: Answering Machine
+  itemName: 416e73776572696e67204d616368696e65
   obtainable: 0
   uiImage: {fileID: 0}
   reagentID: 0
@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 222
-  itemName: Important Letter
+  itemName: 496d706f7274616e74204c6574746572
   obtainable: 1
   uiImage: {fileID: 0}
   reagentID: 0
@@ -1720,7 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 666
-  itemName: Junk Mail
+  itemName: 4a756e6b204d61696c
   obtainable: 0
   uiImage: {fileID: 0}
   reagentID: 0

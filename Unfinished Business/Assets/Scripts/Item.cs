@@ -12,8 +12,17 @@ public class Item : MonoBehaviour {
 
     //a method which returns true if the item being used on this one
     //is a match (e.x. key to a locked door) or false otherwise
-    public bool UseOnMe(int itemID)
+    public virtual bool UseOnMe(int itemID)
     {
-        return (itemID == reagentID);
+        if(itemID == reagentID)
+        {
+            PlaySubtitles();
+            return true;
+        }
+
+        return false;
     }
+
+    //plays the subtitles that are present in the child class (MUST BE OVERRIDDEN)
+    protected virtual void PlaySubtitles(){}
 }

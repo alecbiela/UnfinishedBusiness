@@ -145,7 +145,8 @@ Prefab:
       propertyPath: reagentID
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &300389718
@@ -327,7 +328,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 21.311
+      value: 21.29
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
       propertyPath: m_LocalRotation.x
@@ -448,8 +449,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 2
-  itemName: Input Jack
+  itemID: 0
+  itemName: 
   obtainable: 0
   uiImage: {fileID: 0}
   reagentID: 0
@@ -614,10 +615,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 5
-  itemName: Input Jack
+  itemID: 1
+  itemName: Jack Boii
   obtainable: 1
-  uiImage: {fileID: 21300000, guid: 5485e2f56028a3c4cb54f5caa167377e, type: 3}
+  uiImage: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
   reagentID: 0
 --- !u!54 &1337202574
 Rigidbody:
@@ -774,7 +775,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4953754861765360, guid: 157a643b62b5f3a4caa73b5f40d128da, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.16
+      value: 1.93
       objectReference: {fileID: 0}
     - target: {fileID: 4953754861765360, guid: 157a643b62b5f3a4caa73b5f40d128da, type: 2}
       propertyPath: m_LocalPosition.z
@@ -936,3 +937,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2089738213 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
+  m_PrefabInternal: {fileID: 178605018}
+--- !u!114 &2089738214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2089738213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e96e787ef4544f42aff24ea4d2dee5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 2
+  itemName: Use Me
+  obtainable: 0
+  uiImage: {fileID: 0}
+  reagentID: 1
