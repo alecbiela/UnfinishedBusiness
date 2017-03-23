@@ -25,12 +25,12 @@ public class Door : MonoBehaviour {
         //find initial position
         if (open)
         {
-            openAngle = 0;
+            openAngle = transform.rotation.y;
             closedAngle = openAngle + changeAngle;
         }
         else
         {
-            closedAngle = 0;
+            closedAngle = transform.rotation.y;
             openAngle = closedAngle + changeAngle;
         }
 	}

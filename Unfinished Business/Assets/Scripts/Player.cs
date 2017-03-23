@@ -72,6 +72,13 @@ public class Player : MonoBehaviour {
             selectedObj.GetComponent<Cabinet>().open = !selectedObj.GetComponent<Cabinet>().open;
         }
 
+        //toolboxes too!
+        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<ToolBoxDoor>() != null)
+        {
+            //switch its state
+            selectedObj.GetComponent<ToolBoxDoor>().open = !selectedObj.GetComponent<ToolBoxDoor>().open;
+        }
+
         //update on screen text
         UpdateOnScreenText();
 
@@ -154,6 +161,17 @@ public class Player : MonoBehaviour {
                     else
                     {
                         examine = "Left Click to Close Cabinet";
+                    }
+                }
+                else if (selectedObj.GetComponent<ToolBoxDoor>() != null)
+                {
+                    if (!selectedObj.GetComponent<ToolBoxDoor>().open)
+                    {
+                        examine = "Left Click to Open Tool Box";
+                    }
+                    else
+                    {
+                        examine = "Left Click to Close Tool Box";
                     }
                 }
                 //if object is not something interactable, don't highlight
