@@ -26,6 +26,7 @@ public class ObjectViewer : MonoBehaviour {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
         crosshair = GameObject.Find("Crosshair");
+        crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         defaultCrosshair = crosshair.GetComponent<Image>().sprite;
 	}
 	
@@ -58,7 +59,7 @@ public class ObjectViewer : MonoBehaviour {
     }
 
     //starts viewing an object
-    public void StartViewing(GameObject selectedObj, bool temporary)
+    public void StartViewing(GameObject selectedObj, bool temporary, float startingDistance)
     {
         viewingObject = true;
         isTemporary = temporary;
@@ -75,7 +76,7 @@ public class ObjectViewer : MonoBehaviour {
         //move the viewed object to our viewport
         //Posted by user "Julien-Lynge" on the Unity Forums
         //http://answers.unity3d.com/questions/466665/placing-a-gameobject-in-the-exact-center-of-the-ca.html
-        selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 2.1f));
+        selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, startingDistance));
 
 
         //free the cursor

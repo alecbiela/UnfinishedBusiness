@@ -1,13 +1,6 @@
-Base path: C:/Program Files/Unity 5.5.0/Editor/Data
+Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
-Cmd: preprocess
-  insize=4407 outsize=1085 ok=1
-Cmd: preprocess
-  insize=13384 outsize=2646 ok=1
-Cmd: preprocess
-  insize=12507 outsize=2525 ok=1
-Cmd: preprocess
-  error: 1 plat 19 at (70): Program uses geometry shaders, automatically setting target to 4.0.
-  insize=3055 outsize=543 ok=1
-Cmd: preprocess
-  insize=1968 outsize=588 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=70512 outsize=1482 kw=DIRECTIONAL DIRLIGHTMAP_COMBINED DYNAMICLIGHTMAP_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=70512 outsize=5742 kw=DIRECTIONAL DIRLIGHTMAP_COMBINED DYNAMICLIGHTMAP_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA ok=1

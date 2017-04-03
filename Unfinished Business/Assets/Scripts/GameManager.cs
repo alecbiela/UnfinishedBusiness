@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
 
         //change state
         SetState(GameStates.VIEWING_OBJECT);
-        objViewer.StartViewing(obj, isTemp);
+        objViewer.StartViewing(obj, isTemp, obj.GetComponent<Item>().viewDistance);
     }
 
     //brings an object "outside" the inventory for use in the world

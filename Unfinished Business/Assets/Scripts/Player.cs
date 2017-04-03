@@ -15,6 +15,7 @@ public class Player : MonoBehaviour {
     private GameObject examineText;
     private GameManager gm;
     private string onScreenText;
+    private Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
 
     //inventory
     private Inventory inventory;
@@ -114,10 +115,10 @@ public class Player : MonoBehaviour {
     private void CheckHighlight()
     {
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
         //if we are in range of interacting with something
-        if (Physics.Raycast(Camera.main.transform.position, ray.direction, out hit, ObjInteractDist))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ObjInteractDist))
         {
             //only select if we're hitting something NEW and visible
             //edited: only selecting if selectedObj == null created issues with objects that are very close together + updating text
