@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/doorScene.unity
   - enabled: 1
     path: Assets/Scenes/Scene01.unity
+  - enabled: 1
+    path: Assets/Scenes/DemoRoom.unity
