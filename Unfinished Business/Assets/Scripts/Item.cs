@@ -17,7 +17,8 @@ public class Item : MonoBehaviour {
     {
         if(itemID == reagentID)
         {
-            PlaySubtitles();
+            //PlaySubtitles();
+            TextHandler.handler.TriggerTextEvent(reagentID);
             return true;
         }
 

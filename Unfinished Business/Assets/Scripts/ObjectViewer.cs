@@ -48,7 +48,8 @@ public class ObjectViewer : MonoBehaviour {
 
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
-        if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
+        //Disabled scrolling, but the code is still there just in case we need it
+        //if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
     }
 
     //starts selecting an object

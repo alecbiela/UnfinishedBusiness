@@ -54,7 +54,7 @@ public class Player : MonoBehaviour {
                     onScreenText = "Nothing happens.";
                 }
             }
-            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT))
+            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText)
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 gm.StartViewingObject(selectedObj, false);
@@ -89,7 +89,8 @@ public class Player : MonoBehaviour {
             gm.SelectObject(null);
         }
 
-        if (Input.GetKeyDown(KeyCode.P)) gm.ToggleGamePaused();
+        //no longer able to pause while playing important text
+        if (Input.GetKeyDown(KeyCode.P) && !TextHandler.handler.PlayingImportantText) gm.ToggleGamePaused();
 
         //opens pause menu
         if (Input.GetKeyDown(KeyCode.Escape))

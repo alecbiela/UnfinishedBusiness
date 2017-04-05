@@ -108,7 +108,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 22.72
+      value: 22.67
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
       propertyPath: m_LocalRotation.x
@@ -134,21 +134,36 @@ Prefab:
       propertyPath: m_Name
       value: Ball (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
+    - target: {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992,
         type: 2}
-      propertyPath: uiImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3,
-        type: 3}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
-        type: 2}
-      propertyPath: reagentID
-      value: 5
+      propertyPath: itemID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
+    - {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &191399134 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
+  m_PrefabInternal: {fileID: 300389718}
+--- !u!114 &191399135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 191399134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: Thing 1
+  obtainable: 0
+  uiImage: {fileID: 0}
+  reagentID: 9999
+  viewDistance: 0
 --- !u!1001 &300389718
 Prefab:
   m_ObjectHideFlags: 0
@@ -192,18 +207,22 @@ Prefab:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: uiImage
       value: 
       objectReference: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3,
         type: 3}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: obtainable
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992,
+        type: 2}
+      propertyPath: reagentID
+      value: 9999
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &374542542
@@ -354,15 +373,36 @@ Prefab:
       propertyPath: m_Name
       value: Ball (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
+    - target: {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992,
         type: 2}
-      propertyPath: uiImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3,
-        type: 3}
-    m_RemovedComponents: []
+      propertyPath: reagentID
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &510947896 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
+  m_PrefabInternal: {fileID: 498286716}
+--- !u!114 &510947897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 510947896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 999
+  itemName: Ball
+  obtainable: 1
+  uiImage: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  reagentID: 0
+  viewDistance: 2
 --- !u!1001 &745325513
 Prefab:
   m_ObjectHideFlags: 0
@@ -454,6 +494,7 @@ MonoBehaviour:
   obtainable: 0
   uiImage: {fileID: 0}
   reagentID: 0
+  viewDistance: 0
 --- !u!23 &1192453245
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -615,11 +656,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
+  itemID: 9999
   itemName: Jack Boii
   obtainable: 1
   uiImage: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
   reagentID: 0
+  viewDistance: 0
 --- !u!54 &1337202574
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -853,14 +895,9 @@ Prefab:
       propertyPath: m_Name
       value: Ball (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 114118522434797286, guid: 753ea9ccf9eee6c42a0954ec8663b992,
+    - target: {fileID: 114548738058620948, guid: 753ea9ccf9eee6c42a0954ec8663b992,
         type: 2}
-      propertyPath: uiImage
-      value: 
-      objectReference: {fileID: 21300000, guid: 49b611e658efbf443b686a4036f74fe3,
-        type: 3}
-    - target: {fileID: 100000, guid: 753ea9ccf9eee6c42a0954ec8663b992, type: 2}
-      propertyPath: m_Layer
+      propertyPath: reagentID
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -949,11 +986,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2089738213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e96e787ef4544f42aff24ea4d2dee5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 2
-  itemName: Use Me
+  itemID: 0
+  itemName: Thing 2
   obtainable: 0
   uiImage: {fileID: 0}
-  reagentID: 1
+  reagentID: 999
+  viewDistance: 0
