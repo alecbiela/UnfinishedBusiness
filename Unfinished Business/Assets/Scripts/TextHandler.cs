@@ -49,7 +49,9 @@ public class TextHandler : MonoBehaviour {
     //private attributes
     private bool playingImportant;
     private float timer;
+    private float examineTimer;
     private Text textNode;
+    private Text examineTextNode;
     private Queue<TextElement> textQueue;
     private List<Dialogue> thisSceneDialogue;
     TextElement currentElement;
@@ -69,11 +71,13 @@ public class TextHandler : MonoBehaviour {
 
         //find text ui element
         textNode = GameObject.Find("Text Node").GetComponent<Text>();
+        examineTextNode = GameObject.Find("ExamineText").GetComponent<Text>();
 
         //initialize variables
         textQueue = new Queue<TextElement>();
         handler = this;
         timer = 0;
+        examineTimer = 0;
         playingImportant = false;
 	}
 
@@ -123,7 +127,32 @@ public class TextHandler : MonoBehaviour {
         timer = 0;
         textQueue.Clear();
     }
-	
+
+    //immediately changes the "Examine Text" to the string passed in
+    public void DisplayExamineText(string newText)
+    {
+        examineTextNode.text = newText;
+        examineTimer = 0;
+    }
+
+    //starts the examine text timer
+    public void StartExamineTimer(float duration)
+    {
+        examineTimer = duration;
+    }
+
+    //clears the examine text from the screen
+    public void ClearExamineText()
+    {
+        examineTextNode.text = "";
+        examineTimer = 0;
+    }
+
+    //clears the examine text ONLY if there is no timer
+    public void ClearExamineTextSafe()
+    {
+        if (examineTimer <= 0) examineTextNode.text = "";
+    }
 
 
     // Private (helper) methods
@@ -131,6 +160,9 @@ public class TextHandler : MonoBehaviour {
 	//update is called once per frame
 	private void Update ()
     {
+        if (examineTimer > 0) examineTimer -= 1000 * Time.deltaTime;
+        else if (examineTimer < 0) ClearExamineText();
+
         //if we're timing a message
 	    if(timer > 0)
         {

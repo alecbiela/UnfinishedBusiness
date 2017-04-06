@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
     private Color selectedColor;
     private GameObject examineText;
     private GameManager gm;
-    private string onScreenText;
+    //private string onScreenText;
     private Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
 
     //inventory
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour {
                 if(selectedObj.GetComponent<Item>().UseOnMe(gm.HeldItem.itemID))
                 {
                     Debug.Log("The item reacts!");
-                    onScreenText = gm.HeldItem.itemName + " used on " + selectedObj.GetComponent<Item>().itemName;
+                    //onScreenText = gm.HeldItem.itemName + " used on " + selectedObj.GetComponent<Item>().itemName;
 
                     //remove object from inventory and stop selecting it
                     inventory.RemoveItem(gm.HeldItem.itemName);
@@ -50,8 +50,9 @@ public class Player : MonoBehaviour {
                 }
                 else
                 {
+                    //debug log - remove once object use-on-item is nailed down
                     Debug.Log("Item doesn't work on that");
-                    onScreenText = "Nothing happens.";
+                    //onScreenText = "Nothing happens.";
                 }
             }
             else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText)
@@ -81,7 +82,7 @@ public class Player : MonoBehaviour {
         }
 
         //update on screen text
-        UpdateOnScreenText();
+        //UpdateOnScreenText();
 
         //stop selecting object if we right click (and don't click on anything else)
         if(Input.GetMouseButtonDown(1) && gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
@@ -107,10 +108,10 @@ public class Player : MonoBehaviour {
 	}
 
     //pushes whatever is in the onScreenText variable onto the screen
-    private void UpdateOnScreenText()
-    {
-        examineText.GetComponent<Text>().text = onScreenText;
-    }
+    //private void UpdateOnScreenText()
+    //{
+    //    examineText.GetComponent<Text>().text = onScreenText;
+    //}
 
     //raycasts forward and checks if we should highlight an object
     private void CheckHighlight()
@@ -144,51 +145,74 @@ public class Player : MonoBehaviour {
 
 
                 //adjust examining text depending on state of game
-                if (selectedObj.GetComponent<Item>() != null) {
-                    examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
-                }
-                else if (selectedObj.GetComponent<Door>() != null) {
-                    if (!selectedObj.GetComponent<Door>().open) {
-                        examine = "Left Click to Open Door";
-                    } else {
-                        examine = "Left Click to Close Door";
-                    }
-                }
-                else if (selectedObj.GetComponent<Cabinet>() != null)
+                switch (currentState)
                 {
-                    if (!selectedObj.GetComponent<Cabinet>().open)
-                    {
-                        examine = "Left Click to Open Cabinet";
-                    }
-                    else
-                    {
-                        examine = "Left Click to Close Cabinet";
-                    }
+                    case GameManager.GameStates.PLACING_OBJECT: //using item on item
+
+                        if (selectedObj.GetComponent<Item>() != null)
+                        {
+                            examine = "Left click to use item on \n" + selectedObj.GetComponent<Item>().itemName;
+                        }
+                        break;
+
+                    case GameManager.GameStates.RUNNING:    //normal object examination
+
+                        if (selectedObj.GetComponent<Item>() != null)
+                        {
+                            examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
+                        }
+                        else if (selectedObj.GetComponent<Door>() != null)
+                        {
+                            if (!selectedObj.GetComponent<Door>().open)
+                            {
+                                examine = "Left Click to Open Door";
+                            }
+                            else {
+                                examine = "Left Click to Close Door";
+                            }
+                        }
+                        else if (selectedObj.GetComponent<Cabinet>() != null)
+                        {
+                            if (!selectedObj.GetComponent<Cabinet>().open)
+                            {
+                                examine = "Left Click to Open Cabinet";
+                            }
+                            else
+                            {
+                                examine = "Left Click to Close Cabinet";
+                            }
+                        }
+                        else if (selectedObj.GetComponent<ToolBoxDoor>() != null)
+                        {
+                            if (!selectedObj.GetComponent<ToolBoxDoor>().open)
+                            {
+                                examine = "Left Click to Open Tool Box";
+                            }
+                            else
+                            {
+                                examine = "Left Click to Close Tool Box";
+                            }
+                        }
+                        break;
+                    default:
+                        break;
                 }
-                else if (selectedObj.GetComponent<ToolBoxDoor>() != null)
-                {
-                    if (!selectedObj.GetComponent<ToolBoxDoor>().open)
-                    {
-                        examine = "Left Click to Open Tool Box";
-                    }
-                    else
-                    {
-                        examine = "Left Click to Close Tool Box";
-                    }
-                }
-                //if object is not something interactable, don't highlight
-                else
-                {
-                    selectedColor = selectedObj.GetComponent<MeshRenderer>().material.color;
-                    return;
-                }
+
+
+            //if object is not something interactable, don't highlight
+            //else
+            //{
+            //    selectedColor = selectedObj.GetComponent<MeshRenderer>().material.color;
+            //    return;
+            //}
 
                 //set color and store a reference to the object               
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
                 selectedColor = mr.material.color;
                 mr.material.color = Color.yellow;
 
-                onScreenText = examine;
+                //display the text on screen
+                TextHandler.handler.DisplayExamineText(examine);
             }
 
         }
@@ -199,7 +223,10 @@ public class Player : MonoBehaviour {
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 selectedObj = null;
-                onScreenText = " ";
+                //onScreenText = " ";
+
+                //clear text if there's no timer
+                TextHandler.handler.ClearExamineTextSafe();
             }
         }
     }

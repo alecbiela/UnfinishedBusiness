@@ -9,7 +9,7 @@ public class ObjectViewer : MonoBehaviour {
     private GameManager gm;
     private GameObject viewedObj;
     private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
-    private GameObject examineText;
+    //private GameObject examineText;
     private GameObject crosshair;
     private Sprite defaultCrosshair;
     private bool viewingObject = false;
@@ -24,7 +24,7 @@ public class ObjectViewer : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        examineText = GameObject.Find("ExamineText");
+        //examineText = GameObject.Find("ExamineText");
         crosshair = GameObject.Find("Crosshair");
         crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         defaultCrosshair = crosshair.GetComponent<Image>().sprite;
@@ -79,12 +79,6 @@ public class ObjectViewer : MonoBehaviour {
         //http://answers.unity3d.com/questions/466665/placing-a-gameobject-in-the-exact-center-of-the-ca.html
         selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, startingDistance));
 
-
-        //free the cursor
-        //Cursor.lockState = CursorLockMode.None;
-        //Cursor.visible = true;
-        //crosshair.SetActive(false);
-
         //stop highlighting
         //selectedObj.GetComponent<MeshRenderer>().material.color = new Color(255,255,255,255);
 
@@ -100,8 +94,7 @@ public class ObjectViewer : MonoBehaviour {
     {
         viewingObject = false;
 
-        //free to move again
-        viewedObj.GetComponent<Rigidbody>().isKinematic = false;
+
 
         //put that thing back where it came from or so help me
         //but only if it's not obtainable
@@ -110,23 +103,37 @@ public class ObjectViewer : MonoBehaviour {
             viewedObj.transform.position = selectedPos;
             viewedObj.transform.eulerAngles = selectedRot;
             viewedObj.transform.localScale = new Vector3(selectedScale.x, selectedScale.y, selectedScale.z);
+            
+            //enable collider
+            viewedObj.GetComponent<Collider>().enabled = true;
+            viewedObj.layer = 0;
+
+            //free to move again
+            viewedObj.GetComponent<Rigidbody>().isKinematic = false;
         }
         //otherwise add to the inventory
         else
         {
+            //move to ignore raycast layer
+            viewedObj.layer = 2;
+
             //add reference to it in inventory
             //inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
             if (!isTemporary)
             {
                 GameObject.Find("Player").GetComponent<Inventory>().AddItem(viewedObj);
+
+                //now tells the texthandler to do it up
+                TextHandler.handler.DisplayExamineText(viewedObj.GetComponent<Item>().itemName + "\nadded to inventory.");
+                TextHandler.handler.StartExamineTimer(2500);
                 //until the player moves again it still displays the text to view the object that's been picked up
                 //to get around this i'm just going to change it here to say "x added to inventory"
-                string added = viewedObj.GetComponent<Item>().itemName + "\nadded to inventory.";
-                examineText.GetComponent<Text>().text = added;
+                //string added = viewedObj.GetComponent<Item>().itemName + "\nadded to inventory.";
+                //examineText.GetComponent<Text>().text = added;
             }
             else
             {
-                examineText.GetComponent<Text>().text = "";
+                TextHandler.handler.ClearExamineText();
             }
 
 
@@ -134,16 +141,7 @@ public class ObjectViewer : MonoBehaviour {
             viewedObj.GetComponent<Renderer>().enabled = false;
         }
 
-
-        //lock the cursor
-        //Cursor.lockState = CursorLockMode.Locked;
-        //Cursor.visible = false;
-        //crosshair.SetActive(true);
-
-        //enable collider
-        viewedObj.GetComponent<Collider>().enabled = true;
-        viewedObj.layer = 0;
-
+        //Lastly, set state to running before we resume
         gm.SetState(GameManager.GameStates.RUNNING);
     }
 
