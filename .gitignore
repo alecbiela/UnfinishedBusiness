@@ -1,9 +1,9 @@
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
-/[Bb]uilds/
-/Assets/AssetStoreTools*
+Unfinished Business/Library/
+Unfinished Business/Temp/
+Unfinished Business/Obj/
+Unfinished Business/Build/
+Unfinished Business/Builds/
+Unfinished Business/Assets/AssetStoreTools*
 
 # Visual Studio 2015 cache directory
 /.vs/
@@ -33,3 +33,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Unfinished Business/Library/assetDatabase3
