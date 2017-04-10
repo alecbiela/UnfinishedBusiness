@@ -36,13 +36,15 @@ public class TextHandler : MonoBehaviour {
         public string mp3Path;
         public List<TextElement> dialogue;
         public bool important;
+        public string animatic;
 
-        public Dialogue(int id, string mp3, List<TextElement> dia, bool i)
+        public Dialogue(int id, string mp3, List<TextElement> dia, bool i, string anim)
         {
             eventID = id;
             mp3Path = mp3;
             dialogue = dia;
             important = i;
+            animatic = anim;
         }
     };
 
@@ -116,6 +118,9 @@ public class TextHandler : MonoBehaviour {
                     GameObject.Find("PlayerAudioNode").GetComponent<AudioSource>(),
                     AudioHandler.SoundType.Dialogue
                     );
+
+                //play animatic, if there is one
+                PlayAnimatic(d.animatic);
 
                 //return early to prevent unneccessary loop iterations
                 return;
@@ -242,6 +247,7 @@ public class TextHandler : MonoBehaviour {
                 //get ready to push
                 int _id = int.Parse(line.Split(' ')[1]);
                 string _mp3path = "";
+                string _anim = "";
                 List<TextElement> _lines = new List<TextElement>();
                 bool _important = false;
 
@@ -255,6 +261,12 @@ public class TextHandler : MonoBehaviour {
                     string[] lineData = line.Split(new char [] { ' ' }, 2);
                     switch (line[0])
                     {
+                        //animatic
+                        case 'a':
+                        case 'A':
+                            _anim = lineData[1];
+                            break;
+
                         //mp3 path
                         case 'm':
                         case 'M':
@@ -282,12 +294,32 @@ public class TextHandler : MonoBehaviour {
                 }
 
                 //make a new dialogue element with the data
-                inputData.Add(new Dialogue(_id, _mp3path, _lines, _important));
+                inputData.Add(new Dialogue(_id, _mp3path, _lines, _important, _anim));
             }
         }
 
         //close stream and return the data we collected
         reader.Close();
         return inputData;
+    }
+
+
+
+
+
+
+    //Plays the animatic passed in (FOR NOW)
+    //This is not the final resting place of the Animatic handling,
+    //will be changed when we update how events in general are handled
+    private void PlayAnimatic(string type)
+    {
+        if (type == "null") return;
+
+        GameObject currentAnimCamera = GameObject.Find(type + "Camera");
+        if (currentAnimCamera == null) { Debug.LogError("Couldn't find the camera for " + type); return; }
+
+
+        //we can play this animatic
+        currentAnimCamera.GetComponent<Camera>().enabled = true;
     }
 }

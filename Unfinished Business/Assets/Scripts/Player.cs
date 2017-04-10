@@ -116,6 +116,9 @@ public class Player : MonoBehaviour {
     //raycasts forward and checks if we should highlight an object
     private void CheckHighlight()
     {
+        //return if this camera is not available
+        if (Camera.main == null) return;
+
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 

@@ -30,6 +30,7 @@ public class MemoryAnimatic : MonoBehaviour {
         if (memoryCam.enabled)
         {
             canvas.GetComponent<Canvas>().enabled = false;
+            gameCam.enabled = false;
             Play();
         }
 	}
