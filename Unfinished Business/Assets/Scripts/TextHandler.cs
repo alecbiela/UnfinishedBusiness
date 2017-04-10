@@ -110,8 +110,14 @@ public class TextHandler : MonoBehaviour {
                     textQueue.Enqueue(t);
                 }
 
-                //code to play mp3 begins
+                //play sound (path, audio node to use, type of sound)
+                AudioHandler.handler.PlaySound(
+                    d.mp3Path, 
+                    GameObject.Find("PlayerAudioNode").GetComponent<AudioSource>(),
+                    AudioHandler.SoundType.Dialogue
+                    );
 
+                //return early to prevent unneccessary loop iterations
                 return;
             }
         }

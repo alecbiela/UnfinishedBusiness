@@ -1,5 +1,5 @@
 e 999
-m null
+m debugsnd1
 d Hello everyone, it's me.,,3000,,0,,0
 d I'm just testing to see if this works.,,2500,,0,,0
 d I really hope it does!,,2000,,0,,0
@@ -7,7 +7,7 @@ i false
 
 
 e 9999
-m null
+m debugsnd2
 d Hello everyone, it's me, again.,,4000,,0,,0
 d Still testing things out here.,,2500,,0,,0
 d This would be cool to write haikus.,,2000,,0,,0

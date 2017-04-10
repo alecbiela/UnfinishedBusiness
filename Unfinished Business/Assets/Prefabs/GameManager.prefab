@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 114612661928016496}
   - component: {fileID: 114137780131139450}
   - component: {fileID: 114902742754932868}
+  - component: {fileID: 114481729546305152}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -36,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1232916047514402}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.17815, y: 155.27803, z: -1137.1975}
+  m_LocalPosition: {x: 24.95, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,6 +55,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MOUSE_SENSITIVITY: 170
+--- !u!114 &114481729546305152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1232916047514402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91cbeff69796294ba75d75a1c7e7f91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DialogueInteractions:
+  - {fileID: 8300000, guid: a0e57d11a229d614e8b1360f61ebaea1, type: 3}
+  - {fileID: 8300000, guid: d43462ed497ac354187b174316a266c5, type: 3}
 --- !u!114 &114612661928016496
 MonoBehaviour:
   m_ObjectHideFlags: 1
