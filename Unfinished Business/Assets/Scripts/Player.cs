@@ -62,6 +62,11 @@ public class Player : MonoBehaviour {
             }
         }
 
+        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<AnimatedObject>() != null)
+        {
+            selectedObj.GetComponent<AnimatedObject>().Animate();
+        }
+
 		//if we click on a door, open it
 		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
 			ActivateDoor ();

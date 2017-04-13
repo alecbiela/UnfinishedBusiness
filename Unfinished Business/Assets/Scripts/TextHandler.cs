@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.IO;
 
+//A class that controls the text displayed to the UI canvas
 public class TextHandler : MonoBehaviour {
 
     //static instance for easy reference
     public static TextHandler handler;
 
     //holds all of the "message" arguments
-    private class TextElement
+    public class TextElement
     {
         public float duration;
         public string message;
@@ -29,25 +28,6 @@ public class TextHandler : MonoBehaviour {
         }
     };
 
-    //holds a piece of dialogue (dialogue event)
-    private class Dialogue
-    {
-        public int eventID;
-        public string mp3Path;
-        public List<TextElement> dialogue;
-        public bool important;
-        public string animatic;
-
-        public Dialogue(int id, string mp3, List<TextElement> dia, bool i, string anim)
-        {
-            eventID = id;
-            mp3Path = mp3;
-            dialogue = dia;
-            important = i;
-            animatic = anim;
-        }
-    };
-
     //private attributes
     private bool playingImportant;
     private float timer;
@@ -55,8 +35,7 @@ public class TextHandler : MonoBehaviour {
     private Text textNode;
     private Text examineTextNode;
     private Queue<TextElement> textQueue;
-    private List<Dialogue> thisSceneDialogue;
-    TextElement currentElement;
+    private TextElement currentElement;
 
     //getter for important playing flag
     public bool PlayingImportantText
@@ -68,9 +47,6 @@ public class TextHandler : MonoBehaviour {
 	// Use this for initialization
 	private void Start ()
     {
-        //populate the initial dialogue
-        this.LoadDialogue(Application.dataPath + "/Dialogue/foyer.txt");
-
         //find text ui element
         textNode = GameObject.Find("Text Node").GetComponent<Text>();
         examineTextNode = GameObject.Find("ExamineText").GetComponent<Text>();
@@ -95,40 +71,18 @@ public class TextHandler : MonoBehaviour {
 
     //initializes text element from file
     //takes an int for event ID (we'll have to keep track of these)
-    public void TriggerTextEvent(int eventID)
+    public void TextEvent(List<TextElement> eventText, bool isImportant)
     {
-        foreach(Dialogue d in thisSceneDialogue)
+        ClearAllText();
+
+        //set Texthandler important playing flag, if necessary
+        this.playingImportant = isImportant;
+
+        //display the stuff
+        foreach (TextElement t in eventText)
         {
-            if(d.eventID == eventID)
-            {
-                ClearAllText();
-
-                //set Texthandler important playing flag, if necessary
-                this.playingImportant = d.important;
-
-                //display the stuff
-                foreach(TextElement t in d.dialogue)
-                {
-                    textQueue.Enqueue(t);
-                }
-
-                //play sound (path, audio node to use, type of sound)
-                AudioHandler.handler.PlaySound(
-                    d.mp3Path, 
-                    GameObject.Find("PlayerAudioNode").GetComponent<AudioSource>(),
-                    AudioHandler.SoundType.Dialogue
-                    );
-
-                //play animatic, if there is one
-                PlayAnimatic(d.animatic);
-
-                //return early to prevent unneccessary loop iterations
-                return;
-            }
+            textQueue.Enqueue(t);
         }
-
-        //if we get here, that means there isn't an event id that matches in this scene
-        Debug.LogError("ERROR: No suitable event id found in this scene!");
     }
 
     //immediately removes text from the screen and cancels all waiting text
@@ -218,108 +172,4 @@ public class TextHandler : MonoBehaviour {
         timer = currentElement.duration;
     }
 
-    // Loads dialogue from a file and makes it accessable by the handler
-    public void LoadDialogue(string path)
-    {
-        thisSceneDialogue = LoadFromFile(path);
-    }
-
-
-
-    //note to self, add enum for what scene we're in,
-    //then add switch statement to load all of the dialogue for that scene
-    //and pass as arg to LoadFromFile, so that texthandler only gets what it needs for this scene
-    private List<Dialogue> LoadFromFile(string path)
-    {
-        //open the dialogue file
-        StreamReader reader = new StreamReader(path, System.Text.Encoding.ASCII);
-
-        List<Dialogue> inputData = new List<Dialogue>();
-
-        using (reader)
-        {
-            //start with first line of file
-            string line = reader.ReadLine();
-
-            //collect data
-            while (!reader.EndOfStream)
-            {
-                //get ready to push
-                int _id = int.Parse(line.Split(' ')[1]);
-                string _mp3path = "";
-                string _anim = "";
-                List<TextElement> _lines = new List<TextElement>();
-                bool _important = false;
-
-                //get the rest of the data
-                while (!reader.EndOfStream)
-                {
-                    line = reader.ReadLine();
-                    if (string.IsNullOrEmpty(line)) continue;
-                    else if (line[0] == 'e') break;
-
-                    string[] lineData = line.Split(new char [] { ' ' }, 2);
-                    switch (line[0])
-                    {
-                        //animatic
-                        case 'a':
-                        case 'A':
-                            _anim = lineData[1];
-                            break;
-
-                        //mp3 path
-                        case 'm':
-                        case 'M':
-                            _mp3path = lineData[1];
-                            break;
-
-                        //the "important" flag
-                        case 'i':
-                        case 'I':
-                            _important = (lineData[1] == "true");
-                            break;
-
-                        //parsing dialogue
-                        case 'd':
-                        case 'D':
-                            string[] messageData = lineData[1].Split(new string[] { ",," }, 4 , System.StringSplitOptions.None);
-                            _lines.Add(new TextElement(messageData[0], float.Parse(messageData[1]), float.Parse(messageData[2]), float.Parse(messageData[3])));
-                            break;
-
-                        //if the identifier doesn't match anything, print an error
-                        default:
-                            if(line != "") Debug.LogError("Error in File Loading: Line Identifier not Recognized.");
-                            break;
-                    }
-                }
-
-                //make a new dialogue element with the data
-                inputData.Add(new Dialogue(_id, _mp3path, _lines, _important, _anim));
-            }
-        }
-
-        //close stream and return the data we collected
-        reader.Close();
-        return inputData;
-    }
-
-
-
-
-
-
-    //Plays the animatic passed in (FOR NOW)
-    //This is not the final resting place of the Animatic handling,
-    //will be changed when we update how events in general are handled
-    private void PlayAnimatic(string type)
-    {
-        if (type == "null") return;
-
-        GameObject currentAnimCamera = GameObject.Find(type + "Camera");
-        if (currentAnimCamera == null) { Debug.LogError("Couldn't find the camera for " + type); return; }
-
-
-        //we can play this animatic
-        currentAnimCamera.GetComponent<Camera>().enabled = true;
-    }
-}
+}   //end TextHandler.cs
