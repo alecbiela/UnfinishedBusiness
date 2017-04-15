@@ -68,7 +68,7 @@ public class Player : MonoBehaviour {
         }
 
 		//if we click on a door, open it
-		if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
+		/*if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
 			ActivateDoor ();
 		}
 
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour {
         {
             //switch its state
             selectedObj.GetComponent<ToolBoxDoor>().open = !selectedObj.GetComponent<ToolBoxDoor>().open;
-        }
+        }*/
 
         //update on screen text
         //UpdateOnScreenText();
@@ -169,7 +169,11 @@ public class Player : MonoBehaviour {
                         {
                             examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
                         }
-                        else if (selectedObj.GetComponent<Door>() != null)
+                        else
+                        {
+                            examine = "Left Click to Activate \n" + selectedObj.name;
+                        }
+                        /*else if (selectedObj.GetComponent<Door>() != null)
                         {
                             if (!selectedObj.GetComponent<Door>().open)
                             {
@@ -200,7 +204,7 @@ public class Player : MonoBehaviour {
                             {
                                 examine = "Left Click to Close Tool Box";
                             }
-                        }
+                        }*/
                         break;
                     default:
                         break;
@@ -239,10 +243,10 @@ public class Player : MonoBehaviour {
         }
     }
 
-	void ActivateDoor(){
+	//void ActivateDoor(){
 		//in retrospect this probably didn't need to be its own method
-		selectedObj.GetComponent<Door>().open = !selectedObj.GetComponent<Door>().open;
-	}
+		//selectedObj.GetComponent<Door>().open = !selectedObj.GetComponent<Door>().open;
+	//}
 
     public void GoToMainMenu()
     {
