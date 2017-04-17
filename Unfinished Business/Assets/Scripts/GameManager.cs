@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour {
     private RigidbodyFirstPersonController player;
     private GameObject heldObject;
     private bool stateChanged;
-    
+
+    public Ghost ghost;
 
     public Item HeldItem { get { return heldObject.GetComponent<Item>(); } }
 
@@ -40,7 +41,10 @@ public class GameManager : MonoBehaviour {
             TextHandler.handler.DisplayText("Yo Everyone", 2000, 0, 0);
             TextHandler.handler.DisplayText("It's Me", 1500, 0, 0);
         }
-        
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ghost.MoveToPosition(new Vector3(24.22f, 0.4f, 33.78f));
+        }
         if (stateChanged) StateChange();
 	}
 
