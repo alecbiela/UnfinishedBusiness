@@ -43,6 +43,14 @@ public class Inventory : MonoBehaviour {
         gm.SelectObject(items[slotNum - 1]);
     }
 
+    //returns an item (used by UI to get item information
+    public GameObject GetItem(int slot)
+    {
+        if (slot > items.Count) return null;
+
+        return items[slot-1];
+    }
+
 
     //adds an item to the inventory
     //takes an arg for the item script

@@ -99,6 +99,9 @@ public class AnimatedObject : MonoBehaviour {
     //submethod for translation
     private void TranslateObject()
     {
+        //probably should move the rigidbody, but just moving the object for now
+        //this.gameObject.GetComponent<Rigidbody>().position += (_atRest ? _translationStep : _translationStep * -1) * Time.fixedDeltaTime * 1000;
+        
         this.transform.position += (_atRest ? _translationStep : _translationStep * -1) * Time.fixedDeltaTime * 1000;
     }
 
