@@ -3,17 +3,19 @@
  * execute code based on the pointer clicks (left, right, and middle)
  * This will replace the UI click handlers so that we can do right clicks
  */
-
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
+
+[RequireComponent(typeof(RectTransform))]
 
 public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Inventory inventory;
     private GameObject textBox;
     public int slot;
+    private RectTransform rt;   //the rect transform of this object
 
     //make sure all of the slots can find the textbox before it's turned off
     void Awake()
@@ -26,6 +28,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnte
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         if (textBox.activeSelf) textBox.SetActive(false);
+        rt = this.gameObject.GetComponent<RectTransform>();
     }
 
     //handles pointer click on this slot
@@ -50,10 +53,10 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
         Item hoverItemScript = hoverItem.GetComponent<Item>();
 
+        //activate textbox, move next to this slot, and update info
         textBox.SetActive(true);
+        textBox.GetComponent<RectTransform>().position = new Vector3(rt.position.x + (rt.rect.width/2) + 15 , rt.position.y, 0);
         textBox.GetComponentInChildren<Text>().text = hoverItemScript.itemName + "\n" + hoverItemScript.description;  //add description when we have it in item script
-
-        Debug.Log("Entered!" + slot);
     }
 
     //when we leave this selection, hide the examine box
