@@ -33,6 +33,7 @@ public class TextHandler : MonoBehaviour {
     private float timer;
     private float examineTimer;
     private Text textNode;
+    private GameObject bgPane;
     private Text examineTextNode;
     private Queue<TextElement> textQueue;
     private TextElement currentElement;
@@ -50,6 +51,7 @@ public class TextHandler : MonoBehaviour {
         //find text ui element
         textNode = GameObject.Find("Text Node").GetComponent<Text>();
         examineTextNode = GameObject.Find("ExamineText").GetComponent<Text>();
+        bgPane = GameObject.Find("TextBG");
 
         //initialize variables
         textQueue = new Queue<TextElement>();
@@ -67,6 +69,9 @@ public class TextHandler : MonoBehaviour {
     {
         //add a new element to the queue to be displayed
         textQueue.Enqueue(new TextElement(text, duration, fadeInTime, fadeOutTime));
+
+        //activate the backdrop
+        bgPane.SetActive(true);
     }
 
     //initializes text element from file
@@ -83,6 +88,9 @@ public class TextHandler : MonoBehaviour {
         {
             textQueue.Enqueue(t);
         }
+
+        //activate the backdrop
+        bgPane.SetActive(true);
     }
 
     //immediately removes text from the screen and cancels all waiting text
@@ -125,6 +133,7 @@ public class TextHandler : MonoBehaviour {
 	//update is called once per frame
 	private void Update ()
     {
+
         if (examineTimer > 0) examineTimer -= 1000 * Time.deltaTime;
         else if (examineTimer < 0) ClearExamineText();
 
@@ -155,6 +164,7 @@ public class TextHandler : MonoBehaviour {
                 playingImportant = false;
                 timer = 0;
                 textNode.text = "";
+                bgPane.SetActive(false);
             }
         }
 	}
