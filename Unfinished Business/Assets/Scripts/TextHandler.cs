@@ -37,6 +37,7 @@ public class TextHandler : MonoBehaviour {
     private Text examineTextNode;
     private Queue<TextElement> textQueue;
     private TextElement currentElement;
+    private bool displaySubtitles;
 
     //getter for important playing flag
     public bool PlayingImportantText
@@ -44,6 +45,11 @@ public class TextHandler : MonoBehaviour {
         get { return playingImportant; }
     }
 
+    public bool DisplaySubtitles
+    {
+        get { return displaySubtitles; }
+        set { displaySubtitles = value; }
+    }
 
 	// Use this for initialization
 	private void Start ()
@@ -59,6 +65,7 @@ public class TextHandler : MonoBehaviour {
         timer = 0;
         examineTimer = 0;
         playingImportant = false;
+        displaySubtitles = true;
 	}
 
 
@@ -86,7 +93,7 @@ public class TextHandler : MonoBehaviour {
         //display the stuff
         foreach (TextElement t in eventText)
         {
-            textQueue.Enqueue(t);
+            if(displaySubtitles) textQueue.Enqueue(t);
         }
 
         //activate the backdrop

@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour {
 
         //call statechange once to initialize state
         stateChanged = true;
+
 	}
 	
 	// Update is called once per frame
@@ -46,6 +47,13 @@ public class GameManager : MonoBehaviour {
             ghost.MoveToPosition(new Vector3(24.22f, 0.4f, 33.78f));
         }
         if (stateChanged) StateChange();
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (TextHandler.handler.DisplaySubtitles) TextHandler.handler.DisplaySubtitles = false;
+            else TextHandler.handler.DisplaySubtitles = true;
+            Debug.Log(TextHandler.handler.DisplaySubtitles);
+        }
 	}
 
     //sets the current game state
