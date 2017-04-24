@@ -93,7 +93,7 @@ public class TextHandler : MonoBehaviour {
         //display the stuff
         foreach (TextElement t in eventText)
         {
-            if(displaySubtitles) textQueue.Enqueue(t);
+            textQueue.Enqueue(t);
         }
 
         //activate the backdrop
@@ -184,8 +184,9 @@ public class TextHandler : MonoBehaviour {
 
         //change the text element on screen and reset the timer (and alpha, if needed)
         textNode.text = currentElement.message;
-        textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
-            : new Color(textNode.color.r, textNode.color.g, textNode.color.b, 255);
+        if (displaySubtitles) textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
+             : new Color(textNode.color.r, textNode.color.g, textNode.color.b, 255);
+        else textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0);
         timer = currentElement.duration;
     }
 

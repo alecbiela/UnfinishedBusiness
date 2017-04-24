@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU};
     private GameStates currentState, previousState;
 
-    private GameObject runningUI, pausedUI, pauseMenuUI;
+    private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI;
     private GameObject[] invSlots;
     private ObjectViewer objViewer;
     private RigidbodyFirstPersonController player;
@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour {
         runningUI = GameObject.Find("RunningUI");
         pausedUI = GameObject.Find("PausedUI");
         pauseMenuUI = GameObject.Find("PauseMenuUI");
+        //settingsMenuUI = GameObject.Find("Settings Canvas");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
         invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
@@ -48,12 +49,12 @@ public class GameManager : MonoBehaviour {
         }
         if (stateChanged) StateChange();
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            if (TextHandler.handler.DisplaySubtitles) TextHandler.handler.DisplaySubtitles = false;
-            else TextHandler.handler.DisplaySubtitles = true;
-            Debug.Log(TextHandler.handler.DisplaySubtitles);
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    if (TextHandler.handler.DisplaySubtitles) TextHandler.handler.DisplaySubtitles = false;
+        //    else TextHandler.handler.DisplaySubtitles = true;
+        //    Debug.Log(TextHandler.handler.DisplaySubtitles);
+        //}
 	}
 
     //sets the current game state
@@ -96,6 +97,11 @@ public class GameManager : MonoBehaviour {
         }
         
     }
+
+    //public void ToggleSettingsMenu()
+    //{
+    //    settingsMenuUI.SetActive(true);
+    //}
 
     //start viewing an object
     //takes: the object to view
