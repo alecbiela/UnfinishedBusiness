@@ -230,6 +230,10 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3300000, guid: dcbc9e297870727419c84155739883c3, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: dcbc9e297870727419c84155739883c3, type: 3}
     m_RemovedComponents:
     - {fileID: 9500000, guid: dcbc9e297870727419c84155739883c3, type: 3}
   m_ParentPrefab: {fileID: 100100000, guid: dcbc9e297870727419c84155739883c3, type: 3}
