@@ -140,7 +140,7 @@ MonoBehaviour:
   itemID: 2
   itemName: Cassette Tape
   obtainable: 1
-  uiImage: {fileID: 21300000, guid: 827c9cd4a3943534f909ac6473e17288, type: 3}
+  uiImage: {fileID: 21300000, guid: 52f3560496533a24da1ce50fc282f25a, type: 3}
   reagentID: 0
   viewDistance: 0.5
   description: 
@@ -436,7 +436,7 @@ MonoBehaviour:
   itemID: 3
   itemName: Crowbar
   obtainable: 1
-  uiImage: {fileID: 21300000, guid: 5b1a64ea234fb2343b8d0686c51280de, type: 3}
+  uiImage: {fileID: 21300000, guid: f29ae0a2b2557914c8c66e2dfbe0dc69, type: 3}
   reagentID: 0
   viewDistance: 0.75
   description: 
@@ -485,7 +485,7 @@ MonoBehaviour:
   itemID: 4
   itemName: Important Mail
   obtainable: 1
-  uiImage: {fileID: 21300000, guid: 4db017495c69e8140a56a0e2b669e3f8, type: 3}
+  uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
   reagentID: 0
   viewDistance: 0.5
   description: A piece of important mail
@@ -1060,6 +1060,10 @@ Prefab:
       propertyPath: m_Name
       value: upstairs_floor
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: ffdfd01f29c91fa4ea6ba1fb5fef8718, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 70cee4f3a65dda14a8925d2ce5a81237, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ffdfd01f29c91fa4ea6ba1fb5fef8718, type: 3}
   m_IsPrefabParent: 0
@@ -1207,7 +1211,7 @@ MonoBehaviour:
   itemID: 5
   itemName: Junk Mail
   obtainable: 0
-  uiImage: {fileID: 21300000, guid: 4db017495c69e8140a56a0e2b669e3f8, type: 3}
+  uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
   reagentID: 0
   viewDistance: 0.5
   description: 
@@ -1782,6 +1786,18 @@ Prefab:
     - target: {fileID: 4727249685394212, guid: 76c9f89449599e1498bebec3b61501aa, type: 2}
       propertyPath: m_RootOrder
       value: 28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723811430471858, guid: 76c9f89449599e1498bebec3b61501aa, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723811430471858, guid: 76c9f89449599e1498bebec3b61501aa, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.474
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723811430471858, guid: 76c9f89449599e1498bebec3b61501aa, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.117
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 76c9f89449599e1498bebec3b61501aa, type: 2}
