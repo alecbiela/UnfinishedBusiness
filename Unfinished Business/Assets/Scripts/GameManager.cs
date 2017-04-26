@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour {
     public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU, SETTINGSMENU};
     private GameStates currentState, previousState;
 
-    private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI;
+    private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI, subtitlesButton;
     private GameObject[] invSlots;
     private ObjectViewer objViewer;
     private RigidbodyFirstPersonController player;
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
         pausedUI = GameObject.Find("PausedUI");
         pauseMenuUI = GameObject.Find("PauseMenuUI");
         settingsMenuUI = GameObject.Find("SettingsUI");
+        subtitlesButton = GameObject.Find("Subtitles");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
         invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
@@ -101,6 +102,11 @@ public class GameManager : MonoBehaviour {
     public void ToggleSettingsMenu()
     {
         SetState((currentState == GameStates.SETTINGSMENU) ? GameStates.PAUSEMENU : GameStates.SETTINGSMENU);
+    }
+
+    public void ToggleXhair(bool value)
+    {
+        
     }
 
     //start viewing an object

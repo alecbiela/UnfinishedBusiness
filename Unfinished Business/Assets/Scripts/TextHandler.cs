@@ -184,10 +184,16 @@ public class TextHandler : MonoBehaviour {
 
         //change the text element on screen and reset the timer (and alpha, if needed)
         textNode.text = currentElement.message;
-        if (displaySubtitles) textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
+        textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
              : new Color(textNode.color.r, textNode.color.g, textNode.color.b, 255);
-        else textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0);
         timer = currentElement.duration;
     }
+
+
+    public void ToggleSubtitles(bool value)
+    {
+        textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, value ? 1 : 0);
+    }
+
 
 }   //end TextHandler.cs
