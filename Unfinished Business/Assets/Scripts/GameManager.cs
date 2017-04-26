@@ -5,7 +5,7 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class GameManager : MonoBehaviour {
     
-    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU};
+    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU, SETTINGSMENU};
     private GameStates currentState, previousState;
 
     private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI;
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour {
         runningUI = GameObject.Find("RunningUI");
         pausedUI = GameObject.Find("PausedUI");
         pauseMenuUI = GameObject.Find("PauseMenuUI");
-        //settingsMenuUI = GameObject.Find("Settings Canvas");
+        settingsMenuUI = GameObject.Find("SettingsUI");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
         invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
@@ -98,10 +98,10 @@ public class GameManager : MonoBehaviour {
         
     }
 
-    //public void ToggleSettingsMenu()
-    //{
-    //    settingsMenuUI.SetActive(true);
-    //}
+    public void ToggleSettingsMenu()
+    {
+        SetState((currentState == GameStates.SETTINGSMENU) ? GameStates.PAUSEMENU : GameStates.SETTINGSMENU);
+    }
 
     //start viewing an object
     //takes: the object to view
@@ -136,6 +136,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(false);
                 runningUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
+                settingsMenuUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 player.ViewingObj = false;
@@ -145,6 +146,7 @@ public class GameManager : MonoBehaviour {
                 runningUI.SetActive(false);
                 pausedUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
+                settingsMenuUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;
@@ -156,6 +158,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(false);
                 runningUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
+                settingsMenuUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = true;
@@ -164,6 +167,7 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 1;
                 pausedUI.SetActive(false);
                 runningUI.SetActive(true);
+                settingsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
@@ -173,7 +177,18 @@ public class GameManager : MonoBehaviour {
                 Time.timeScale = 0;
                 runningUI.SetActive(false);
                 pausedUI.SetActive(false);
+                settingsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                player.ViewingObj = false;
+                break;
+            case GameStates.SETTINGSMENU:
+                Time.timeScale = 0;
+                runningUI.SetActive(false);
+                pausedUI.SetActive(false);
+                settingsMenuUI.SetActive(true);
+                pauseMenuUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;
