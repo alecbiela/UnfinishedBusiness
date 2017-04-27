@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour {
         //{
         //    if (TextHandler.handler.DisplaySubtitles) TextHandler.handler.DisplaySubtitles = false;
         //    else TextHandler.handler.DisplaySubtitles = true;
-        //    Debug.Log(TextHandler.handler.DisplaySubtitles);
+        //   
         //}
 	}
 

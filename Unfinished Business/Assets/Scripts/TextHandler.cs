@@ -38,6 +38,7 @@ public class TextHandler : MonoBehaviour {
     private Queue<TextElement> textQueue;
     private TextElement currentElement;
     private bool displaySubtitles;
+    private Toggle toggleSubtitles;
 
     //getter for important playing flag
     public bool PlayingImportantText
@@ -66,6 +67,7 @@ public class TextHandler : MonoBehaviour {
         examineTimer = 0;
         playingImportant = false;
         displaySubtitles = true;
+        toggleSubtitles = GameObject.Find("Subtitles").GetComponent<Toggle>();
 	}
 
 
@@ -184,15 +186,18 @@ public class TextHandler : MonoBehaviour {
 
         //change the text element on screen and reset the timer (and alpha, if needed)
         textNode.text = currentElement.message;
-        textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
-             : new Color(textNode.color.r, textNode.color.g, textNode.color.b, 255);
+        if (displaySubtitles) textNode.color = currentElement.fadeInTime > 0 ? new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0)
+              : new Color(textNode.color.r, textNode.color.g, textNode.color.b, 255);
+        else textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, 0);
         timer = currentElement.duration;
     }
 
 
-    public void ToggleSubtitles(bool value)
+    public void ToggleSubtitles()
     {
-        textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, value ? 1 : 0);
+        //textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, toggleSubtitles.isOn ? 1 : 0);
+        displaySubtitles = toggleSubtitles.isOn;
+        //Debug.Log(displaySubtitles);
     }
 
 

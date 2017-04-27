@@ -20,6 +20,9 @@ public class ObjectViewer : MonoBehaviour {
     private float minDistance = 1.2f;
     private bool isTemporary = true;
     public float MOUSE_SENSITIVITY;
+    private Slider sliderSens;
+    private bool displayXHair;
+    private Toggle toggleXhair;
 
     // Use this for initialization
     void Start () {
@@ -28,6 +31,9 @@ public class ObjectViewer : MonoBehaviour {
         crosshair = GameObject.Find("Crosshair");
         crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         defaultCrosshair = crosshair.GetComponent<Image>().sprite;
+        sliderSens = GameObject.Find("SliderSens").GetComponent<Slider>();
+        displayXHair = true;
+        toggleXhair = GameObject.Find("CrosshairToggle").GetComponent<Toggle>();
 	}
 	
 	// Update is called once per frame
@@ -46,8 +52,10 @@ public class ObjectViewer : MonoBehaviour {
             }
         }
 
+        SetSensivity();
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
+        Debug.Log(displayXHair);
         //Disabled scrolling, but the code is still there just in case we need it
         //if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
     }
@@ -190,5 +198,15 @@ public class ObjectViewer : MonoBehaviour {
         //else if (distance < minDistance) distance = minDistance;
         viewedObj.transform.position += Camera.main.transform.forward * distance;
 
+    }
+
+    public void ToggleXhair()
+    {
+        displayXHair = toggleXhair.isOn;
+    }
+
+    public void SetSensivity()
+    {
+        MOUSE_SENSITIVITY = sliderSens.value;
     }
 }
