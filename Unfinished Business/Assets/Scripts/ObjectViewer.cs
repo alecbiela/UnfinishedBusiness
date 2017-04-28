@@ -32,7 +32,7 @@ public class ObjectViewer : MonoBehaviour {
         crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         defaultCrosshair = crosshair.GetComponent<Image>().sprite;
         sliderSens = GameObject.Find("SliderSens").GetComponent<Slider>();
-        displayXHair = true;
+        displayXHair = false;
         toggleXhair = GameObject.Find("CrosshairToggle").GetComponent<Toggle>();
 	}
 	
@@ -64,7 +64,8 @@ public class ObjectViewer : MonoBehaviour {
     public void StartSelecting(GameObject obj)
     {
         //FIX THIS
-        crosshair.GetComponent<Image>().sprite = (obj==null) ? defaultCrosshair : obj.GetComponent<Item>().uiImage;
+        if (displayXHair) crosshair.GetComponent<Image>().sprite = (obj == null) ? defaultCrosshair : obj.GetComponent<Item>().uiImage;
+        else crosshair.GetComponent<Image>().enabled = false;
     }
 
     //starts viewing an object
