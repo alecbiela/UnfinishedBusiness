@@ -96,7 +96,9 @@ public class Player : MonoBehaviour {
         }
 
         //no longer able to pause while playing important text
-        if (Input.GetKeyDown(KeyCode.P) && !TextHandler.handler.PlayingImportantText) gm.ToggleGamePaused();
+        if (Input.GetKeyDown(KeyCode.P) && !TextHandler.handler.PlayingImportantText
+            && (gm.GetState() != GameManager.GameStates.PAUSEMENU) && (gm.GetState() != GameManager.GameStates.SETTINGSMENU)
+            ) gm.ToggleGamePaused();
 
         //opens pause menu
         if (Input.GetKeyDown(KeyCode.Escape))

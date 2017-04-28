@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
             if (currentState == GameStates.PAUSEMENU) SetState(previousState);
             else
             {
-                previousState = currentState;
+                if(currentState != GameStates.SETTINGSMENU) previousState = currentState;
                 SetState(GameStates.PAUSEMENU);
             }
         }
@@ -185,6 +185,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(false);
                 settingsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(true);
+
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;

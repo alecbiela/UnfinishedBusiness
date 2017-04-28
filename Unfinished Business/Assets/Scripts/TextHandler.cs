@@ -80,7 +80,7 @@ public class TextHandler : MonoBehaviour {
         textQueue.Enqueue(new TextElement(text, duration, fadeInTime, fadeOutTime));
 
         //activate the backdrop
-        bgPane.SetActive(true);
+        if(displaySubtitles)bgPane.SetActive(true);
     }
 
     //initializes text element from file
@@ -99,7 +99,7 @@ public class TextHandler : MonoBehaviour {
         }
 
         //activate the backdrop
-        bgPane.SetActive(true);
+        if(displaySubtitles)bgPane.SetActive(true);
     }
 
     //immediately removes text from the screen and cancels all waiting text
@@ -173,7 +173,7 @@ public class TextHandler : MonoBehaviour {
                 playingImportant = false;
                 timer = 0;
                 textNode.text = "";
-                bgPane.SetActive(false);
+                if(displaySubtitles)bgPane.SetActive(false);
             }
         }
 	}
@@ -198,6 +198,7 @@ public class TextHandler : MonoBehaviour {
         //textNode.color = new Color(textNode.color.r, textNode.color.g, textNode.color.b, toggleSubtitles.isOn ? 1 : 0);
         displaySubtitles = toggleSubtitles.isOn;
         //Debug.Log(displaySubtitles);
+        bgPane.SetActive(displaySubtitles);
     }
 
 

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 7a84540710fe7c5468747e3e6bd4214b
+timeCreated: 1493397560
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Gemelli
+  fontNames:
+  - Gemelli
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,6 +23,7 @@ public class ObjectViewer : MonoBehaviour {
     private Slider sliderSens;
     private bool displayXHair;
     private Toggle toggleXhair;
+    private Image crosshairImgComponent;
 
     // Use this for initialization
     void Start () {
@@ -30,11 +31,12 @@ public class ObjectViewer : MonoBehaviour {
         //examineText = GameObject.Find("ExamineText");
         crosshair = GameObject.Find("Crosshair");
         crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        defaultCrosshair = crosshair.GetComponent<Image>().sprite;
         sliderSens = GameObject.Find("SliderSens").GetComponent<Slider>();
-        displayXHair = false;
+        displayXHair = true;
         toggleXhair = GameObject.Find("CrosshairToggle").GetComponent<Toggle>();
-	}
+        crosshairImgComponent = crosshair.GetComponent<Image>();
+        defaultCrosshair = crosshairImgComponent.sprite;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -55,7 +57,6 @@ public class ObjectViewer : MonoBehaviour {
         SetSensivity();
         if (Input.GetMouseButton(0) && viewingObject) RotateViewed();
 
-        Debug.Log(displayXHair);
         //Disabled scrolling, but the code is still there just in case we need it
         //if (viewingObject && Input.mouseScrollDelta.y != 0) ScrollViewed();
     }
@@ -64,8 +65,7 @@ public class ObjectViewer : MonoBehaviour {
     public void StartSelecting(GameObject obj)
     {
         //FIX THIS
-        if (displayXHair) crosshair.GetComponent<Image>().sprite = (obj == null) ? defaultCrosshair : obj.GetComponent<Item>().uiImage;
-        else crosshair.GetComponent<Image>().enabled = false;
+        crosshair.GetComponent<Image>().sprite = (obj == null) ? defaultCrosshair : obj.GetComponent<Item>().uiImage;
     }
 
     //starts viewing an object
@@ -204,6 +204,7 @@ public class ObjectViewer : MonoBehaviour {
     public void ToggleXhair()
     {
         displayXHair = toggleXhair.isOn;
+        crosshairImgComponent.enabled = displayXHair;
     }
 
     public void SetSensivity()

@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: cbf6f3268d6ff5346a74e777b6346af6
+timeCreated: 1493397561
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Scott
+  fontNames:
+  - Scott
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
