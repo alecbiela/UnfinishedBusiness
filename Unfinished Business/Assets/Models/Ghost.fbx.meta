@@ -28,6 +28,77 @@ ModelImporter:
     100040: transform15
     100042: transform16
     100044: transform9
+    100046: Arm_L_IK
+    100048: Arm_R_IK
+    100050: Back_CTRL
+    100052: Back_Curve
+    100054: Back_IK
+    100056: Chest_L
+    100058: Chest_R
+    100060: Clavicle_L_CTRL
+    100062: Clavicle_R_CTRL
+    100064: Elbow_L
+    100066: Elbow_L 1
+    100068: Elbow_R
+    100070: Forearm_L
+    100072: Forearm_R
+    100074: Hand_L
+    100076: Hand_L_CTRL
+    100078: Hand_L_Offset
+    100080: Hand_R
+    100082: Hand_R_CTRL
+    100084: Hand_R_Offset
+    100086: Index_L_1
+    100088: Index_L_2
+    100090: Index_L_3
+    100092: Index_R_1
+    100094: Index_R_2
+    100096: Index_R_3
+    100098: LowerBack
+    100100: LowerBack_CTRL
+    100102: Middle_L_1
+    100104: Middle_L_2
+    100106: Middle_L_3
+    100108: Middle_R_1
+    100110: Middle_R_2
+    100112: Middle_R_3
+    100114: Neck
+    100116: nurbsCircle1
+    100118: pCone13
+    100120: pCone14
+    100122: Pelvis
+    100124: Pinky_L_1
+    100126: Pinky_L_2
+    100128: Pinky_L_3
+    100130: Pinky_R_1
+    100132: Pinky_R_2
+    100134: Pinky_R_3
+    100136: Ring_L_1
+    100138: Ring_L_2
+    100140: Ring_L_3
+    100142: Ring_R_1
+    100144: Ring_R_2
+    100146: Ring_R_3
+    100148: Shoulder_L
+    100150: Shoulder_R
+    100152: Spine_1
+    100154: Spine_2
+    100156: Spine_3
+    100158: Tail_1
+    100160: Tail_2
+    100162: Tail_3
+    100164: Tail_4
+    100166: Tail_5
+    100168: Thumb_L_1
+    100170: Thumb_L_2
+    100172: Thumb_L_3
+    100174: Thumb_R_1
+    100176: Thumb_R_2
+    100178: Thumb_R_3
+    100180: UpperBack
+    100182: UpperBack_CTRL
+    100184: Wrist_L
+    100186: Wrist_R
     400000: back
     400002: bottom
     400004: //RootNode
@@ -51,8 +122,81 @@ ModelImporter:
     400040: transform15
     400042: transform16
     400044: transform9
+    400046: Arm_L_IK
+    400048: Arm_R_IK
+    400050: Back_CTRL
+    400052: Back_Curve
+    400054: Back_IK
+    400056: Chest_L
+    400058: Chest_R
+    400060: Clavicle_L_CTRL
+    400062: Clavicle_R_CTRL
+    400064: Elbow_L
+    400066: Elbow_L 1
+    400068: Elbow_R
+    400070: Forearm_L
+    400072: Forearm_R
+    400074: Hand_L
+    400076: Hand_L_CTRL
+    400078: Hand_L_Offset
+    400080: Hand_R
+    400082: Hand_R_CTRL
+    400084: Hand_R_Offset
+    400086: Index_L_1
+    400088: Index_L_2
+    400090: Index_L_3
+    400092: Index_R_1
+    400094: Index_R_2
+    400096: Index_R_3
+    400098: LowerBack
+    400100: LowerBack_CTRL
+    400102: Middle_L_1
+    400104: Middle_L_2
+    400106: Middle_L_3
+    400108: Middle_R_1
+    400110: Middle_R_2
+    400112: Middle_R_3
+    400114: Neck
+    400116: nurbsCircle1
+    400118: pCone13
+    400120: pCone14
+    400122: Pelvis
+    400124: Pinky_L_1
+    400126: Pinky_L_2
+    400128: Pinky_L_3
+    400130: Pinky_R_1
+    400132: Pinky_R_2
+    400134: Pinky_R_3
+    400136: Ring_L_1
+    400138: Ring_L_2
+    400140: Ring_L_3
+    400142: Ring_R_1
+    400144: Ring_R_2
+    400146: Ring_R_3
+    400148: Shoulder_L
+    400150: Shoulder_R
+    400152: Spine_1
+    400154: Spine_2
+    400156: Spine_3
+    400158: Tail_1
+    400160: Tail_2
+    400162: Tail_3
+    400164: Tail_4
+    400166: Tail_5
+    400168: Thumb_L_1
+    400170: Thumb_L_2
+    400172: Thumb_L_3
+    400174: Thumb_R_1
+    400176: Thumb_R_2
+    400178: Thumb_R_3
+    400180: UpperBack
+    400182: UpperBack_CTRL
+    400184: Wrist_L
+    400186: Wrist_R
     2300000: pCone12
+    2300002: //RootNode
     3300000: pCone12
+    3300002: //RootNode
     4300000: pCone12
     9500000: //RootNode
   materials:
