@@ -1,0 +1,192 @@
+fileFormatVersion: 2
+guid: 31b9eea44748e1a4390e629f333bc507
+timeCreated: 1493661703
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: back
+    100002: bottom
+    100004: Chest_L
+    100006: Chest_R
+    100008: Elbow_L
+    100010: Elbow_R
+    100012: Forearm_L
+    100014: Forearm_R
+    100016: //RootNode
+    100018: Hand_L
+    100020: Hand_R
+    100022: Index_L_1
+    100024: Index_L_2
+    100026: Index_L_3
+    100028: Index_R_1
+    100030: Index_R_2
+    100032: Index_R_3
+    100034: left
+    100036: Middle_L_1
+    100038: Middle_L_2
+    100040: Middle_L_3
+    100042: Middle_R_1
+    100044: Middle_R_2
+    100046: Middle_R_3
+    100048: Neck
+    100050: pCone14
+    100052: Pelvis
+    100054: Pinky_L_1
+    100056: Pinky_L_2
+    100058: Pinky_L_3
+    100060: Pinky_R_1
+    100062: Pinky_R_2
+    100064: Pinky_R_3
+    100066: Ring_L_1
+    100068: Ring_L_2
+    100070: Ring_L_3
+    100072: Ring_R_1
+    100074: Ring_R_2
+    100076: Ring_R_3
+    100078: Shoulder_L
+    100080: Shoulder_R
+    100082: Spine_1
+    100084: Spine_2
+    100086: Spine_3
+    100088: Tail_1
+    100090: Tail_2
+    100092: Tail_3
+    100094: Tail_4
+    100096: Thumb_L_1
+    100098: Thumb_L_2
+    100100: Thumb_L_3
+    100102: Thumb_R_1
+    100104: Thumb_R_2
+    100106: Thumb_R_3
+    100108: Wrist_L
+    100110: Wrist_R
+    400000: back
+    400002: bottom
+    400004: Chest_L
+    400006: Chest_R
+    400008: Elbow_L
+    400010: Elbow_R
+    400012: Forearm_L
+    400014: Forearm_R
+    400016: //RootNode
+    400018: Hand_L
+    400020: Hand_R
+    400022: Index_L_1
+    400024: Index_L_2
+    400026: Index_L_3
+    400028: Index_R_1
+    400030: Index_R_2
+    400032: Index_R_3
+    400034: left
+    400036: Middle_L_1
+    400038: Middle_L_2
+    400040: Middle_L_3
+    400042: Middle_R_1
+    400044: Middle_R_2
+    400046: Middle_R_3
+    400048: Neck
+    400050: pCone14
+    400052: Pelvis
+    400054: Pinky_L_1
+    400056: Pinky_L_2
+    400058: Pinky_L_3
+    400060: Pinky_R_1
+    400062: Pinky_R_2
+    400064: Pinky_R_3
+    400066: Ring_L_1
+    400068: Ring_L_2
+    400070: Ring_L_3
+    400072: Ring_R_1
+    400074: Ring_R_2
+    400076: Ring_R_3
+    400078: Shoulder_L
+    400080: Shoulder_R
+    400082: Spine_1
+    400084: Spine_2
+    400086: Spine_3
+    400088: Tail_1
+    400090: Tail_2
+    400092: Tail_3
+    400094: Tail_4
+    400096: Thumb_L_1
+    400098: Thumb_L_2
+    400100: Thumb_L_3
+    400102: Thumb_R_1
+    400104: Thumb_R_2
+    400106: Thumb_R_3
+    400108: Wrist_L
+    400110: Wrist_R
+    4300000: pCone14
+    7400000: Take 001
+    9500000: //RootNode
+    11100000: //RootNode
+    13700000: pCone14
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1000
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
