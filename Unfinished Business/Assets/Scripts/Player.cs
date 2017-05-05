@@ -55,7 +55,8 @@ public class Player : MonoBehaviour {
                     //onScreenText = "Nothing happens.";
                 }
             }
-            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText)
+            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText
+                && selectedObj.GetComponent<Item>().liftable)
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 gm.StartViewingObject(selectedObj, false);
@@ -167,7 +168,7 @@ public class Player : MonoBehaviour {
 
                     case GameManager.GameStates.RUNNING:    //normal object examination
 
-                        if (selectedObj.GetComponent<Item>() != null)
+                        if (selectedObj.GetComponent<Item>() != null && selectedObj.GetComponent<Item>().liftable)
                         {
                             examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
                         }

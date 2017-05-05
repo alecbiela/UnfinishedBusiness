@@ -7,6 +7,7 @@ public class Item : MonoBehaviour {
     public int itemID;
     public string itemName;
     public bool obtainable;
+    public bool liftable;
     public Sprite uiImage;
     public int reagentID;  //the ID to use on me to return true 
     public float viewDistance; //how far away the object will move from the camera in viewing mode
