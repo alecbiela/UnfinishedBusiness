@@ -55,8 +55,8 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
         //activate textbox, move next to this slot, and update info
         textBox.SetActive(true);
-        textBox.GetComponent<RectTransform>().position = new Vector3(rt.position.x + (rt.rect.width/2) + 15 , rt.position.y, 0);
-        textBox.GetComponentInChildren<Text>().text = hoverItemScript.itemName + "\n" + hoverItemScript.description;  //add description when we have it in item script
+        //textBox.GetComponent<RectTransform>().position = new Vector3(rt.position.x + (rt.rect.width/2) + 15 , rt.position.y, 0);
+        textBox.GetComponentInChildren<Text>().text = hoverItemScript.itemName + "\n\n" + hoverItemScript.description;  //add description when we have it in item script
     }
 
     //when we leave this selection, hide the examine box
