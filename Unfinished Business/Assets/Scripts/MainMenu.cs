@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour {
 
     private GameObject mainScreen;
     private GameObject optionsScreen;
+    private GameObject creditsScreen;
 
     //initialization
     void Awake()
@@ -13,6 +14,8 @@ public class MainMenu : MonoBehaviour {
         mainScreen = GameObject.Find("MainUI");
         optionsScreen = GameObject.Find("OptionsUI");
         optionsScreen.SetActive(false);
+        creditsScreen = GameObject.Find("CreditsUI");
+        creditsScreen.SetActive(false);
     }
 
     //handles scene change button presses
@@ -27,6 +30,16 @@ public class MainMenu : MonoBehaviour {
     {
         //hide/show the options screen
         optionsScreen.SetActive(!optionsScreen.activeInHierarchy);
+
+        //hide/show the main screen
+        mainScreen.SetActive(!mainScreen.activeInHierarchy);
+    }
+
+    //handles pressing of the 'options' button
+    public void ToggleCredits()
+    {
+        //hide/show the options screen
+        creditsScreen.SetActive(!creditsScreen.activeInHierarchy);
 
         //hide/show the main screen
         mainScreen.SetActive(!mainScreen.activeInHierarchy);
