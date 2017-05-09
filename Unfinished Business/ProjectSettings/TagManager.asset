@@ -7,6 +7,7 @@ TagManager:
   - GameManager
   - InventorySlot
   - ItemUIText
+  - Ghost
   layers:
   - Default
   - TransparentFX

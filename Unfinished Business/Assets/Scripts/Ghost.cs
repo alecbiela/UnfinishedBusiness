@@ -51,4 +51,10 @@ public class Ghost : MonoBehaviour {
     {
 
     }
+
+    //processes event with delay
+    public void ProcessEvent(int eventID, float delay)
+    {
+
+    }
 }

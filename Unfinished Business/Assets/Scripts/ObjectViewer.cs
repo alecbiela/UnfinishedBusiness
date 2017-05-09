@@ -158,6 +158,8 @@ public class ObjectViewer : MonoBehaviour {
         }
 
         //Lastly, set state to running before we resume
+        // and try to trigger the event
+        viewedObj.GetComponent<Item>().PutMeDown();
         gm.SetState(GameManager.GameStates.RUNNING);
     }
 

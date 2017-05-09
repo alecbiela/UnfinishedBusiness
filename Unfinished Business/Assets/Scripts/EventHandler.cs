@@ -19,22 +19,27 @@ public class EventHandler : MonoBehaviour {
         public List<TextHandler.TextElement> dialogue;
         public bool important;
         public string animatic;
+        public float gDelayTime;
 
-        public Event(int id, string mp3, List<TextHandler.TextElement> dia, bool i, string anim)
+        public Event(int id, string mp3, List<TextHandler.TextElement> dia, bool i, string anim, float gdt)
         {
             eventID = id;
             mp3Path = mp3;
             dialogue = dia;
             important = i;
             animatic = anim;
+            gDelayTime = gdt;
         }
     };
 
     //Attributes
     private List<Event> thisSceneEvents;       //holds events that happen in current scene
+    private Ghost gScript;                     //ghost script
 
     // Use this for initialization
     void Start () {
+
+        gScript = GameObject.FindGameObjectWithTag("Ghost").GetComponent<Ghost>();
 
         //populate the initial dialogue
         this.LoadEvents(Application.dataPath + "/Dialogue/foyer.txt");
@@ -72,6 +77,7 @@ public class EventHandler : MonoBehaviour {
                 string _anim = string.Empty;
                 List<TextHandler.TextElement> _lines = new List<TextHandler.TextElement>();
                 bool _important = false;
+                float _gdelay = 0.0f;
 
                 //get the rest of the data
                 while (!reader.EndOfStream)
@@ -108,6 +114,12 @@ public class EventHandler : MonoBehaviour {
                             _lines.Add(new TextHandler.TextElement(messageData[0], float.Parse(messageData[1]), float.Parse(messageData[2]), float.Parse(messageData[3])));
                             break;
 
+                        //parsing ghost delay (float)
+                        case 'g':
+                        case 'G':
+                            _gdelay = float.Parse(lineData[1]);
+                            break;
+
                         //if the identifier doesn't match anything, print an error
                         default:
                             if (line != "") Debug.LogError("Error in File Loading: Line Identifier '" + line[0] + "' not Recognized.");
@@ -116,7 +128,7 @@ public class EventHandler : MonoBehaviour {
                 }
 
                 //make a new dialogue element with the data
-                inputData.Add(new Event(_id, _mp3path, _lines, _important, _anim));
+                inputData.Add(new Event(_id, _mp3path, _lines, _important, _anim, _gdelay));
             }
         }
 
@@ -164,6 +176,10 @@ public class EventHandler : MonoBehaviour {
 
                 //play animatic, if there is one
                 PlayAnimatic(e.animatic);
+
+                //delay ghost and call event
+                gScript.ProcessEvent(e.eventID, e.gDelayTime);
+
 
                 //return early to prevent unneccessary loop iterations
                 return;

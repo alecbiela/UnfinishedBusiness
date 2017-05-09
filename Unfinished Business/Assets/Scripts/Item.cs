@@ -12,6 +12,7 @@ public class Item : MonoBehaviour {
     public int reagentID;  //the ID to use on me to return true 
     public float viewDistance; //how far away the object will move from the camera in viewing mode
     public string description;  //the description of the item when it shows up in the inventory
+    public int putDownID;   //event ID for when the object is put down
 
     //a method which returns true if the item being used on this one
     //is a match (e.x. key to a locked door) or false otherwise
@@ -25,6 +26,14 @@ public class Item : MonoBehaviour {
         }
 
         return false;
+    }
+
+    //called when the object is put down
+    public virtual void PutMeDown()
+    {
+        if (putDownID <= 0) return;
+
+        EventHandler.handler.TriggerEvent(putDownID);
     }
 
     //plays the subtitles that are present in the child class (MUST BE OVERRIDDEN)
