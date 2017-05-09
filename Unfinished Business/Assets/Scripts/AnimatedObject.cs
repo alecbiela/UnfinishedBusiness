@@ -12,11 +12,11 @@ public class AnimatedObject : MonoBehaviour {
     public GameObject PivotPoint;
     public float AnimationDuration;
 
-    private float _timer;           //used for internal timing of animations
-    private bool _animating;        //set when animating so that we cannot "double tap"
-    private bool _atRest;           //"at rest" meaning in the state which it begins, should be true by default
-    private Vector3 _translationStep;  //How much we want to translate each tick
-    private float _rotationStep;     // ^ but with rotation
+    private float _timer;               //used for internal timing of animations
+    private bool _animating;            //set when animating so that we cannot "double tap"
+    private bool _atRest;               //"at rest" meaning in the state which it begins, should be true by default
+    private Vector3 _translationStep;   //How much we want to translate each tick
+    private float _rotationStep;        // ^ but with rotation
 
     public bool Activated
     {
@@ -30,25 +30,13 @@ public class AnimatedObject : MonoBehaviour {
         _timer = 0;
 
         //check for bad values
-        if (Translation == null)
-        {
-            Debug.LogError(this.gameObject.name + " is supposed to animate but doesn't have a translation, setting to zero.");
-            Translation = Vector3.zero;
-        }
-
-        if (Rotation == null)
-        {
-            Debug.LogError(this.gameObject.name + " is supposed to animate but doesn't have a rotation, setting to zero.");
-            Rotation = Vector3.zero;
-        }
-
         if (Rotation != Vector3.zero && PivotPoint == null)
         {
             Debug.LogError(this.gameObject.name + " has nothing to rotate around, setting to its own pivot point.");
             PivotPoint = this.gameObject;
         }
 
-        if (AxisOfRotation == null)
+        if (Rotation != Vector3.zero && AxisOfRotation == Vector3.zero)
         {
             Debug.LogError(this.gameObject.name + " has nothing to rotate around, setting to Vector3.up.");
             AxisOfRotation = Vector3.up;

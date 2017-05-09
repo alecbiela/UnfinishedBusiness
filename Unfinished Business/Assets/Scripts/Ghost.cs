@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Ghost : MonoBehaviour {
 
+    //event data
+    private int currentEvent;
+    private float delayTime;
+    private bool eventPlaying;
+
     private Vector3 startPosition;
     private float speed;
     private float rotSpeed;
@@ -26,6 +31,8 @@ public class Ghost : MonoBehaviour {
         track = false;
         startRun = false;
         startTalkTimer = 0;
+        currentEvent = 0;
+        delayTime = 0;
 	}
 	
 	// Update is called once per frame
@@ -38,9 +45,41 @@ public class Ghost : MonoBehaviour {
         StartCoroutine(TalkSequence());
         //StartCoroutine(BeerSequence());
 
+        //if event is playing, decrement timer, and if timer is 0 call DoEventAction()
+        if (eventPlaying)
+        {
+            delayTime -= Time.deltaTime;
+            if (delayTime >= 0) DoEventAction();
+        }
+
 
 
         TrackPlayer();
+    }
+
+    //performs the action specific to the event ID
+    private void DoEventAction()
+    {
+        //zero the timer and stop running it
+        delayTime = 0;
+        eventPlaying = false;
+
+        //decide what to do
+        switch(currentEvent)
+        {
+            case 1:     //opening scene
+                break;
+            case 2:     //after trying to get beer
+                break;
+            case 3:     //memory animatic
+                break;
+            case 4:     //after memory animatic completed
+                break;
+            case 5:     //Paul's message and conversation after
+                break;
+            case 6:     //Second conversation
+                break;
+        }
     }
 
     void TrackPlayer()
@@ -100,7 +139,10 @@ public class Ghost : MonoBehaviour {
     //processes event with delay
     public void ProcessEvent(int eventID, float delay)
     {
-        eScript.TriggerEvent(eventID);
+        //set the variables
+        currentEvent = eventID;
+        delayTime = delay;
+        eventPlaying = true;
     }
 
     IEnumerator StartSequence()

@@ -12,3 +12,89 @@ d Hello everyone, it's me, again.,,4000,,0,,0
 d Still testing things out here.,,2500,,0,,0
 d This would be cool to write haikus.,,2000,,0,,0
 i true
+
+
+e 1
+m opening
+d Joey: Hey!  What are you doing in my house!,,3350,,0,,0
+d Detective: Oh, this one doesn't know yet.  Hold on, let me get the script.,,3370,,0,,0
+d [Papers rustling, throat clearing],,4380,,0,,0
+d "Hello sir or ma'am.  Please, remain calm.,,3790,,0,,0
+d I am a friendly detective from the paranormal division of the FBI.  You have revently 'expired',,6630,,0,,0
+d and I'm here to investigate why your ghost... is still here!",,4000,,0,,0
+d Joey: Expired?  What am I, a milk carton?  You're nuts, buddy.,,5840,,0,,0
+d Detective: I understand this news may be alarming.  If it helps you, don't think of it as being,,4630,,0,,0
+d dead, think of it as being 'living challenged',,4580,,0,,0
+d Joey: You're crazy!  Get outta my house.,,3450,,0,,0
+d Detective: That script never works anyway.  Alright, here's the deal: You're dead.,,6450,,0,,0
+d I've got your information right here.  You're Joey Marino.,,5140,,0,,0
+d Joey: How do you know my name?,,2120,,0,,0
+d Detective: Because you died.  And someone threw your case file on my desk.,,6137,,0,,0
+d Now tell me, do you remember anything about last night?,,3670,,0,,0
+d I came home and...I think I fell asleep in the chair on my balcony.,,4730,,0,,0
+d I don't remember anything else.,,2260,,0,,0
+d Detective: Hm, sounds about right.  Sometimes if a ghost has a quick death, they can't remember it.,,5690,,0,,0
+d Joey: I'm not a ghost!  That's just ridiculous.,,3250,,0,,0
+d Detective: Oh yeah?  Why don't you pick up that beer can over there if you're so sure.,,5455,,0,,0
+d Joey: Fine.,,530,,0,,0
+i true
+
+
+e 2
+m opening2
+d Joey: Hey!,,1277,,0,,0
+d Detective: Do you believe me now?,,1927,,0,,0
+d Joey: I'm just going to hope this is some kind of crazy dream.,,3239,,0,,0
+d Detective: Tell yourself whatever you want.  But...I need to do my job.,,5793,,0,,0
+d What do you say?  Can I have a look around?,,2600,,0,,0
+d Joey: I guess so, although I doubt you'll find whatever you're looking for.,,4319,,0,,0
+d Detective: Thanks, I'll get started.,,1300,,0,,0
+i true
+
+
+e 3
+m 
+d Loretta: Honestly, all he ever does is complain about the restaurant.  The other day, he came home,,4195,,0,,0
+d screaming about an employee cutting the tomatoes too thin.,,3100,,0,,0
+d Barbara, you're the co-owner, do you live like this?,,3135,,0,,0
+d Barbara: That's just how Joe is.  We handle different things.,,3350,,0,,0
+d I take care of the business side of things and he...cries over tomatoes.,,5085,,0,,0
+d Loretta: Ugh, I just wish he'd stop obcessing over every detail.,,3900,,0,,0
+d Barbara: Hey, when you get home, can you ask him to take another look at this contract?,,3660,,0,,0
+d I know he doesn't want to expand, but this is a great opportunity for us.,,4320,,0,,0
+d Loretta: Yeah I'll ask him.  I wish he cared half as much about me as he does about the restaurant.,,5320,,0,,0
+d Barbara: Hey, you married him.  Now that's a contract I'd never sign.,,3700,,0,,0
+i true
+a memory
+
+
+e 4
+m postMem
+d Joey: Woah, what was that?,,2550,,0,,0
+d Detective: That, my floating, friend is why I got this job.  I can view memories that are attached,,5060,,0,,0
+d to objects.  It's very useful for this kind of work.,,4365,,0,,0
+d Oh, and I can also drag other people in with me so it holds up as evidence in court.,,4980,,0,,0
+d Joey: Well aren't you special?,,1950,,0,,0
+d Detective: Says the guy who can't pick up a beer can...,,2460,,0,,0
+i true
+
+
+e 5
+m paulMessage
+d Paul: Hey Marino, you like that little makeover I gave your car?  Well there's more where that came from.,,5900,,0,,0
+d You Fired me over a steak when I have a family to feed at home.,,3410,,0,,0
+d I'm gonna kill you for what you did, Marino!  Nobody's gonna miss your sorry rich ass!,,4430,,0,,0
+d   ,,1760,,0,,0
+d Joey: That's an ex-employee of mine.  He's a little...dramatic.,,5457,,0,,0
+d Detective: Are you sure this isn't the guy?  Because...it seems like he's your guy.,,5550,,0,,0
+d Joey: Maybe.  I dunno.,,1940,,0,,0
+i true
+
+
+e 6
+m secondConversation
+d Joey: So what are you lookin' for exactly?,,3280,,0,,0
+d Detective: Evidence, that might indicate a murder suspect, mostly.,,4550,,0,,0
+d Joey: Pfff, no one would murder me!,,3135,,0,,0
+d Detective: That's what they all say.,,2250,,0,,0
+i true

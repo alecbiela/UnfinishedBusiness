@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 
+
 public class GameManager : MonoBehaviour {
     
-    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU, SETTINGSMENU};
+    public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU, SETTINGSMENU, START};
     private GameStates currentState, previousState;
 
     private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI, subtitlesButton;
@@ -21,8 +22,9 @@ public class GameManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        currentState = GameStates.RUNNING;
-        previousState = GameStates.RUNNING;
+
+        currentState = GameStates.START;
+        previousState = GameStates.START;
         runningUI = GameObject.Find("RunningUI");
         pausedUI = GameObject.Find("PausedUI");
         pauseMenuUI = GameObject.Find("PauseMenuUI");
@@ -31,11 +33,13 @@ public class GameManager : MonoBehaviour {
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
         invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
-
+        
         //call statechange once to initialize state
         stateChanged = true;
 
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -200,6 +204,11 @@ public class GameManager : MonoBehaviour {
                 Cursor.visible = true;
                 player.ViewingObj = false;
                 break;
+            case GameStates.START:
+                EventHandler.handler.TriggerEvent(1);
+                SetState(GameStates.RUNNING);
+                break;
+
         }
     }
 }

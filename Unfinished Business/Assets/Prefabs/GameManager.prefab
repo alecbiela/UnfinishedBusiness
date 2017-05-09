@@ -68,8 +68,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DialogueInteractions:
-  - {fileID: 8300000, guid: a0e57d11a229d614e8b1360f61ebaea1, type: 3}
-  - {fileID: 8300000, guid: d43462ed497ac354187b174316a266c5, type: 3}
+  - {fileID: 8300000, guid: 1f96e2736b830f946b99209d37004595, type: 3}
+  - {fileID: 8300000, guid: 1297e01bb30031b4b8b63faf20421a27, type: 3}
+  - {fileID: 8300000, guid: 47275f8d5c6983a4faf3b63ee87e6d55, type: 3}
+  - {fileID: 8300000, guid: febf266039e374847b781abf333b6dc1, type: 3}
+  - {fileID: 8300000, guid: 0a3f6fbe2c88ed042b0ecdf24d4eaffe, type: 3}
+  - {fileID: 8300000, guid: 79c5e2b306b5cc440a1c1636c6f150c5, type: 3}
 --- !u!114 &114612661928016496
 MonoBehaviour:
   m_ObjectHideFlags: 1

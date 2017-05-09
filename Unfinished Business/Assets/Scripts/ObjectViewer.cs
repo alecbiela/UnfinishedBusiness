@@ -43,15 +43,6 @@ public class ObjectViewer : MonoBehaviour {
         if (Input.GetMouseButtonDown(1) && viewingObject)
         {
             StopViewing();
-            if(viewedObj.name == "cassetteTape")
-            {
-                TextHandler.handler.DisplayText("Paul: Hey Marino, you like that hole through your window?", 2000, 0, 0);
-                TextHandler.handler.DisplayText("Well there’s more where that came from. ", 2000, 0, 0);
-                TextHandler.handler.DisplayText("You fired me over a steak when I’ve got a family to feed at home.", 2000, 0, 0);
-                TextHandler.handler.DisplayText("Thanks to you my wife is leaving me, and she’s taking the kids with her.", 2000, 0, 0);
-                TextHandler.handler.DisplayText("I’m gonna kill you for what you did, Marino, and you’ll die miserable and alone.", 2000, 0, 0);
-                TextHandler.handler.DisplayText("No one’s gonna miss your sorry rich ass.", 2000, 0, 0);
-            }
         }
 
         SetSensivity();
@@ -159,7 +150,7 @@ public class ObjectViewer : MonoBehaviour {
 
         //Lastly, set state to running before we resume
         // and try to trigger the event
-        viewedObj.GetComponent<Item>().PutMeDown();
+        if(!isTemporary) viewedObj.GetComponent<Item>().PutMeDown();
         gm.SetState(GameManager.GameStates.RUNNING);
     }
 

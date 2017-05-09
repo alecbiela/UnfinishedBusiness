@@ -16,6 +16,7 @@ public class MainMenu : MonoBehaviour {
         optionsScreen.SetActive(false);
         creditsScreen = GameObject.Find("CreditsUI");
         creditsScreen.SetActive(false);
+
     }
 
     //handles scene change button presses
