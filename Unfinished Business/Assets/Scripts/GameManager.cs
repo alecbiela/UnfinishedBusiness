@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            ghost.MoveToPosition(new Vector3(24.22f, 0.4f, 33.78f));
+            //ghost.MoveToPosition(new Vector3(24.22f, 0.4f, 33.78f));
         }
         if (stateChanged) StateChange();
 

@@ -52,7 +52,7 @@ public class UVTextureAnim : MonoBehaviour {
         {
             var mats = GetComponent<Renderer>().materials;
 
-            index = (int)(Time.time * fps);
+            index = (int)(Time.time * (fps * 2));
 
             index = index % (int)(uvTileMY * uvTileMX);
 
