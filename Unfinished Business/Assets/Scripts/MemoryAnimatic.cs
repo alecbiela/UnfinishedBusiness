@@ -14,12 +14,14 @@ public class MemoryAnimatic : MonoBehaviour {
     public Camera memoryCam;
 
     private GameObject canvas;
+    private GameObject crosshair;
 
 	// Use this for initialization
 	void Start () {
 
         //grab canvas to toggle hide
-        canvas = GameObject.Find("Canvas");
+        //canvas = GameObject.Find("Canvas");
+        crosshair = GameObject.Find("Crosshair");
 	}
 	
 	// Update is called once per frame
@@ -29,7 +31,8 @@ public class MemoryAnimatic : MonoBehaviour {
         //only play if camera is looking
         if (memoryCam.enabled)
         {
-            canvas.GetComponent<Canvas>().enabled = false;
+            crosshair.SetActive(false);
+            //canvas.GetComponent<Canvas>().enabled = false;
             gameCam.enabled = false;
             Play();
         }
@@ -58,7 +61,8 @@ public class MemoryAnimatic : MonoBehaviour {
     //stop the current animatic and return to game
     public void Stop()
     {
-        canvas.GetComponent<Canvas>().enabled = true;
+        crosshair.SetActive(true);
+        //canvas.GetComponent<Canvas>().enabled = true;
         memoryCam.enabled = false;
         gameCam.enabled = true;
 
