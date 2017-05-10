@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using System.IO;
+using System.Text;
 
 
 public class EventHandler : MonoBehaviour {
@@ -43,7 +44,7 @@ public class EventHandler : MonoBehaviour {
         gScript = GameObject.FindGameObjectWithTag("Ghost").GetComponent<Ghost>();
 
         //populate the initial dialogue
-        this.LoadEvents(Application.dataPath + "/Dialogue/foyer.txt");
+        this.LoadEvents("foyer");
         playingAnimatic = false;
         handler = this;
     }
@@ -70,7 +71,12 @@ public class EventHandler : MonoBehaviour {
     private List<Event> LoadFromFile(string path)
     {
         //open the dialogue file
-        StreamReader reader = new StreamReader(path, System.Text.Encoding.ASCII);
+        TextAsset eventsText = Resources.Load(path) as TextAsset;
+        byte[] contents = Encoding.ASCII.GetBytes(eventsText.text);
+
+        MemoryStream str = new MemoryStream(contents);
+        StreamReader reader = new StreamReader(str);
+
 
         List<Event> inputData = new List<Event>();
 
