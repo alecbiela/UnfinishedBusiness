@@ -47,8 +47,8 @@ public class Ghost : MonoBehaviour {
         //if event is playing, decrement timer, and if timer is 0 call DoEventAction()
         if (eventPlaying)
         {
-            delayTime -= Time.deltaTime;
-            if (delayTime >= 0) DoEventAction();
+            delayTime -= (1000 * Time.deltaTime);
+            if (delayTime <= 0) DoEventAction();
         }
 
 
@@ -87,6 +87,12 @@ public class Ghost : MonoBehaviour {
                 StartCoroutine(TalkSequence());
                 break;
         }
+    }
+
+    //forces the end of the current action
+    public void SkipAction()
+    {
+        //stub
     }
 
     void TrackPlayer()

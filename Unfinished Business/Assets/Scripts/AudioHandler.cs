@@ -20,11 +20,19 @@ public class AudioHandler : MonoBehaviour {
     //attributes
     private AudioClip currentClip;                  //set by the PlaySoundEffect method - the clip that is currently playing
     public AudioClip[] DialogueInteractions;        //dialogue interactions - must be added in the inspector
+    private AudioSource currentSource;
 
 	// Use this for initialization
 	void Start () {
         handler = this;
 	}
+
+    //stops a sound immediately
+    public void ForceStopSound()
+    {
+        if(currentSource != null)
+            currentSource.Stop();
+    }
 
     //plays a sound effect
     //takes file name as argument (from texthandler)
@@ -48,6 +56,7 @@ public class AudioHandler : MonoBehaviour {
 
         //finally, play the sound
         //might change to playoneshot with volume modifier
+        currentSource = targetAudioSource;
         targetAudioSource.Play();
     }
 }

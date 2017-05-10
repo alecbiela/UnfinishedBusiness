@@ -45,8 +45,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.H))
         {
-            TextHandler.handler.DisplayText("Yo Everyone", 2000, 0, 0);
-            TextHandler.handler.DisplayText("It's Me", 1500, 0, 0);
+            EventHandler.handler.ForceStopEvent();
         }
         if (Input.GetKeyDown(KeyCode.M))
         {

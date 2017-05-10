@@ -35,6 +35,7 @@ public class EventHandler : MonoBehaviour {
     //Attributes
     private List<Event> thisSceneEvents;       //holds events that happen in current scene
     private Ghost gScript;                     //ghost script
+    private bool playingAnimatic;
 
     // Use this for initialization
     void Start () {
@@ -43,8 +44,18 @@ public class EventHandler : MonoBehaviour {
 
         //populate the initial dialogue
         this.LoadEvents(Application.dataPath + "/Dialogue/foyer.txt");
-
+        playingAnimatic = false;
         handler = this;
+    }
+
+    //force-stops the current event
+    public void ForceStopEvent()
+    {
+        TextHandler.handler.ClearAllText();
+        AudioHandler.handler.ForceStopSound();
+        gScript.SkipAction();
+        if (playingAnimatic) GameObject.Find("memoryAnimaticGO").GetComponent<MemoryAnimatic>().Stop();
+        playingAnimatic = false;
     }
 
     // Loads dialogue from a file and makes it accessable by the handler
@@ -154,6 +165,8 @@ public class EventHandler : MonoBehaviour {
 
         //we can play this animatic
         currentAnimCamera.GetComponent<Camera>().enabled = true;
+
+        playingAnimatic = true;
     }
 
     //called by outside scripts to execute an event that (should) exist in file
