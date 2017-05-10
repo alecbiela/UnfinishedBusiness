@@ -13,8 +13,10 @@ public class Ghost : MonoBehaviour {
     private float speed;
     private float rotSpeed;
     private bool track;
-    private bool startRun;
-    private int startTalkTimer;
+    private bool talking;
+    private bool idle;
+    private bool beer;
+    private float startTalkTimer;
 
     public EventHandler eScript;
     public Animator anim;
@@ -23,13 +25,15 @@ public class Ghost : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        startPosition = new Vector3(27.46f, 0.28f, 31.5f);
+        startPosition = transform.position;
         transform.Rotate(new Vector3(0.0f, transform.rotation.y + 180.0f, 0.0f));
         speed = 2f;
         rotSpeed = .5f;
         anim = GetComponent<Animator>();
-        track = false;
-        startRun = false;
+        track = true;
+        idle = false;
+        talking = true;
+        beer = false;
         startTalkTimer = 0;
         currentEvent = 0;
         delayTime = 0;
@@ -38,11 +42,8 @@ public class Ghost : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //start scene
-
-        //ProcessEvent(1, 0);
-
-       
-        //StartCoroutine(BeerSequence());
+        ProcessEvent(1, 0);
+      
 
         //if event is playing, decrement timer, and if timer is 0 call DoEventAction()
         if (eventPlaying)
@@ -61,30 +62,29 @@ public class Ghost : MonoBehaviour {
     {
         //zero the timer and stop running it
         delayTime = 0;
-        eventPlaying = false;
+        //eventPlaying = false;
 
         //decide what to do
         switch(currentEvent)
         {
             case 1:     //opening scene
-                StartCoroutine(StartSequence());
-                StartCoroutine(TalkSequence());
-                StartCoroutine(BeerSequence());
+                TalkSequence1();
+                //StartCoroutine(IdleSequence(3.1f, 10f));
                 break;
             case 2:     //after trying to get beer
-                StartCoroutine(TalkSequence());
+                //StartCoroutine(TalkSequence());
                 break;
             case 3:     //memory animatic
-                StartCoroutine(TalkSequence());
+                //StartCoroutine(TalkSequence());
                 break;
             case 4:     //after memory animatic completed
-                StartCoroutine(TalkSequence());
+                //StartCoroutine(TalkSequence());
                 break;
             case 5:     //Paul's message and conversation after
-                StartCoroutine(TalkSequence());
+                //StartCoroutine(TalkSequence());
                 break;
             case 6:     //Second conversation
-                StartCoroutine(TalkSequence());
+                //StartCoroutine(TalkSequence());
                 break;
         }
     }
@@ -158,7 +158,7 @@ public class Ghost : MonoBehaviour {
         eventPlaying = true;
     }
 
-    IEnumerator StartSequence()
+    /*IEnumerator StartSequence()
     {
         yield return new WaitForSeconds(1);
 
@@ -179,33 +179,118 @@ public class Ghost : MonoBehaviour {
             }
 
         }
+    }*/
+
+    void TalkSequence1()
+    {
+        startTalkTimer = Time.time;
+        if (talking)
+        {
+            SetAnimation("talking");
+        }
+        if (idle)
+        {
+            SetAnimation("idle");
+        }
+        if (beer)
+        {
+            track = false;
+            MoveToPosition(new Vector3(24.7f, 0.28f, 34.66f), 7.758f);
+            if (transform.position == new Vector3(24.7f, 0.28f, 34.66f))
+            {
+                SetAnimation("beer");
+            }
+        }
+
+
+        if (startTalkTimer >= 3 && startTalkTimer < 25) //dear sir or madamn
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 25 && startTalkTimer < 31) //milk cahton
+        {
+            talking = true;
+            idle = false;
+        }
+        else if (startTalkTimer >= 31 && startTalkTimer < 40.5) //living challegned
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 40.5 && startTalkTimer < 44) //get outta mah house
+        {
+            talking = true;
+            idle = false;
+        }
+        else if (startTalkTimer >= 44 && startTalkTimer < 55) //never works anyway
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 55 && startTalkTimer < 57.5) //how you know mah name
+        {
+            talking = true;
+            idle = false;
+        }
+        else if (startTalkTimer >= 57.75 && startTalkTimer < 67) //file on desk
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 67 && startTalkTimer < 74) //came home
+        {
+            talking = true;
+            idle = false;
+        }
+        else if (startTalkTimer >= 74 && startTalkTimer < 80) //sounds about right
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 80 && startTalkTimer < 83) //not a ghost, aint afraid of no ghost
+        {
+            talking = true;
+            idle = false;
+        }
+        else if (startTalkTimer >= 83 && startTalkTimer < 89) //pick up that can
+        {
+            talking = false;
+            idle = true;
+        }
+        else if (startTalkTimer >= 89 && startTalkTimer < 90) //fine!
+        {
+            track = false;
+            talking = false;
+            idle = false;
+            beer = true;
+        }
     }
 
-    IEnumerator TalkSequence()
-    {
-        yield return (0);
 
-        if (startRun == false)
+    IEnumerator IdleSequence(float delay, float timer)
+    {
+        yield break;
+
+        if (idle == false)
         {
             yield break;
         }
         else
         {
-            SetAnimation("talking");
             track = true;
-            startTalkTimer++;
-
-            if (startTalkTimer == 2400)
+            startTalkTimer = Time.time;
+            SetAnimation("idle");
+            if (startTalkTimer >= timer)
             {
-                SetAnimation("idle");
-                track = false;
-                startRun = false;
+                idle = false;
             }
         }
     }
+
     IEnumerator BeerSequence()
     {
-        yield return (TalkSequence());
+        yield return (0);
         //move to beer can
         
         MoveToPosition(new Vector3(24.7f, 0.28f, 34.66f), 7.758f);
