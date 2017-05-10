@@ -183,7 +183,8 @@ public class Ghost : MonoBehaviour {
 
     void TalkSequence1()
     {
-        startTalkTimer = Time.time;
+        startTalkTimer += 1 * Time.deltaTime;
+        //Debug.Log(startTalkTimer);
         if (talking)
         {
             SetAnimation("talking");
