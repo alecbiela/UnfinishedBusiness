@@ -41,8 +41,7 @@ public class Ghost : MonoBehaviour {
 
         //ProcessEvent(1, 0);
 
-        StartCoroutine(StartSequence());
-        StartCoroutine(TalkSequence());
+       
         //StartCoroutine(BeerSequence());
 
         //if event is playing, decrement timer, and if timer is 0 call DoEventAction()
@@ -68,16 +67,24 @@ public class Ghost : MonoBehaviour {
         switch(currentEvent)
         {
             case 1:     //opening scene
+                StartCoroutine(StartSequence());
+                StartCoroutine(TalkSequence());
+                StartCoroutine(BeerSequence());
                 break;
             case 2:     //after trying to get beer
+                StartCoroutine(TalkSequence());
                 break;
             case 3:     //memory animatic
+                StartCoroutine(TalkSequence());
                 break;
             case 4:     //after memory animatic completed
+                StartCoroutine(TalkSequence());
                 break;
             case 5:     //Paul's message and conversation after
+                StartCoroutine(TalkSequence());
                 break;
             case 6:     //Second conversation
+                StartCoroutine(TalkSequence());
                 break;
         }
     }
@@ -170,7 +177,7 @@ public class Ghost : MonoBehaviour {
 
     IEnumerator TalkSequence()
     {
-        yield return (StartSequence());
+        yield return (0);
 
         if (startRun == false)
         {
