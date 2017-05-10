@@ -72,8 +72,8 @@ public class ObjectViewer : MonoBehaviour {
         selectedScale = selectedObj.transform.localScale;
 
         //set shaders to unlit
-        Material[] shaders = selectedObj.GetComponent<Renderer>().materials;
-        foreach (Material m in shaders) m.shader = Shader.Find("Unlit/Texture");
+        //Material[] shaders = selectedObj.GetComponent<Renderer>().materials;
+        //foreach (Material m in shaders) m.shader = Shader.Find("Unlit/Texture");
 
         //disable rigidbody so object doesn't just fall out of view
         selectedObj.GetComponent<Rigidbody>().isKinematic = true;
@@ -99,8 +99,8 @@ public class ObjectViewer : MonoBehaviour {
         viewingObject = false;
 
         //set shaders to lit
-        Material[] shaders = viewedObj.GetComponent<Renderer>().materials;
-        foreach(Material m in shaders) m.shader = Shader.Find("Standard");
+        //Material[] shaders = viewedObj.GetComponent<Renderer>().materials;
+        //foreach(Material m in shaders) m.shader = Shader.Find("Standard");
 
 
         //put that thing back where it came from or so help me
