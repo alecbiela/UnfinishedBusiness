@@ -27,6 +27,12 @@ public class Player : MonoBehaviour {
         inventory = this.gameObject.GetComponent<Inventory>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         examineText = GameObject.Find("ExamineText");
+
+        //add case file and badge to the inventory
+        GameObject badge = GameObject.Find("detective_badge");
+        GameObject file = GameObject.Find("case_file");
+        inventory.AddItem(badge);
+        inventory.AddItem(file);
 	}
 	
     // Update is called once per frame
