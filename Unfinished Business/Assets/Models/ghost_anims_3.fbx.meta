@@ -280,7 +280,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle 2
       takeName: Take 001
-      firstFrame: 141
+      firstFrame: 140
       lastFrame: 280
       wrapMode: 0
       orientationOffsetY: 0
@@ -416,7 +416,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Talking
       takeName: Take 001
-      firstFrame: 281
+      firstFrame: 280
       lastFrame: 420
       wrapMode: 0
       orientationOffsetY: 0
@@ -552,7 +552,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Beer
       takeName: Take 001
-      firstFrame: 421
+      firstFrame: 420
       lastFrame: 650
       wrapMode: 0
       orientationOffsetY: 0
