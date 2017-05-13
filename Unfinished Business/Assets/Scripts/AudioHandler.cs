@@ -38,16 +38,17 @@ public class AudioHandler : MonoBehaviour {
     //takes file name as argument (from texthandler)
     public void PlaySound(string fileName, AudioSource targetAudioSource, SoundType type)
     {
+        AudioClip sound;
         //decide what to do based on what sound it's coming from
         //hook this up with sound mixing settings that get set in the main menus
         switch(type)
         {
             case SoundType.Dialogue:
-                foreach(AudioClip sound in DialogueInteractions)
+                if ((sound = Resources.Load(fileName) as AudioClip) != null)
                 {
-                    if(sound.name == fileName)
-                        targetAudioSource.clip = sound;
+                    targetAudioSource.clip = sound;
                 }
+                else Debug.LogError("Error loading Audio Clip " + fileName);
                 break;
             default:
                 Debug.LogError("Unhandled Sound Type");

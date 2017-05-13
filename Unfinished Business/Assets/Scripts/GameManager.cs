@@ -117,7 +117,9 @@ public class GameManager : MonoBehaviour {
     public void StartViewingObject(GameObject obj, bool isTemp)
     {
         //stop the player from moving
-        player.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        Rigidbody prb = player.GetComponent<Rigidbody>();
+        prb.velocity = Vector3.zero;
+        prb.isKinematic = true;
 
         //change state
         SetState(GameStates.VIEWING_OBJECT);

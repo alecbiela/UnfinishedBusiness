@@ -150,7 +150,9 @@ public class ObjectViewer : MonoBehaviour {
 
         //Lastly, set state to running before we resume
         // and try to trigger the event
-        if(!isTemporary) viewedObj.GetComponent<Item>().PutMeDown();
+        //resume player movement
+        GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().isKinematic = false;
+        if (!isTemporary) viewedObj.GetComponent<Item>().PutMeDown();
         gm.SetState(GameManager.GameStates.RUNNING);
     }
 

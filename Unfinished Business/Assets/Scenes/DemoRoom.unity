@@ -276,6 +276,22 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 824545c55c7d5f44c87e6383d5f4c034, type: 3}
   m_PrefabInternal: {fileID: 1186671084}
+--- !u!1 &119007351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 4c6d7d18e60ba2045bc50a04e6a9a2a2, type: 3}
+  m_PrefabInternal: {fileID: 1042867203}
+--- !u!65 &119007356
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 119007351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 37.564888, y: 128.73737, z: 43.337143}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &125702098
 Prefab:
   m_ObjectHideFlags: 0
@@ -468,6 +484,10 @@ Prefab:
       propertyPath: m_Name
       value: wall1 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
   m_IsPrefabParent: 0
@@ -552,7 +572,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 0.75
   description: 
-  putDownID: 0
+  putDownID: 16
 --- !u!65 &217318615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -603,7 +623,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 0.5
   description: A piece of important mail
-  putDownID: 0
+  putDownID: 15
 --- !u!65 &272898223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1031,6 +1051,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67cba478b31620542a338befb5a959f9, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &388396498 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 67cba478b31620542a338befb5a959f9, type: 3}
+  m_PrefabInternal: {fileID: 335303231}
+--- !u!65 &388396502
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 388396498}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 88.29433, y: 126.70058, z: 77.91538}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &409707953
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1404,7 @@ MonoBehaviour:
   liftable: 1
   uiImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   reagentID: 0
-  viewDistance: 0
+  viewDistance: 0.6
   description: Something's Expanding...but it's not our restaurant business!
   putDownID: 3
 --- !u!65 &444043273
@@ -1465,6 +1501,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 15.180239, y: 20.652294, z: 1.5428486}
   m_Center: {x: 0.00000023841864, y: 0, z: 0}
+--- !u!1 &462826908 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 0699bc377f535154681132742fc8a3c4, type: 3}
+  m_PrefabInternal: {fileID: 1788282023}
+--- !u!65 &462826913
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462826908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 67.44369, y: 32.603405, z: 12.324188}
+  m_Center: {x: -0.03496953, y: 38.63313, z: -27.330965}
+--- !u!65 &462826914
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 462826908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 67.44369, y: 74.78024, z: 65.04241}
+  m_Center: {x: -0.016314419, y: -14.954907, z: -0.74767685}
 --- !u!1 &463469934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1815,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &552172963 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 9b0a91ad7d67fe24197b793bf58f568a, type: 3}
+  m_PrefabInternal: {fileID: 1595817965}
+--- !u!65 &552172968
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 552172963}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 95.624344, y: 46.217598, z: 47.98032}
+  m_Center: {x: 0, y: 0.0000009536743, z: 0}
 --- !u!1001 &627995814
 Prefab:
   m_ObjectHideFlags: 0
@@ -2113,6 +2193,23 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1866697066971948, guid: 477b769940f527d42872546aa455bf87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139139950150448, guid: 477b769940f527d42872546aa455bf87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319135894273192, guid: 477b769940f527d42872546aa455bf87, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114182730246443880, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 477b769940f527d42872546aa455bf87, type: 2}
@@ -2559,7 +2656,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 2
   description: 
-  putDownID: 0
+  putDownID: 7
 --- !u!54 &848506250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2573,7 +2670,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &848506251
 BoxCollider:
@@ -2708,6 +2805,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1494b574f168e9245923d7eb5cde66c8, type: 2}
+    - target: {fileID: 100000, guid: ed00b048eb3dbc040834ff9cefaa27d1, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ed00b048eb3dbc040834ff9cefaa27d1, type: 3}
   m_IsPrefabParent: 0
@@ -2803,6 +2904,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8b9729247e75bdb40be66784d564ae92, type: 2}
+    - target: {fileID: 100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
   m_IsPrefabParent: 0
@@ -3020,7 +3125,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 1.5
   description: 
-  putDownID: 0
+  putDownID: 11
 --- !u!54 &1043660671
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3034,7 +3139,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!65 &1043660672
 BoxCollider:
@@ -3281,9 +3386,29 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8b9729247e75bdb40be66784d564ae92, type: 2}
+    - target: {fileID: 100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1133477724 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: c6e137c973c7eec4684faa8ff4a9e2a7, type: 3}
+  m_PrefabInternal: {fileID: 1057691214}
+--- !u!65 &1133477729
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1133477724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.947746, y: 215.73312, z: 54.873978}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1140985171
 Prefab:
   m_ObjectHideFlags: 0
@@ -5176,7 +5301,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 0.4
   description: 
-  putDownID: 0
+  putDownID: 14
 --- !u!54 &1600959587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5323,6 +5448,37 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!1 &1652873986 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 0d1c3dc422e3c4740a2d8b6e1bf70c26, type: 3}
+  m_PrefabInternal: {fileID: 1155055439}
+--- !u!65 &1652873991
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652873986}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 73.780266, y: 0.5605478, z: 100.00026}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1652873992
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652873986}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1001 &1663715203
 Prefab:
@@ -5986,7 +6142,7 @@ MonoBehaviour:
   reagentID: 0
   viewDistance: 0.5
   description: 
-  putDownID: 0
+  putDownID: 2
 --- !u!65 &1959058560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6012,7 +6168,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!20 &1991227445 stripped
 Camera:
@@ -6472,6 +6628,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8b9729247e75bdb40be66784d564ae92, type: 2}
+    - target: {fileID: 100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a31148ac2908f694e849ff09aafb38a7, type: 3}
   m_IsPrefabParent: 0

@@ -20,7 +20,7 @@ d Joey: Hey!  What are you doing in my house!,,3350,,0,,0
 d Detective: Oh, this one doesn't know yet.  Hold on, let me get the script.,,3370,,0,,0
 d [Papers rustling, throat clearing],,4380,,0,,0
 d "Hello sir or ma'am.  Please, remain calm.,,3790,,0,,0
-d I am a friendly detective from the paranormal division of the FBI.  You have revently 'expired',,6630,,0,,0
+d I am a friendly detective from the paranormal division of the FBI.  You have recently 'expired',,6630,,0,,0
 d and I'm here to investigate why your ghost... is still here!",,4000,,0,,0
 d Joey: Expired?  What am I, a milk carton?  You're nuts, buddy.,,5840,,0,,0
 d Detective: I understand this news may be alarming.  If it helps you, don't think of it as being,,4630,,0,,0
@@ -59,7 +59,7 @@ d screaming about an employee cutting the tomatoes too thin.,,3100,,0,,0
 d Barbara, you're the co-owner, do you live like this?,,3135,,0,,0
 d Barbara: That's just how Joe is.  We handle different things.,,3350,,0,,0
 d I take care of the business side of things and he...cries over tomatoes.,,5085,,0,,0
-d Loretta: Ugh, I just wish he'd stop obcessing over every detail.,,3900,,0,,0
+d Loretta: Ugh, I just wish he'd stop obsessing over every detail.,,3900,,0,,0
 d Barbara: Hey, when you get home, can you ask him to take another look at this contract?,,3660,,0,,0
 d I know he doesn't want to expand, but this is a great opportunity for us.,,4320,,0,,0
 d Loretta: Yeah I'll ask him.  I wish he cared half as much about me as he does about the restaurant.,,5320,,0,,0
@@ -83,7 +83,7 @@ e 5
 m paulMessage
 d Paul: Hey Marino, you like that little makeover I gave your car?  Well there's more where that came from.,,5900,,0,,0
 d You Fired me over a steak when I have a family to feed at home.,,3410,,0,,0
-d I'm gonna kill you for what you did, Marino!  Nobody's gonna miss your sorry rich ass!,,4430,,0,,0
+d I'm gonna kill you for what you did, Marino!  No one's gonna miss your sorry rich ass!,,4430,,0,,0
 d   ,,1760,,0,,0
 d Joey: That's an ex-employee of mine.  He's a little...dramatic.,,5457,,0,,0
 d Detective: Are you sure this isn't the guy?  Because...it seems like he's your guy.,,5550,,0,,0
@@ -97,4 +97,103 @@ d Joey: So what are you lookin' for exactly?,,3280,,0,,0
 d Detective: Evidence, that might indicate a murder suspect, mostly.,,4550,,0,,0
 d Joey: Pfff, no one would murder me!,,3135,,0,,0
 d Detective: That's what they all say.,,2250,,0,,0
+i true
+
+
+e 7
+m wedPhoto
+d Detective: Aww, Adorable.,,2392,,0,,0
+d Joey: The SECOND best day of my life, right after the opening of my restaurant.,,4098,,0,,0
+d   ,,1277,,0,,0
+d Detective: Wow, I'm putting money down right now: Your wife did it.,,4807,,0,,0
+d Joey: You're on!,,755,,0,,0
+i true
+
+
+e 8
+m carDoc
+d Detective: And what happened here?,,1950,,0,,0
+d Joey: Anger issues.  I fired the guy and he busted up my car,,3680,,0,,0
+d Detective: Ah, nothing like some good old fashioned vandalism when you're in the mood for revenge...,,4563,,0,,0
+i true
+
+
+e 9
+m stuckDOpened
+d Detective: There we go.,,1869,,0,,0
+d Joey: We've only just met and you're already de-facing my property!,,3274,,0,,0
+i true
+
+
+e 10
+m stuckDClosed
+d Joey: Sorry I'm a little...messy.  It must be jammed.,,3773,,0,,0
+d Detective: You know, it wouldn't kill you to clean once and a while - oh wait, I'm sorry.  I didn't mean to say it like that.,,7581,,0,,0
+d Joey: Nope, nope, it's too late.  You already said it.,,2473,,0,,0
+i true
+
+
+e 11
+m gradPhoto
+d Joey: That's my son, Marco.,,2287,,0,,0
+d Detective: Did he...graduate recently?,,2171,,0,,0
+d Joey: No, this was a few years ago.  He's almost done with college now.,,3529,,0,,0
+d Detective: Oh, I see.,,1591,,0,,0
+i true
+
+
+e 12
+m restOpening
+d Joey: That was it!  The day Barbara and I opened Marino's.  It changed everything!,,5341,,0,,0
+d Detective: Oh, I'm sorry, would you like a moment alone with the photo?,,4226,,0,,0
+d Joey: Hey!  It was a big achievement.,,1672,,0,,0
+i true
+
+
+e 13
+m recipeBook
+d Detective: A family recipe book - how touching.,,3228,,0,,0
+d Joey: Hey, that book got me where I am today.,,2949,,0,,0
+d Detective: It got you killed?,,2218,,0,,0
+d Joey: N-no.  I meant before that.,,1405,,0,,0
+i true
+
+
+e 14
+m newsReview
+d Detective: Five stars.  I'm impressed!,,3843,,0,,0
+d Joey: Thanks, but that's an old review.  We've been - slipping recently.,,5004,,0,,0
+i true
+
+
+e 15
+m parentsLetter
+d Detective: I see your parents were trying to shake you down for some money.,,3158,,0,,0
+d Joey: Yes.  They never supported me and my dream, but now they wanna cash in.  It pisses me off!,,5364,,0,,0
+i true
+
+
+e 16
+m crowbar
+d Joey: What are you going to do with that?,,2125,,0,,0
+d Detective: Well I'd hit you with it, but it would go right through you, heh.,,4400,,0,,0
+d Joey: Ha ha ha ha!  Very funny.,,2740,,0,,0
+i true
+
+
+e 17
+m contract
+d Joey: That's a contract my business partner keeps nagging me to sign.  She wants us to purchase three new,,4760,,0,,0
+d restaurant locations from this company that's closing a bunch of theirs.,,4621,,0,,0
+d Detective: Is there something wrong with that?,,2229,,0,,0
+d Joey: I hate the entire idea.  I don't really wanna talk about it.,,4075,,0,,0
+d Detective: Fair enough.,,1196,,0,,0
+i true
+
+
+e 18
+m actingArticle
+d Detective: Who is this?,,2032,,0,,0
+d Joey: That's my wife, Loretta.  She used to be an actress.,,3181,,0,,0
+d Detective: Fancy!,,1161,,0,,0
 i true
