@@ -59,6 +59,7 @@ ModelImporter:
     100102: Thumb_R_3
     100104: Wrist_L
     100106: Wrist_R
+    100108: back
     400000: bottom
     400002: Chest_L
     400004: Chest_R
@@ -113,11 +114,15 @@ ModelImporter:
     400102: Thumb_R_3
     400104: Wrist_L
     400106: Wrist_R
+    400108: back
     4300000: pCone14
     7400000: Idle 1
     7400002: Idle 2
-    7400004: Talking
-    7400006: Beer
+    7400004: Idle 3
+    7400006: Talking Short
+    7400008: Talking Long
+    7400010: Beer Long
+    7400012: Beer Short
     9500000: //RootNode
     13700000: pCone14
   materials:
@@ -145,7 +150,7 @@ ModelImporter:
       name: Idle 1
       takeName: Take 001
       firstFrame: 0
-      lastFrame: 140
+      lastFrame: 300
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -280,8 +285,8 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle 2
       takeName: Take 001
-      firstFrame: 140
-      lastFrame: 280
+      firstFrame: 300
+      lastFrame: 600
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -414,10 +419,146 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Talking
+      name: Idle 3
       takeName: Take 001
-      firstFrame: 280
-      lastFrame: 420
+      firstFrame: 600
+      lastFrame: 900
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bottom
+        weight: 1
+      - path: pCone14
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Spine_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2/Pinky_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2/Ring_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2/Index_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2/Middle_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2/Thumb_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2/Pinky_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2/Ring_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2/Index_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2/Middle_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2/Thumb_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Pelvis/Tail_1
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Talking Short
+      takeName: Take 001
+      firstFrame: 900
+      lastFrame: 1200
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -550,10 +691,286 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Beer
+      name: Talking Long
       takeName: Take 001
-      firstFrame: 420
-      lastFrame: 650
+      firstFrame: 1200
+      lastFrame: 1800
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back
+        weight: 1
+      - path: bottom
+        weight: 1
+      - path: pCone14
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Spine_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2/Pinky_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2/Ring_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2/Index_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2/Middle_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2/Thumb_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2/Pinky_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2/Ring_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2/Index_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2/Middle_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2/Thumb_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Pelvis/Tail_1
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beer Long
+      takeName: Take 001
+      firstFrame: 1800
+      lastFrame: 2400
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: back
+        weight: 1
+      - path: bottom
+        weight: 1
+      - path: pCone14
+        weight: 1
+      - path: Pelvis
+        weight: 1
+      - path: Pelvis/Spine_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Pinky_L_1/Pinky_L_2/Pinky_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Hand_L/Ring_L_1/Ring_L_2/Ring_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Index_L_1/Index_L_2/Index_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Middle_L_1/Middle_L_2/Middle_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_L/Shoulder_L/Elbow_L/Forearm_L/Wrist_L/Thumb_L_1/Thumb_L_2/Thumb_L_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Pinky_R_1/Pinky_R_2/Pinky_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Hand_R/Ring_R_1/Ring_R_2/Ring_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Index_R_1/Index_R_2/Index_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Middle_R_1/Middle_R_2/Middle_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Chest_R/Shoulder_R/Elbow_R/Forearm_R/Wrist_R/Thumb_R_1/Thumb_R_2/Thumb_R_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3
+        weight: 1
+      - path: Pelvis/Spine_1/Spine_2/Spine_3/Neck
+        weight: 1
+      - path: Pelvis/Tail_1
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3
+        weight: 1
+      - path: Pelvis/Tail_1/Tail_2/Tail_3/Tail_4
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Beer Short
+      takeName: Take 001
+      firstFrame: 2400
+      lastFrame: 2700
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -575,6 +992,8 @@ ModelImporter:
       events: []
       transformMask:
       - path: 
+        weight: 1
+      - path: back
         weight: 1
       - path: bottom
         weight: 1

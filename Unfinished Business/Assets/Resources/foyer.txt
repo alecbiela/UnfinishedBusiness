@@ -31,7 +31,7 @@ d I've got your information right here.  You're Joey Marino.,,5140,,0,,0
 d Joey: How do you know my name?,,2120,,0,,0
 d Detective: Because you died.  And someone threw your case file on my desk.,,6137,,0,,0
 d Now tell me, do you remember anything about last night?,,3670,,0,,0
-d I came home and...I think I fell asleep in the chair on my balcony.,,4730,,0,,0
+d Joey:I came home and...I think I fell asleep in the chair on my balcony.,,4730,,0,,0
 d I don't remember anything else.,,2260,,0,,0
 d Detective: Hm, sounds about right.  Sometimes if a ghost has a quick death, they can't remember it.,,5690,,0,,0
 d Joey: I'm not a ghost!  That's just ridiculous.,,3250,,0,,0
