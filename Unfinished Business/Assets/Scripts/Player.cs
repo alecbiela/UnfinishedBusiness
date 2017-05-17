@@ -14,12 +14,7 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private GameObject selectedObj = null;
     private Color selectedColor;
-    private GameObject examineText;
     private GameManager gm;
-    //private string onScreenText;
-    private Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);
-
-    //inventory
     private Inventory inventory;
 
     // Use this for initialization
@@ -28,7 +23,6 @@ public class Player : MonoBehaviour {
         //crosshair = GameObject.Find("Crosshair");
         inventory = this.gameObject.GetComponent<Inventory>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        examineText = GameObject.Find("ExamineText");
 
         //add case file and badge to the inventory
         GameObject badge = GameObject.Find("detective_badge");
@@ -40,55 +34,41 @@ public class Player : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (TextHandler.handler.PlayingImportantText) return;
 
-        //check clicking on an animated object
-        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<AnimatedObject>() != null)
-        {
-            selectedObj.GetComponent<AnimatedObject>().Animate();
-        }
-
-        //if we click on a selected object, start viewing it
-        else if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
+        //check for mouse click on object
+        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
         {
             if (gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
             {
                 //if the used item matches the necessary reagent item
                 if(selectedObj.GetComponent<Item>().UseOnMe(gm.HeldItem.itemID))
                 {
-                    TextHandler.handler.DisplayExamineText("Used " + gm.HeldItem.itemName + " on " + selectedObj.GetComponent<Item>().itemName);
-                    TextHandler.handler.StartExamineTimer(2500);
-
                     //remove object from inventory and stop selecting it
                     inventory.RemoveItem(gm.HeldItem.itemName);
                     gm.SelectObject(null);
                 }
-                else
-                {
-                    TextHandler.handler.DisplayExamineText("Nothing Interesting Happens");
-                    TextHandler.handler.StartExamineTimer(2500);
-                }
             }
-            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText
-                && selectedObj.GetComponent<Item>().available)
+            else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText)
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
-                gm.StartViewingObject(selectedObj, false);
+                selectedObj.GetComponent<Item>().Activate();
             }
         }
 
         //stop selecting object if we right click (and don't click on anything else)
-        if(Input.GetMouseButtonDown(1) && gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
+        else if(Input.GetMouseButtonDown(1) && gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
         {
             gm.SelectObject(null);
         }
 
         //no longer able to pause while playing important text
-        if (Input.GetKeyDown(KeyCode.P) && !TextHandler.handler.PlayingImportantText
+        else if (Input.GetKeyDown(KeyCode.P)
             && (gm.GetState() != GameManager.GameStates.PAUSEMENU) && (gm.GetState() != GameManager.GameStates.SETTINGSMENU)
             ) gm.ToggleGamePaused();
 
         //opens pause menu (if not playing important text)
-        if (Input.GetKeyDown(KeyCode.Escape) && !TextHandler.handler.PlayingImportantText)
+        else if (Input.GetKeyDown(KeyCode.Escape))
         {
             gm.TogglePauseMenu();
         }
@@ -109,7 +89,6 @@ public class Player : MonoBehaviour {
         if (Camera.main == null) return;
 
         RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(screenCenter);
 
         //if we are in range of interacting with something
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, ObjInteractDist))
@@ -148,16 +127,9 @@ public class Player : MonoBehaviour {
                         break;
 
                     case GameManager.GameStates.RUNNING:    //normal object examination
-
-                        if (selectedObj.GetComponent<Item>() != null && selectedObj.GetComponent<Item>().available)
-                        {
-                            examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
-                        }
-                        else
-                        {
-                            examine = "Left Click to Activate \n" + selectedObj.name;
-                        }
+                        examine = selectedObj.GetComponent<Item>().ExamineInfo;
                         break;
+
                     default:
                         break;
                 }

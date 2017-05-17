@@ -147,7 +147,7 @@ MonoBehaviour:
   viewDistance: 0.5
   description: I should put this in the answering machine.
   putDownID: 0
-  activateText: examine
+  activateText: take
 --- !u!65 &46142784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 3
+  itemID: 9
   itemName: Crowbar
   obtainable: 1
   available: 1
@@ -587,7 +587,7 @@ MonoBehaviour:
   viewDistance: 0.75
   description: 
   putDownID: 16
-  activateText: examine
+  activateText: look at
 --- !u!65 &217318615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -633,14 +633,14 @@ MonoBehaviour:
   itemID: 4
   itemName: Important Mail
   obtainable: 1
-  available: 0
+  available: 1
   uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
   availableID: 0
   unavailableID: 0
   viewDistance: 0.5
   description: A piece of important mail
   putDownID: 15
-  activateText: 
+  activateText: take
 --- !u!65 &272898223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -961,7 +961,7 @@ MonoBehaviour:
   itemID: 0
   itemName: Tool Box
   obtainable: 0
-  available: 0
+  available: 1
   uiImage: {fileID: 0}
   availableID: 0
   unavailableID: 0
@@ -1076,6 +1076,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f60890afc6c615f44bfc2303e2dbe04a, type: 2}
+    - target: {fileID: 100000, guid: 67cba478b31620542a338befb5a959f9, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 67cba478b31620542a338befb5a959f9, type: 3}
   m_IsPrefabParent: 0
@@ -1198,16 +1202,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: 
+  itemName: End Table Drawer
   obtainable: 0
   available: 0
   uiImage: {fileID: 0}
-  availableID: 0
-  unavailableID: 0
+  availableID: 9
+  unavailableID: 10
   viewDistance: 0
   description: 
   putDownID: 0
-  activateText: 
+  activateText: Open
   Translation: {x: -0.6, y: 0, z: 0}
   Rotation: {x: 0, y: 0, z: 0}
   AxisOfRotation: {x: 0, y: 0, z: 0}
@@ -1493,14 +1497,14 @@ MonoBehaviour:
   itemID: 5
   itemName: Junk Mail
   obtainable: 0
-  available: 0
+  available: 1
   uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
   availableID: 0
   unavailableID: 0
   viewDistance: 0.5
   description: 
   putDownID: 0
-  activateText: 
+  activateText: look at
 --- !u!65 &453755404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1704,6 +1708,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 6801f9b067b00b644b0f581a23902ab0, type: 2}
+    - target: {fileID: 100000, guid: ff77f044a3e861043be5ae5b318e38e9, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff77f044a3e861043be5ae5b318e38e9, type: 3}
   m_IsPrefabParent: 0
@@ -2177,7 +2185,27 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114048210262498506, guid: 477b769940f527d42872546aa455bf87,
+    - target: {fileID: 114833937811352524, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 308959995}
+    - target: {fileID: 114647208578865836, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 465383054}
+    - target: {fileID: 114602037266396222, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 529555690}
+    - target: {fileID: 114264602708266452, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 465383054}
+    - target: {fileID: 114226000597988282, guid: 477b769940f527d42872546aa455bf87,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2187,31 +2215,11 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 317903716}
-    - target: {fileID: 114226000597988282, guid: 477b769940f527d42872546aa455bf87,
+    - target: {fileID: 114048210262498506, guid: 477b769940f527d42872546aa455bf87,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 317903716}
-    - target: {fileID: 114264602708266452, guid: 477b769940f527d42872546aa455bf87,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 465383054}
-    - target: {fileID: 114602037266396222, guid: 477b769940f527d42872546aa455bf87,
-        type: 2}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 529555690}
-    - target: {fileID: 114647208578865836, guid: 477b769940f527d42872546aa455bf87,
-        type: 2}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 465383054}
-    - target: {fileID: 114833937811352524, guid: 477b769940f527d42872546aa455bf87,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 308959995}
     - target: {fileID: 224981979348772362, guid: 477b769940f527d42872546aa455bf87,
         type: 2}
       propertyPath: m_AnchorMax.x
@@ -2236,23 +2244,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1866697066971948, guid: 477b769940f527d42872546aa455bf87, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139139950150448, guid: 477b769940f527d42872546aa455bf87, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1319135894273192, guid: 477b769940f527d42872546aa455bf87, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114182730246443880, guid: 477b769940f527d42872546aa455bf87,
-        type: 2}
-      propertyPath: m_Text
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 477b769940f527d42872546aa455bf87, type: 2}
@@ -2600,7 +2591,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 1
+  itemID: -1
   itemName: Answering Machine
   obtainable: 0
   available: 0
@@ -2693,17 +2684,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: -1
   itemName: Wedding Photo
   obtainable: 0
-  available: 0
+  available: 1
   uiImage: {fileID: 0}
   availableID: 0
   unavailableID: 0
   viewDistance: 2
   description: 
   putDownID: 7
-  activateText: 
+  activateText: look at
 --- !u!54 &848506250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3079,6 +3070,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.016823163
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4c6d7d18e60ba2045bc50a04e6a9a2a2, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c6d7d18e60ba2045bc50a04e6a9a2a2, type: 3}
   m_IsPrefabParent: 0
@@ -3164,17 +3159,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6375c25a823c61a4da36724b40867940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
+  itemID: -1
   itemName: Graduation Photo
   obtainable: 0
-  available: 0
+  available: 1
   uiImage: {fileID: 0}
   availableID: 0
   unavailableID: 0
   viewDistance: 1.5
   description: 
   putDownID: 11
-  activateText: 
+  activateText: look at
 --- !u!54 &1043660671
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3252,6 +3247,10 @@ Prefab:
     - target: {fileID: 400000, guid: c6e137c973c7eec4684faa8ff4a9e2a7, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.012543438
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c6e137c973c7eec4684faa8ff4a9e2a7, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6e137c973c7eec4684faa8ff4a9e2a7, type: 3}
@@ -3604,6 +3603,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 0.0034755818
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0d1c3dc422e3c4740a2d8b6e1bf70c26, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0d1c3dc422e3c4740a2d8b6e1bf70c26, type: 3}
   m_IsPrefabParent: 0
@@ -3797,7 +3800,7 @@ GameObject:
   - component: {fileID: 1226001022}
   - component: {fileID: 1226001021}
   - component: {fileID: 1226001020}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3948,7 +3951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275819839}
   - component: {fileID: 1275819840}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4322,17 +4325,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d8602ba5bb7343a7244ea5c492edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 0
-  itemName: 
+  itemID: -1
+  itemName: Door To Office
   obtainable: 0
-  available: 0
+  available: 1
   uiImage: {fileID: 0}
   availableID: 0
   unavailableID: 0
   viewDistance: 0
   description: 
   putDownID: 0
-  activateText: 
+  activateText: open
   Translation: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 110, z: 0}
   AxisOfRotation: {x: 0, y: -1, z: 0}
@@ -4815,7 +4818,7 @@ MonoBehaviour:
   viewDistance: 0.85
   description: 
   putDownID: 0
-  activateText: examine
+  activateText: look at
 --- !u!65 &1414395667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5260,6 +5263,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e17cad15750868a4988f4ce91c457d9c, type: 2}
+    - target: {fileID: 100000, guid: 9b0a91ad7d67fe24197b793bf58f568a, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b0a91ad7d67fe24197b793bf58f568a, type: 3}
   m_IsPrefabParent: 0
@@ -5358,7 +5365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
-  itemName: restaurant review
+  itemName: Restaurant Review
   obtainable: 0
   available: 1
   uiImage: {fileID: 0}
@@ -5367,7 +5374,7 @@ MonoBehaviour:
   viewDistance: 0.4
   description: 
   putDownID: 14
-  activateText: 
+  activateText: look at
 --- !u!54 &1600959587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5482,7 +5489,7 @@ MonoBehaviour:
   itemID: 0
   itemName: Detective Badge
   obtainable: 1
-  available: 0
+  available: 1
   uiImage: {fileID: 21300000, guid: f8d8dd6d56c68924da8440df59bd573b, type: 3}
   availableID: 0
   unavailableID: 0
@@ -5927,6 +5934,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f69f3d7f468346847b223866c56c8532, type: 2}
+    - target: {fileID: 100000, guid: 0699bc377f535154681132742fc8a3c4, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0699bc377f535154681132742fc8a3c4, type: 3}
   m_IsPrefabParent: 0
@@ -6212,7 +6223,7 @@ MonoBehaviour:
   viewDistance: 0.5
   description: 
   putDownID: 2
-  activateText: 
+  activateText: take
 --- !u!65 &1959058560
 BoxCollider:
   m_ObjectHideFlags: 0

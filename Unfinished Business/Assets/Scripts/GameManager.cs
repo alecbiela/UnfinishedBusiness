@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour {
     public enum GameStates { RUNNING = 0, PAUSED, VIEWING_OBJECT, PLACING_OBJECT, STOPPED, PAUSEMENU, SETTINGSMENU, START};
     private GameStates currentState, previousState;
 
-    private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI, subtitlesButton;
-    private GameObject[] invSlots;
+    private GameObject runningUI, pausedUI, pauseMenuUI, settingsMenuUI, objViewingUI;
     private ObjectViewer objViewer;
     private RigidbodyFirstPersonController player;
     private GameObject heldObject;
@@ -29,10 +28,9 @@ public class GameManager : MonoBehaviour {
         pausedUI = GameObject.Find("PausedUI");
         pauseMenuUI = GameObject.Find("PauseMenuUI");
         settingsMenuUI = GameObject.Find("SettingsUI");
-        subtitlesButton = GameObject.Find("Subtitles");
+        objViewingUI = GameObject.Find("ObjViewingUI");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
-        invSlots = GameObject.FindGameObjectsWithTag("InventorySlot");
         
         //call statechange once to initialize state
         stateChanged = true;
@@ -52,13 +50,6 @@ public class GameManager : MonoBehaviour {
             //ghost.MoveToPosition(new Vector3(24.22f, 0.4f, 33.78f));
         }
         if (stateChanged) StateChange();
-
-        //if (Input.GetKeyDown(KeyCode.T))
-        //{
-        //    if (TextHandler.handler.DisplaySubtitles) TextHandler.handler.DisplaySubtitles = false;
-        //    else TextHandler.handler.DisplaySubtitles = true;
-        //   
-        //}
 	}
 
     //sets the current game state
@@ -148,6 +139,7 @@ public class GameManager : MonoBehaviour {
                 runningUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
                 settingsMenuUI.SetActive(false);
+                objViewingUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 player.ViewingObj = false;
@@ -158,6 +150,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
                 settingsMenuUI.SetActive(false);
+                objViewingUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;
@@ -170,6 +163,7 @@ public class GameManager : MonoBehaviour {
                 runningUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
                 settingsMenuUI.SetActive(false);
+                objViewingUI.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = true;
@@ -180,6 +174,7 @@ public class GameManager : MonoBehaviour {
                 runningUI.SetActive(true);
                 settingsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(false);
+                objViewingUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 player.ViewingObj = false;
@@ -190,7 +185,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(false);
                 settingsMenuUI.SetActive(false);
                 pauseMenuUI.SetActive(true);
-
+                objViewingUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;
@@ -201,6 +196,7 @@ public class GameManager : MonoBehaviour {
                 pausedUI.SetActive(false);
                 settingsMenuUI.SetActive(true);
                 pauseMenuUI.SetActive(false);
+                objViewingUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 player.ViewingObj = false;

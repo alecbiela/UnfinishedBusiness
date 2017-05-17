@@ -16,30 +16,40 @@ public class Item : MonoBehaviour {
     public int putDownID;       //event ID for when the object is put down
     public string activateText; //verb to use when examining (view, open, unlock, etc.)
 
-    private string examineText;
+    private GameManager gm;
+    protected string examineText;
     public string ExamineInfo { get { return examineText; } }
 
     //initializes examine information
-    void Start()
+    protected virtual void Start()
     {
         if (string.IsNullOrEmpty(activateText)) activateText = "activate";
         if (string.IsNullOrEmpty(itemName)) itemName = "Unknown Object";
 
-        examineText = "Left click to " + activateText + itemName;
+        examineText = "Left click to " + activateText  + " " + itemName;
+
+        gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
     }
 
+    //activates the item (usually start viewing)
     public virtual void Activate()
     {
-
+        if(available) gm.StartViewingObject(this.gameObject, false);
     }
 
     //a method which returns true if the item being used on this one
     //is a match (e.x. key to a locked door) or false otherwise
     public virtual bool UseOnMe(int itemID)
     {
-        if(itemID == availableID || itemID == unavailableID)
+        if(available && itemID == availableID)
         {
-            //PlaySubtitles();
+            EventHandler.handler.TriggerEvent(availableID);
+            return true;
+        }
+
+        if(!available && itemID == availableID)
+        {
+            if(this.itemID != -1) available = true;
             EventHandler.handler.TriggerEvent(availableID);
             return true;
         }

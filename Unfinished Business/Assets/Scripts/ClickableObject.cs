@@ -15,7 +15,6 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnte
     private Inventory inventory;
     private GameObject textBox;
     public int slot;
-    private RectTransform rt;   //the rect transform of this object
 
     //make sure all of the slots can find the textbox before it's turned off
     void Awake()
@@ -28,7 +27,6 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerEnte
     {
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         if (textBox.activeSelf) textBox.SetActive(false);
-        rt = this.gameObject.GetComponent<RectTransform>();
     }
 
     //handles pointer click on this slot

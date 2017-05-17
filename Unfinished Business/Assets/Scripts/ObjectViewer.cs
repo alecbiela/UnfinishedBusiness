@@ -15,8 +15,6 @@ public class ObjectViewer : MonoBehaviour {
     private Vector3 mouseDelta = Vector3.zero;
     private Vector3 lastMouse = Vector3.zero;
     private float distance = 3.0f;
-    private float maxDistance;
-    private float minDistance = 1.2f;
     private bool isTemporary = true;
     public float MOUSE_SENSITIVITY;
     private Slider sliderSens;
@@ -41,7 +39,7 @@ public class ObjectViewer : MonoBehaviour {
         //stop viewing if we right click
         if (Input.GetMouseButtonDown(1) && viewingObject)
         {
-            StopViewing();
+            if(!TextHandler.handler.PlayingImportantText) StopViewing();
         }
 
         SetSensivity();
