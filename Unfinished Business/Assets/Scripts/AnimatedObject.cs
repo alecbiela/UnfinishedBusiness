@@ -24,7 +24,9 @@ public class AnimatedObject : Item {
     }
 
 	// Use this for initialization
-	void Start () {
+	protected override void Start () {
+        base.Start();
+
         _atRest = true;
         _animating = false;
         _timer = 0;
@@ -46,7 +48,6 @@ public class AnimatedObject : Item {
         AxisOfRotation.Normalize();
 
         //calculate step
-        float durationSq = AnimationDuration * AnimationDuration;
         _translationStep = Translation / AnimationDuration;
         _rotationStep = Rotation.magnitude / AnimationDuration;
     }
@@ -69,6 +70,7 @@ public class AnimatedObject : Item {
             {
                 _animating = false;
                 _atRest = !_atRest;
+                examineText = "Left click to " + (_atRest ? "open " : "close ") + itemName;
             }
         }
     }
@@ -101,5 +103,12 @@ public class AnimatedObject : Item {
             _animating = true;
             _timer = AnimationDuration;
         }
+    }
+
+    //activates the animated object (overriden from Item)
+    public override void Activate()
+    {
+        if (!available) EventHandler.handler.TriggerEvent(unavailableID);
+        else Animate();
     }
 }
