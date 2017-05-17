@@ -9,7 +9,6 @@ public class ObjectViewer : MonoBehaviour {
     private GameManager gm;
     private GameObject viewedObj;
     private Vector3 selectedPos, selectedRot, selectedScale, lookRotation;
-    //private GameObject examineText;
     private GameObject crosshair;
     private Sprite defaultCrosshair;
     private bool viewingObject = false;
@@ -28,7 +27,6 @@ public class ObjectViewer : MonoBehaviour {
     // Use this for initialization
     void Start () {
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        //examineText = GameObject.Find("ExamineText");
         crosshair = GameObject.Find("Crosshair");
         crosshair.transform.position = new Vector3(Screen.width / 2, Screen.height / 2, 0);
         sliderSens = GameObject.Find("SliderSens").GetComponent<Slider>();
@@ -40,6 +38,7 @@ public class ObjectViewer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //stop viewing if we right click
         if (Input.GetMouseButtonDown(1) && viewingObject)
         {
             StopViewing();
@@ -83,10 +82,7 @@ public class ObjectViewer : MonoBehaviour {
         //http://answers.unity3d.com/questions/466665/placing-a-gameobject-in-the-exact-center-of-the-ca.html
         selectedObj.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, startingDistance));
 
-        //stop highlighting
-        //selectedObj.GetComponent<MeshRenderer>().material.color = new Color(255,255,255,255);
-
-        //turn off collider?
+        //turn off collider
         selectedObj.GetComponent<Collider>().enabled = false;
         selectedObj.layer = 8;  //set to "always-on-top" layer
 
@@ -125,7 +121,6 @@ public class ObjectViewer : MonoBehaviour {
             viewedObj.layer = 2;
 
             //add reference to it in inventory
-            //inventory.Add(selectedObj.GetComponent<Item>().itemName, selectedObj.gameObject);
             if (!isTemporary)
             {
                 GameObject.Find("Player").GetComponent<Inventory>().AddItem(viewedObj);
@@ -133,10 +128,6 @@ public class ObjectViewer : MonoBehaviour {
                 //now tells the texthandler to do it up
                 TextHandler.handler.DisplayExamineText(viewedObj.GetComponent<Item>().itemName + "\nadded to inventory.");
                 TextHandler.handler.StartExamineTimer(2500);
-                //until the player moves again it still displays the text to view the object that's been picked up
-                //to get around this i'm just going to change it here to say "x added to inventory"
-                //string added = viewedObj.GetComponent<Item>().itemName + "\nadded to inventory.";
-                //examineText.GetComponent<Text>().text = added;
             }
             else
             {
@@ -150,12 +141,13 @@ public class ObjectViewer : MonoBehaviour {
 
         //Lastly, set state to running before we resume
         // and try to trigger the event
-        //resume player movement
+        //Also, resume player movement
         GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody>().isKinematic = false;
         if (!isTemporary) viewedObj.GetComponent<Item>().PutMeDown();
         gm.SetState(GameManager.GameStates.RUNNING);
     }
 
+    //Rotates the viewed object
     void RotateViewed()
     {
         //update mouse delta (in world space)
@@ -178,24 +170,11 @@ public class ObjectViewer : MonoBehaviour {
     //zooms in and out
     void ScrollViewed()
     {
-        /*if (Input.mouseScrollDelta.y < 0) selectedObj.transform.localScale *= 1 + SCALE_SENSITIVITY;
-        else selectedObj.transform.localScale *= 1 - SCALE_SENSITIVITY;
-
-        //check bounds
-        if(selectedObj.transform.localScale.x <= 0.01f)
-        {
-            selectedObj.transform.localScale = Vector3.one;
-            selectedObj.transform.localScale *= 0.01f;
-        }*/
         distance = Input.mouseScrollDelta.y * Time.deltaTime * 6f;
-        //Vector3 closest = selectedObj.GetComponent<Collider>().bounds.ClosestPoint(this.transform.position);
-
-        //if (distance > maxDistance) distance = maxDistance;
-        //else if (distance < minDistance) distance = minDistance;
         viewedObj.transform.position += Camera.main.transform.forward * distance;
-
     }
 
+    
     public void ToggleXhair()
     {
         displayXHair = toggleXhair.isOn;

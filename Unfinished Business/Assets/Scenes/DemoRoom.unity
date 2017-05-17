@@ -140,12 +140,14 @@ MonoBehaviour:
   itemID: 5
   itemName: Cassette Tape
   obtainable: 1
-  liftable: 1
+  available: 1
   uiImage: {fileID: 21300000, guid: 52f3560496533a24da1ce50fc282f25a, type: 3}
-  reagentID: 1
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.5
   description: I should put this in the answering machine.
   putDownID: 0
+  activateText: examine
 --- !u!65 &46142784
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -267,6 +269,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d8602ba5bb7343a7244ea5c492edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: 
+  obtainable: 0
+  available: 0
+  uiImage: {fileID: 0}
+  availableID: 0
+  unavailableID: 0
+  viewDistance: 0
+  description: 
+  putDownID: 0
+  activateText: 
   Translation: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 110, z: 0}
   AxisOfRotation: {x: 0, y: -1, z: 0}
@@ -567,12 +580,14 @@ MonoBehaviour:
   itemID: 3
   itemName: Crowbar
   obtainable: 1
-  liftable: 1
+  available: 1
   uiImage: {fileID: 21300000, guid: f29ae0a2b2557914c8c66e2dfbe0dc69, type: 3}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.75
   description: 
   putDownID: 16
+  activateText: examine
 --- !u!65 &217318615
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -618,12 +633,14 @@ MonoBehaviour:
   itemID: 4
   itemName: Important Mail
   obtainable: 1
-  liftable: 1
+  available: 0
   uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.5
   description: A piece of important mail
   putDownID: 15
+  activateText: 
 --- !u!65 &272898223
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -941,6 +958,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d8602ba5bb7343a7244ea5c492edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: Tool Box
+  obtainable: 0
+  available: 0
+  uiImage: {fileID: 0}
+  availableID: 0
+  unavailableID: 0
+  viewDistance: 0
+  description: 
+  putDownID: 0
+  activateText: Open
   Translation: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 90, z: 0}
   AxisOfRotation: {x: 0, y: 0, z: -1}
@@ -1169,6 +1197,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d8602ba5bb7343a7244ea5c492edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: 
+  obtainable: 0
+  available: 0
+  uiImage: {fileID: 0}
+  availableID: 0
+  unavailableID: 0
+  viewDistance: 0
+  description: 
+  putDownID: 0
+  activateText: 
   Translation: {x: -0.6, y: 0, z: 0}
   Rotation: {x: 0, y: 0, z: 0}
   AxisOfRotation: {x: 0, y: 0, z: 0}
@@ -1401,12 +1440,14 @@ MonoBehaviour:
   itemID: 0
   itemName: Expansion Contract
   obtainable: 1
-  liftable: 1
+  available: 1
   uiImage: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.6
-  description: Something's Expanding...but it's not our restaurant business!
+  description: A contract for expanding the business
   putDownID: 3
+  activateText: 
 --- !u!65 &444043273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1432,7 +1473,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 14
   m_CollisionDetection: 0
 --- !u!1 &453755402 stripped
 GameObject:
@@ -1452,12 +1493,14 @@ MonoBehaviour:
   itemID: 5
   itemName: Junk Mail
   obtainable: 0
-  liftable: 1
+  available: 0
   uiImage: {fileID: 21300000, guid: cc65cdf5c8df45346b299dceeb641f9f, type: 3}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.5
   description: 
   putDownID: 0
+  activateText: 
 --- !u!65 &453755404
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2560,12 +2603,14 @@ MonoBehaviour:
   itemID: 1
   itemName: Answering Machine
   obtainable: 0
-  liftable: 0
+  available: 0
   uiImage: {fileID: 0}
-  reagentID: 5
-  viewDistance: 0.8
+  availableID: 5
+  unavailableID: 0
+  viewDistance: 0
   description: 
   putDownID: 0
+  activateText: turn on
 --- !u!1 &848506244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2651,12 +2696,14 @@ MonoBehaviour:
   itemID: 0
   itemName: Wedding Photo
   obtainable: 0
-  liftable: 1
+  available: 0
   uiImage: {fileID: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 2
   description: 
   putDownID: 7
+  activateText: 
 --- !u!54 &848506250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3120,12 +3167,14 @@ MonoBehaviour:
   itemID: 0
   itemName: Graduation Photo
   obtainable: 0
-  liftable: 1
+  available: 0
   uiImage: {fileID: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 1.5
   description: 
   putDownID: 11
+  activateText: 
 --- !u!54 &1043660671
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3988,13 +4037,15 @@ MonoBehaviour:
   itemID: 0
   itemName: Case File
   obtainable: 1
-  liftable: 0
+  available: 0
   uiImage: {fileID: 21300000, guid: 2598cdbe5f028e44fa08612c50f00186, type: 3}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 1
   description: Joey Marino's case file. Contains info on the circumstances of his
     death
   putDownID: 0
+  activateText: 
 --- !u!65 &1292207548
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4271,6 +4322,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd2d8602ba5bb7343a7244ea5c492edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemID: 0
+  itemName: 
+  obtainable: 0
+  available: 0
+  uiImage: {fileID: 0}
+  availableID: 0
+  unavailableID: 0
+  viewDistance: 0
+  description: 
+  putDownID: 0
+  activateText: 
   Translation: {x: 0, y: 0, z: 0}
   Rotation: {x: 0, y: 110, z: 0}
   AxisOfRotation: {x: 0, y: -1, z: 0}
@@ -4746,12 +4808,14 @@ MonoBehaviour:
   itemID: 6
   itemName: Vase
   obtainable: 0
-  liftable: 1
+  available: 1
   uiImage: {fileID: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.85
   description: 
   putDownID: 0
+  activateText: examine
 --- !u!65 &1414395667
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5296,12 +5360,14 @@ MonoBehaviour:
   itemID: 0
   itemName: restaurant review
   obtainable: 0
-  liftable: 1
+  available: 1
   uiImage: {fileID: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.4
   description: 
   putDownID: 14
+  activateText: 
 --- !u!54 &1600959587
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5416,12 +5482,14 @@ MonoBehaviour:
   itemID: 0
   itemName: Detective Badge
   obtainable: 1
-  liftable: 0
+  available: 0
   uiImage: {fileID: 21300000, guid: f8d8dd6d56c68924da8440df59bd573b, type: 3}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.5
   description: My detective badge. I don't have this thing for nothing.
   putDownID: 0
+  activateText: 
 --- !u!65 &1648824663
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6137,12 +6205,14 @@ MonoBehaviour:
   itemID: 0
   itemName: Beer Can
   obtainable: 0
-  liftable: 1
+  available: 1
   uiImage: {fileID: 0}
-  reagentID: 0
+  availableID: 0
+  unavailableID: 0
   viewDistance: 0.5
   description: 
   putDownID: 2
+  activateText: 
 --- !u!65 &1959058560
 BoxCollider:
   m_ObjectHideFlags: 0

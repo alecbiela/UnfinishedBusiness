@@ -206,6 +206,6 @@ public class EventHandler : MonoBehaviour {
         }
 
         //if we get here, that means there isn't an event id that matches in this scene
-        Debug.LogError("ERROR: No suitable event id found in this scene!");
+        Debug.LogError("ERROR: No suitable event (ID: " + eventIn + ") found in this scene!");
     }
 }

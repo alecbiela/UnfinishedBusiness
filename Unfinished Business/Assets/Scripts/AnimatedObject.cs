@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //Represents ANY object which can be animated, with adjustments defined in inspector
-public class AnimatedObject : MonoBehaviour {
+public class AnimatedObject : Item {
 
     //Basic Attributes
     public Vector3 Translation;

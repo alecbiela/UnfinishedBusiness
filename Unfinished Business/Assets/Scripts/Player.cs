@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityStandardAssets.Characters.FirstPerson;
 using UnityEngine.UI;
 
+//Represents the player
+//Currently moved using the rigidbody FPS controller
 public class Player : MonoBehaviour {
     public float ObjInteractDist;
     public float MOUSE_SENSITIVITY;
@@ -39,16 +41,22 @@ public class Player : MonoBehaviour {
     void Update()
     {
 
+        //check clicking on an animated object
+        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<AnimatedObject>() != null)
+        {
+            selectedObj.GetComponent<AnimatedObject>().Animate();
+        }
+
         //if we click on a selected object, start viewing it
-		if(Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
+        else if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Renderer>().enabled && selectedObj.GetComponent<Item>() != null)
         {
             if (gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
             {
                 //if the used item matches the necessary reagent item
                 if(selectedObj.GetComponent<Item>().UseOnMe(gm.HeldItem.itemID))
                 {
-                    Debug.Log("The item reacts!");
-                    //onScreenText = gm.HeldItem.itemName + " used on " + selectedObj.GetComponent<Item>().itemName;
+                    TextHandler.handler.DisplayExamineText("Used " + gm.HeldItem.itemName + " on " + selectedObj.GetComponent<Item>().itemName);
+                    TextHandler.handler.StartExamineTimer(2500);
 
                     //remove object from inventory and stop selecting it
                     inventory.RemoveItem(gm.HeldItem.itemName);
@@ -56,45 +64,17 @@ public class Player : MonoBehaviour {
                 }
                 else
                 {
-                    //debug log - remove once object use-on-item is nailed down
-                    Debug.Log("Item doesn't work on that");
-                    //onScreenText = "Nothing happens.";
+                    TextHandler.handler.DisplayExamineText("Nothing Interesting Happens");
+                    TextHandler.handler.StartExamineTimer(2500);
                 }
             }
             else if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT) && !TextHandler.handler.PlayingImportantText
-                && selectedObj.GetComponent<Item>().liftable)
+                && selectedObj.GetComponent<Item>().available)
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 gm.StartViewingObject(selectedObj, false);
             }
         }
-
-        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<AnimatedObject>() != null)
-        {
-            selectedObj.GetComponent<AnimatedObject>().Animate();
-        }
-
-		//if we click on a door, open it
-		/*if (Input.GetMouseButtonDown (0) && selectedObj != null && selectedObj.GetComponent<Door>() != null) {
-			ActivateDoor ();
-		}
-
-        //if we click a cabinet/drawer, open/close it
-        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<Cabinet>() != null)
-        {
-            //switch its state
-            selectedObj.GetComponent<Cabinet>().open = !selectedObj.GetComponent<Cabinet>().open;
-        }
-
-        //toolboxes too!
-        if (Input.GetMouseButtonDown(0) && selectedObj != null && selectedObj.GetComponent<ToolBoxDoor>() != null)
-        {
-            //switch its state
-            selectedObj.GetComponent<ToolBoxDoor>().open = !selectedObj.GetComponent<ToolBoxDoor>().open;
-        }*/
-
-        //update on screen text
-        //UpdateOnScreenText();
 
         //stop selecting object if we right click (and don't click on anything else)
         if(Input.GetMouseButtonDown(1) && gm.GetState() == GameManager.GameStates.PLACING_OBJECT)
@@ -121,11 +101,6 @@ public class Player : MonoBehaviour {
         if (!(gm.GetState() == GameManager.GameStates.VIEWING_OBJECT)) CheckHighlight();
 	}
 
-    //pushes whatever is in the onScreenText variable onto the screen
-    //private void UpdateOnScreenText()
-    //{
-    //    examineText.GetComponent<Text>().text = onScreenText;
-    //}
 
     //raycasts forward and checks if we should highlight an object
     private void CheckHighlight()
@@ -174,7 +149,7 @@ public class Player : MonoBehaviour {
 
                     case GameManager.GameStates.RUNNING:    //normal object examination
 
-                        if (selectedObj.GetComponent<Item>() != null && selectedObj.GetComponent<Item>().liftable)
+                        if (selectedObj.GetComponent<Item>() != null && selectedObj.GetComponent<Item>().available)
                         {
                             examine = "Left Click to Examine \n" + selectedObj.GetComponent<Item>().itemName;
                         }
@@ -182,50 +157,10 @@ public class Player : MonoBehaviour {
                         {
                             examine = "Left Click to Activate \n" + selectedObj.name;
                         }
-                        /*else if (selectedObj.GetComponent<Door>() != null)
-                        {
-                            if (!selectedObj.GetComponent<Door>().open)
-                            {
-                                examine = "Left Click to Open Door";
-                            }
-                            else {
-                                examine = "Left Click to Close Door";
-                            }
-                        }
-                        else if (selectedObj.GetComponent<Cabinet>() != null)
-                        {
-                            if (!selectedObj.GetComponent<Cabinet>().open)
-                            {
-                                examine = "Left Click to Open Cabinet";
-                            }
-                            else
-                            {
-                                examine = "Left Click to Close Cabinet";
-                            }
-                        }
-                        else if (selectedObj.GetComponent<ToolBoxDoor>() != null)
-                        {
-                            if (!selectedObj.GetComponent<ToolBoxDoor>().open)
-                            {
-                                examine = "Left Click to Open Tool Box";
-                            }
-                            else
-                            {
-                                examine = "Left Click to Close Tool Box";
-                            }
-                        }*/
                         break;
                     default:
                         break;
                 }
-
-
-            //if object is not something interactable, don't highlight
-            //else
-            //{
-            //    selectedColor = selectedObj.GetComponent<MeshRenderer>().material.color;
-            //    return;
-            //}
 
                 //set color and store a reference to the object               
                 MeshRenderer mr = selectedObj.GetComponent<MeshRenderer>();
@@ -244,7 +179,6 @@ public class Player : MonoBehaviour {
             {
                 selectedObj.GetComponent<MeshRenderer>().material.color = selectedColor;
                 selectedObj = null;
-                //onScreenText = " ";
 
                 //clear text if there's no timer
                 TextHandler.handler.ClearExamineTextSafe();
@@ -252,11 +186,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-	//void ActivateDoor(){
-		//in retrospect this probably didn't need to be its own method
-		//selectedObj.GetComponent<Door>().open = !selectedObj.GetComponent<Door>().open;
-	//}
-
+    //loads the main menu
     public void GoToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu", UnityEngine.SceneManagement.LoadSceneMode.Single);
