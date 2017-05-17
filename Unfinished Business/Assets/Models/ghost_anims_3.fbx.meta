@@ -60,6 +60,7 @@ ModelImporter:
     100104: Wrist_L
     100106: Wrist_R
     100108: back
+    100110: left
     400000: bottom
     400002: Chest_L
     400004: Chest_R
@@ -115,6 +116,7 @@ ModelImporter:
     400104: Wrist_L
     400106: Wrist_R
     400108: back
+    400110: left
     4300000: pCone14
     7400000: Idle 1
     7400002: Idle 2
