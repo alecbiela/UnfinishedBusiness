@@ -2370,6 +2370,21 @@ Prefab:
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114943848445005774, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1024
+      objectReference: {fileID: 0}
+    - target: {fileID: 114943848445005774, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 114943848445005774, guid: 477b769940f527d42872546aa455bf87,
+        type: 2}
+      propertyPath: m_ReferencePixelsPerUnit
+      value: 170
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 477b769940f527d42872546aa455bf87, type: 2}
   m_IsPrefabParent: 0

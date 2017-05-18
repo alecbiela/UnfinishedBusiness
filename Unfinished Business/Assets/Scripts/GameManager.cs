@@ -31,7 +31,10 @@ public class GameManager : MonoBehaviour {
         objViewingUI = GameObject.Find("ObjViewingUI");
         objViewer = this.gameObject.GetComponent<ObjectViewer>();
         player = GameObject.Find("Player").GetComponent<RigidbodyFirstPersonController>();
-        
+
+        //fixed screen resolution
+        Screen.SetResolution(1024, 768, true, 60);
+
         //call statechange once to initialize state
         stateChanged = true;
 
